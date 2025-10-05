@@ -1,4 +1,5 @@
 # Picture Setting Test
 
-<img src="https://your-image-url.type" width="100" height="100">
-
+<p align="center">
+  <img src="https://github.com/IPBosko/DFT-Tutorials/blob/main/ImageFolder/SCF_Outline.png" width="35%" height="35%" />
+</p>
