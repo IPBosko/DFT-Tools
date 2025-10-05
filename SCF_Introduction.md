@@ -12,3 +12,7 @@ The general outline of any SCF program is presented in the figure
   <img src="https://github.com/IPBosko/DFT-Tutorials/blob/main/ImageFolder/SCF_Outline.png" width="35%" height="35%" />
 </p>
 
+In this tutorial, we will cover all the green, orange, and blue parts of the diagram. However, since the green and blue parts are mostly the same for any SCF, most attention should be paid to the middle (orange) part, as it will contain all the differences between various approximations used in DFT. By the way, what are these "types of approximations" I am referring to all the time?
+
+## Density Functional Approximations
+
