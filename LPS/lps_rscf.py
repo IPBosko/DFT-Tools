@@ -1,7 +1,7 @@
 """
 LPS-RSCF: Levi-Perdew-Sahni Restricted Self-Consistent Field Solver
 Implementation of the LPS DFT method using Psi4 KS DFT code.
-For details, see the LPS-RSCF.ipynb
+See LPS-RSCF.ipynb for details.
 """
 
 import time
