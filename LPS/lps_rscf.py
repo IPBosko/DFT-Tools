@@ -45,22 +45,21 @@ def Vpot_builder(Vpot, D, V, D_half):
     e = Vpot.quadrature_values()['FUNCTIONAL']
     return e, V
 
-def lps_solver(maxiter, Pauli, XC, lam, mol, damp, FA, DIIS=True, READ=True, verbose=True):
+def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
     """
     Main LPS-RSCF Solver Loop.
     
     Args:
-        maxiter (int):              Maximum SCF iterations.
-        Pauli (dict):               Pauli functional options.
-        XC (dict):                  Exchange-Correlation functional options.
-        lam (float):                lambda parameter for T_vW subtraction.
-        mol (psi4.core.Molecule):   The molecule object.
-        damp (list):                [damp_start, damp_end, cutoff].
-        FA (list):                  [Apply_FA (bool), Scaling_Factor (float)].
-        DIIS (bool):                Enable DIIS extrapolation.
-        READ (bool):                Read initial guess (D_GUESS) from global scope      
-                                    (Deprecated/Use  carefully).
-        verbose (bool):             If True, prints iteration details.
+        maxiter (int):      Maximum SCF iterations.
+        TP (list):          Pauli kinetic options [Functional_Name, Alpha].
+        EXC (list):         XC options [X_Name, X_Alpha, C_Name, C_Alpha].
+        lam (float):        Lambda parameter for T_vW subtraction.
+        mol (Molecule):     Psi4 Molecule object.
+        damp (list):        [damp_start, damp_end, cutoff].
+        FA (list):          [Apply_FA (bool), Scaling_Factor (float)].
+        D_guess (Matrix):   Optional density matrix for initial guess.
+        DIIS (bool):        Enable DIIS extrapolation.
+        verbose (bool):     Print iteration details.
         
     Returns:
         tuple: (SCF_E, SCF_D, SCF_ITER)
@@ -84,10 +83,20 @@ def lps_solver(maxiter, Pauli, XC, lam, mol, damp, FA, DIIS=True, READ=True, ver
     build_superfunctional = psi4.driver.dft.build_superfunctional
     D_half = psi4.core.Matrix(nbf, nbf)
 
+    Pauli = {
+    "name": "Pauli",
+    "x_functionals": {"LDA_X": {"alpha": 0.00}},
+    "c_functionals": {TP[0]: {"alpha": TP[1]}}
+    }
     VPpot = Vpot_init(build_superfunctional, wfn, Pauli, "RV", restricted=True)
     VPpot.initialize()
     VP_null = psi4.core.Matrix(nbf, nbf)
 
+    XC = {
+    "name": "XC",
+    "x_functionals": {EXC[0]: {"alpha": EXC[1]}},
+    "c_functionals": {EXC[2]: {"alpha": EXC[3]}}
+    }   
     VXCpot = Vpot_init(build_superfunctional, wfn, XC, "RV", restricted=True)
     VXCpot.initialize()
     VXC_null = psi4.core.Matrix(nbf, nbf)
@@ -117,11 +126,13 @@ def lps_solver(maxiter, Pauli, XC, lam, mol, damp, FA, DIIS=True, READ=True, ver
     VG = psi4.core.Matrix(nbf, nbf)
     D_diff = psi4.core.Matrix(nbf, nbf)
     
-    ## Initial Guess (Core)
-    D, mu = diag_lps(H, A, nel)
-    ## Use D_GUESS as an initial guess
-    if READ:
-        D = D_GUESS
+    if D_guess is not None:
+        ## Use D_GUESS as an initial guess
+        D = D_guess.clone()
+        mu = 0.0
+    else:
+        ## Calculate an initial Core guess
+        D, mu = diag_lps(H, A, nel)
     
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
@@ -135,7 +146,6 @@ def lps_solver(maxiter, Pauli, XC, lam, mol, damp, FA, DIIS=True, READ=True, ver
         diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
 
     for SCF_ITER in range(1, maxiter + 1):
-
         D_old = D
         
         ## Build J (Coulomb)
