@@ -3,5 +3,12 @@
     Name: CHAN2001
     Role: ORBITAL
     Keyword: BASIS
-    atoms 1 entry H          line    17 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
+    atoms 1 entry HE         line    57 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
+
+   => Loading Basis Set <=
+
+    Name: CHAN2001
+    Role: ORBITAL
+    Keyword: BASIS
+    atoms 1 entry HE         line    57 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
 
