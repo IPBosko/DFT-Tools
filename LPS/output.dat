@@ -1,49 +1,14 @@
    => Loading Basis Set <=
 
-    Name: CHAN2001
+    Name: UGBS_S
     Role: ORBITAL
     Keyword: BASIS
-    atoms 1 entry BE         line   137 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
+    atoms 1 entry ZN         line   849 file /opt/miniconda3/envs/p4env/share/psi4/basis/ugbs_s.gbs 
 
    => Loading Basis Set <=
 
-    Name: CHAN2001
+    Name: UGBS_S
     Role: ORBITAL
     Keyword: BASIS
-    atoms 1 entry B          line   177 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
-
-   => Loading Basis Set <=
-
-    Name: CHAN2001
-    Role: ORBITAL
-    Keyword: BASIS
-    atoms 1 entry C          line   217 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
-
-   => Loading Basis Set <=
-
-    Name: CHAN2001
-    Role: ORBITAL
-    Keyword: BASIS
-    atoms 1 entry N          line   257 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
-
-   => Loading Basis Set <=
-
-    Name: CHAN2001
-    Role: ORBITAL
-    Keyword: BASIS
-    atoms 1 entry O          line   297 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
-
-   => Loading Basis Set <=
-
-    Name: CHAN2001
-    Role: ORBITAL
-    Keyword: BASIS
-    atoms 1 entry F          line   337 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
-
-   => Loading Basis Set <=
-
-    Name: CHAN2001
-    Role: ORBITAL
-    Keyword: BASIS
-    atoms 1 entry NE         line   377 file /opt/miniconda3/envs/p4env/share/psi4/basis/chan2001.gbs 
+    atoms 1 entry KR         line   913 file /opt/miniconda3/envs/p4env/share/psi4/basis/ugbs_s.gbs 
 
