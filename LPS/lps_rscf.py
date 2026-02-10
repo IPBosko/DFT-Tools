@@ -233,9 +233,9 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
         if SCF_ITER == maxiter:
             SCF_D = D
             print("\nWARNING ! SCF did not converge. The final values are printed")
-            return SCF_E, SCF_D, SCF_ITER
+            return SCF_E, SCF_D, mu, SCF_ITER
     
     if verbose:
         print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
-    return SCF_E, D, SCF_ITER
+    return SCF_E, D, mu, SCF_ITER
