@@ -3,5 +3,12 @@
     Name: UGBS_S
     Role: ORBITAL
     Keyword: BASIS
+    atoms 1 entry ZN         line   849 file /opt/miniconda3/envs/p4env/share/psi4/basis/ugbs_s.gbs 
+
+   => Loading Basis Set <=
+
+    Name: UGBS_S
+    Role: ORBITAL
+    Keyword: BASIS
     atoms 1 entry KR         line   913 file /opt/miniconda3/envs/p4env/share/psi4/basis/ugbs_s.gbs 
 
