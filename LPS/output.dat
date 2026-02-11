@@ -8,7 +8,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:34 2026
+*** at Wed Feb 11 11:45:45 2026
 
    => Loading Basis Set <=
 
@@ -116,9 +116,9 @@ Scratch directory: /tmp/
 
                         Total Energy        Delta E     RMS |[F,P]|
 
-   @RHF iter   1:    -2.74999993553654   -2.75000e+00   2.53057e-02 ADIIS/DIIS
-   @RHF iter   2:    -2.86030207715587   -1.10302e-01   2.21604e-03 ADIIS/DIIS
-   @RHF iter   3:    -2.86165979907302   -1.35772e-03   2.81890e-04 ADIIS/DIIS
+   @RHF iter   1:    -2.74999993553654   -2.75000e+00   2.53057e-02 DIIS/ADIIS
+   @RHF iter   2:    -2.86030207715587   -1.10302e-01   2.21604e-03 DIIS/ADIIS
+   @RHF iter   3:    -2.86165979907302   -1.35772e-03   2.81890e-04 DIIS/ADIIS
    @RHF iter   4:    -2.86167976216235   -1.99631e-05   2.05418e-05 DIIS
    @RHF iter   5:    -2.86167992472257   -1.62560e-07   1.18667e-06 DIIS
    @RHF iter   6:    -2.86167992524354   -5.20968e-10   6.61364e-08 DIIS
@@ -181,15 +181,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:03:34 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:45:45 2026
 Module time:
-	user time   =       0.10 seconds =       0.00 minutes
-	system time =       0.01 seconds =       0.00 minutes
+	user time   =       0.08 seconds =       0.00 minutes
+	system time =       0.00 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      29.99 seconds =       0.50 minutes
-	system time =      27.02 seconds =       0.45 minutes
-	total time  =       3603 seconds =      60.05 minutes
+	user time   =      26.12 seconds =       0.44 minutes
+	system time =      28.56 seconds =       0.48 minutes
+	total time  =        453 seconds =       7.55 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -200,7 +200,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:34 2026
+*** at Wed Feb 11 11:45:45 2026
 
    => Loading Basis Set <=
 
@@ -308,9 +308,9 @@ Scratch directory: /tmp/
 
                         Total Energy        Delta E     RMS |[F,P]|
 
-   @RHF iter   1:   -13.71599656489951   -1.37160e+01   6.36786e-02 ADIIS/DIIS
-   @RHF iter   2:   -14.56348304794807   -8.47486e-01   4.99275e-03 ADIIS/DIIS
-   @RHF iter   3:   -14.57275630856521   -9.27326e-03   6.53171e-04 ADIIS/DIIS
+   @RHF iter   1:   -13.71599656489951   -1.37160e+01   6.36786e-02 DIIS/ADIIS
+   @RHF iter   2:   -14.56348304794807   -8.47486e-01   4.99275e-03 DIIS/ADIIS
+   @RHF iter   3:   -14.57275630856521   -9.27326e-03   6.53171e-04 DIIS/ADIIS
    @RHF iter   4:   -14.57301944894951   -2.63140e-04   5.28705e-05 DIIS
    @RHF iter   5:   -14.57302272888803   -3.27994e-06   5.58701e-06 DIIS
    @RHF iter   6:   -14.57302278896157   -6.00735e-08   7.15283e-07 DIIS
@@ -374,15 +374,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:03:34 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:45:45 2026
 Module time:
 	user time   =       0.10 seconds =       0.00 minutes
 	system time =       0.01 seconds =       0.00 minutes
 	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      30.13 seconds =       0.50 minutes
-	system time =      27.03 seconds =       0.45 minutes
-	total time  =       3603 seconds =      60.05 minutes
+	user time   =      26.27 seconds =       0.44 minutes
+	system time =      28.57 seconds =       0.48 minutes
+	total time  =        453 seconds =       7.55 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -393,7 +393,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:34 2026
+*** at Wed Feb 11 11:45:45 2026
 
    => Loading Basis Set <=
 
@@ -502,11 +502,11 @@ Scratch directory: /tmp/
                         Total Energy        Delta E     RMS |[F,P]|
 
    @RHF iter   1:  -112.29170096760315   -1.12292e+02   1.84859e-01 ADIIS
-   @RHF iter   2:  -111.36770514003874    9.23996e-01   5.80105e-02 ADIIS/DIIS
-   @RHF iter   3:  -127.38179854058947   -1.60141e+01   3.23119e-02 ADIIS/DIIS
-   @RHF iter   4:  -128.52481240620170   -1.14301e+00   3.52584e-03 ADIIS/DIIS
-   @RHF iter   5:  -128.54640969335227   -2.15973e-02   9.59789e-04 ADIIS/DIIS
-   @RHF iter   6:  -128.54705383756482   -6.44144e-04   1.75733e-04 ADIIS/DIIS
+   @RHF iter   2:  -111.36770514003874    9.23996e-01   5.80105e-02 DIIS/ADIIS
+   @RHF iter   3:  -127.38179854058947   -1.60141e+01   3.23119e-02 DIIS/ADIIS
+   @RHF iter   4:  -128.52481240620170   -1.14301e+00   3.52584e-03 DIIS/ADIIS
+   @RHF iter   5:  -128.54640969335227   -2.15973e-02   9.59789e-04 DIIS/ADIIS
+   @RHF iter   6:  -128.54705383756482   -6.44144e-04   1.75733e-04 DIIS/ADIIS
    @RHF iter   7:  -128.54708218553529   -2.83480e-05   1.62188e-05 DIIS
    @RHF iter   8:  -128.54708253561844   -3.50083e-07   4.55385e-07 DIIS
   Energy and wave function converged.
@@ -584,15 +584,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:03:35 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:45:46 2026
 Module time:
-	user time   =       0.44 seconds =       0.01 minutes
-	system time =       0.05 seconds =       0.00 minutes
+	user time   =       0.42 seconds =       0.01 minutes
+	system time =       0.04 seconds =       0.00 minutes
 	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      30.62 seconds =       0.51 minutes
-	system time =      27.08 seconds =       0.45 minutes
-	total time  =       3604 seconds =      60.07 minutes
+	user time   =      26.73 seconds =       0.45 minutes
+	system time =      28.61 seconds =       0.48 minutes
+	total time  =        454 seconds =       7.57 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -603,7 +603,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:35 2026
+*** at Wed Feb 11 11:45:46 2026
 
    => Loading Basis Set <=
 
@@ -712,10 +712,10 @@ Scratch directory: /tmp/
                         Total Energy        Delta E     RMS |[F,P]|
 
    @RHF iter   1:  -175.26961137054630   -1.75270e+02   2.27773e-01 ADIIS
-   @RHF iter   2:  -174.91397104621234    3.55640e-01   9.11007e-02 ADIIS/DIIS
-   @RHF iter   3:  -199.25420560334970   -2.43402e+01   1.54601e-02 ADIIS/DIIS
-   @RHF iter   4:  -199.59983538944547   -3.45630e-01   2.06527e-03 ADIIS/DIIS
-   @RHF iter   5:  -199.61365214856045   -1.38168e-02   6.34747e-04 ADIIS/DIIS
+   @RHF iter   2:  -174.91397104621234    3.55640e-01   9.11007e-02 DIIS/ADIIS
+   @RHF iter   3:  -199.25420560334970   -2.43402e+01   1.54601e-02 DIIS/ADIIS
+   @RHF iter   4:  -199.59983538944547   -3.45630e-01   2.06527e-03 DIIS/ADIIS
+   @RHF iter   5:  -199.61365214856045   -1.38168e-02   6.34747e-04 DIIS/ADIIS
    @RHF iter   6:  -199.61460640260000   -9.54254e-04   6.70379e-05 DIIS
    @RHF iter   7:  -199.61462122116558   -1.48186e-05   5.60506e-06 DIIS
    @RHF iter   8:  -199.61462135944865   -1.38283e-07   7.38255e-07 DIIS
@@ -795,15 +795,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:03:35 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:45:47 2026
 Module time:
-	user time   =       0.55 seconds =       0.01 minutes
+	user time   =       0.54 seconds =       0.01 minutes
 	system time =       0.05 seconds =       0.00 minutes
-	total time  =          0 seconds =       0.00 minutes
+	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      31.21 seconds =       0.52 minutes
-	system time =      27.13 seconds =       0.45 minutes
-	total time  =       3604 seconds =      60.07 minutes
+	user time   =      27.32 seconds =       0.46 minutes
+	system time =      28.66 seconds =       0.48 minutes
+	total time  =        455 seconds =       7.58 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -814,7 +814,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:35 2026
+*** at Wed Feb 11 11:45:47 2026
 
    => Loading Basis Set <=
 
@@ -924,10 +924,10 @@ Scratch directory: /tmp/
 
    @RHF iter   1:  -468.35479633106451   -4.68355e+02   3.89827e-01 ADIIS
    @RHF iter   2:  -506.43180691139520   -3.80770e+01   1.50799e-01 ADIIS
-   @RHF iter   3:  -523.29026832317641   -1.68585e+01   6.06824e-02 ADIIS/DIIS
-   @RHF iter   4:  -526.61690239793961   -3.32663e+00   1.31748e-02 ADIIS/DIIS
-   @RHF iter   5:  -526.81597527092129   -1.99073e-01   5.28272e-04 ADIIS/DIIS
-   @RHF iter   6:  -526.81742694369541   -1.45167e-03   1.19073e-04 ADIIS/DIIS
+   @RHF iter   3:  -523.29026832317641   -1.68585e+01   6.06824e-02 DIIS/ADIIS
+   @RHF iter   4:  -526.61690239793961   -3.32663e+00   1.31748e-02 DIIS/ADIIS
+   @RHF iter   5:  -526.81597527092129   -1.99073e-01   5.28272e-04 DIIS/ADIIS
+   @RHF iter   6:  -526.81742694369541   -1.45167e-03   1.19073e-04 DIIS/ADIIS
    @RHF iter   7:  -526.81748547075347   -5.85271e-05   1.83898e-05 DIIS
    @RHF iter   8:  -526.81748610622719   -6.35474e-07   1.30898e-06 DIIS
    @RHF iter   9:  -526.81748611028047   -4.05328e-09   5.75481e-08 DIIS
@@ -1010,15 +1010,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:03:36 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:45:47 2026
 Module time:
-	user time   =       0.78 seconds =       0.01 minutes
+	user time   =       0.76 seconds =       0.01 minutes
 	system time =       0.08 seconds =       0.00 minutes
-	total time  =          1 seconds =       0.02 minutes
+	total time  =          0 seconds =       0.00 minutes
 Total time:
-	user time   =      32.03 seconds =       0.53 minutes
-	system time =      27.21 seconds =       0.45 minutes
-	total time  =       3605 seconds =      60.08 minutes
+	user time   =      28.12 seconds =       0.47 minutes
+	system time =      28.74 seconds =       0.48 minutes
+	total time  =        455 seconds =       7.58 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -1029,7 +1029,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:36 2026
+*** at Wed Feb 11 11:45:48 2026
 
    => Loading Basis Set <=
 
@@ -1139,10 +1139,10 @@ Scratch directory: /tmp/
 
    @RHF iter   1:  -607.24071540619661   -6.07241e+02   4.30129e-01 ADIIS
    @RHF iter   2:  -651.52583711503405   -4.42851e+01   1.44709e-01 ADIIS
-   @RHF iter   3:  -672.82517845245388   -2.12993e+01   5.72080e-02 ADIIS/DIIS
-   @RHF iter   4:  -676.61568182357314   -3.79050e+00   1.16113e-02 ADIIS/DIIS
-   @RHF iter   5:  -676.75385067357865   -1.38169e-01   9.04873e-04 ADIIS/DIIS
-   @RHF iter   6:  -676.75791922010353   -4.06855e-03   3.13648e-04 ADIIS/DIIS
+   @RHF iter   3:  -672.82517845245388   -2.12993e+01   5.72080e-02 DIIS/ADIIS
+   @RHF iter   4:  -676.61568182357314   -3.79050e+00   1.16113e-02 DIIS/ADIIS
+   @RHF iter   5:  -676.75385067357865   -1.38169e-01   9.04873e-04 DIIS/ADIIS
+   @RHF iter   6:  -676.75791922010353   -4.06855e-03   3.13648e-04 DIIS/ADIIS
    @RHF iter   7:  -676.75813737487942   -2.18155e-04   2.65112e-05 DIIS
    @RHF iter   8:  -676.75815284393764   -1.54691e-05   5.26149e-06 DIIS
    @RHF iter   9:  -676.75815399761723   -1.15368e-06   8.22459e-07 DIIS
@@ -1228,15 +1228,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:03:37 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:45:49 2026
 Module time:
-	user time   =       0.86 seconds =       0.01 minutes
-	system time =       0.07 seconds =       0.00 minutes
+	user time   =       0.93 seconds =       0.02 minutes
+	system time =       0.08 seconds =       0.00 minutes
 	total time  =          1 seconds =       0.02 minutes
 Total time:
-	user time   =      32.93 seconds =       0.55 minutes
-	system time =      27.28 seconds =       0.45 minutes
-	total time  =       3606 seconds =      60.10 minutes
+	user time   =      29.10 seconds =       0.49 minutes
+	system time =      28.82 seconds =       0.48 minutes
+	total time  =        457 seconds =       7.62 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -1247,7 +1247,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:03:37 2026
+*** at Wed Feb 11 11:45:49 2026
 
    => Loading Basis Set <=
 
@@ -1364,11 +1364,11 @@ Scratch directory: /tmp/
 
    @RHF iter   1: -1524.62649213771078   -1.52463e+03   5.31181e-01 ADIIS
    @RHF iter   2: -1603.66965892336248   -7.90432e+01   1.71975e-01 ADIIS
-   @RHF iter   3: -1769.81282413708345   -1.66143e+02   4.17163e-02 ADIIS/DIIS
-   @RHF iter   4: -1734.29270309344747    3.55201e+01   5.73970e-02 ADIIS/DIIS
-   @RHF iter   5: -1777.50945131066283   -4.32167e+01   5.63642e-03 ADIIS/DIIS
-   @RHF iter   6: -1777.83685478151233   -3.27403e-01   7.80804e-04 ADIIS/DIIS
-   @RHF iter   7: -1777.84688787303094   -1.00331e-02   3.04025e-04 ADIIS/DIIS
+   @RHF iter   3: -1769.81282413708345   -1.66143e+02   4.17163e-02 DIIS/ADIIS
+   @RHF iter   4: -1734.29270309344747    3.55201e+01   5.73970e-02 DIIS/ADIIS
+   @RHF iter   5: -1777.50945131066283   -4.32167e+01   5.63642e-03 DIIS/ADIIS
+   @RHF iter   6: -1777.83685478151233   -3.27403e-01   7.80804e-04 DIIS/ADIIS
+   @RHF iter   7: -1777.84688787303094   -1.00331e-02   3.04025e-04 DIIS/ADIIS
    @RHF iter   8: -1777.84803292485026   -1.14505e-03   6.50474e-05 DIIS
    @RHF iter   9: -1777.84804048452133   -7.55967e-06   6.77974e-05 DIIS
    @RHF iter  10: -1777.84805868508192   -1.82006e-05   7.48439e-06 DIIS
@@ -1481,15 +1481,15 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:04:07 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:46:14 2026
 Module time:
-	user time   =      12.90 seconds =       0.21 minutes
-	system time =      15.94 seconds =       0.27 minutes
-	total time  =         30 seconds =       0.50 minutes
+	user time   =      11.84 seconds =       0.20 minutes
+	system time =      12.94 seconds =       0.22 minutes
+	total time  =         25 seconds =       0.42 minutes
 Total time:
-	user time   =      45.88 seconds =       0.76 minutes
-	system time =      43.23 seconds =       0.72 minutes
-	total time  =       3636 seconds =      60.60 minutes
+	user time   =      40.98 seconds =       0.68 minutes
+	system time =      41.76 seconds =       0.70 minutes
+	total time  =        482 seconds =       8.03 minutes
 
 Scratch directory: /tmp/
    => Libint2 <=
@@ -1500,7 +1500,7 @@ Scratch directory: /tmp/
     Solid Harmonics ordering:            Gaussian
 
 *** tstart() called on dyn172-30-2-145.wireless.uwo.pri
-*** at Tue Feb 10 18:04:07 2026
+*** at Wed Feb 11 11:46:14 2026
 
    => Loading Basis Set <=
 
@@ -1616,10 +1616,10 @@ Scratch directory: /tmp/
 
    @RHF iter   1: -2392.17366785021977   -2.39217e+03   7.29165e-01 ADIIS
    @RHF iter   2: -2451.04192166703024   -5.88683e+01   2.35564e-01 ADIIS
-   @RHF iter   3: -2742.31661797274910   -2.91275e+02   5.16011e-02 ADIIS/DIIS
-   @RHF iter   4: -2746.06978375570225   -3.75317e+00   3.95328e-02 ADIIS/DIIS
-   @RHF iter   5: -2751.98905206101972   -5.91927e+00   4.25327e-03 ADIIS/DIIS
-   @RHF iter   6: -2752.05083099491048   -6.17789e-02   1.08563e-03 ADIIS/DIIS
+   @RHF iter   3: -2742.31661797274910   -2.91275e+02   5.16011e-02 DIIS/ADIIS
+   @RHF iter   4: -2746.06978375570225   -3.75317e+00   3.95328e-02 DIIS/ADIIS
+   @RHF iter   5: -2751.98905206101972   -5.91927e+00   4.25327e-03 DIIS/ADIIS
+   @RHF iter   6: -2752.05083099491048   -6.17789e-02   1.08563e-03 DIIS/ADIIS
    @RHF iter   7: -2752.05482129494703   -3.99030e-03   6.78228e-05 DIIS
    @RHF iter   8: -2752.05485825758888   -3.69626e-05   1.05453e-05 DIIS
    @RHF iter   9: -2752.05485951228366   -1.25469e-06   1.25289e-06 DIIS
@@ -1729,12 +1729,12 @@ Properties computed using the SCF density matrix
 
  ------------------------------------------------------------------------------------
 
-*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Tue Feb 10 18:04:26 2026
+*** tstop() called on dyn172-30-2-145.wireless.uwo.pri at Wed Feb 11 11:46:32 2026
 Module time:
-	user time   =       8.88 seconds =       0.15 minutes
-	system time =      10.29 seconds =       0.17 minutes
-	total time  =         19 seconds =       0.32 minutes
+	user time   =       8.58 seconds =       0.14 minutes
+	system time =       9.48 seconds =       0.16 minutes
+	total time  =         18 seconds =       0.30 minutes
 Total time:
-	user time   =      54.81 seconds =       0.91 minutes
-	system time =      53.52 seconds =       0.89 minutes
-	total time  =       3655 seconds =      60.92 minutes
+	user time   =      49.60 seconds =       0.83 minutes
+	system time =      51.24 seconds =       0.85 minutes
+	total time  =        500 seconds =       8.33 minutes
