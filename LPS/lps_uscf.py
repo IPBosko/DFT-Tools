@@ -1,5 +1,5 @@
 """
-LPS-USCF: Levi-Perdew-Sahni Restricted Self-Consistent Field Solver
+LPS-USCF: Levi-Perdew-Sahni Unrestricted Self-Consistent Field Solver
 Implementation of the LPS DFT method using Psi4 KS DFT code.
 See LPS-USCF.ipynb for details.
 """
@@ -172,12 +172,12 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
         ## Add Fermi–Amaldi potential if requested
         if FA[0]:
             FAa.np[:] = Ja   
-            FAa.np[:] *= -1.0/nalpha
+            FAa.np[:] *= -FA[1]/nalpha
             FAb.np[:] = Jb
             if nbeta == 0:
                 FAb.np[:] *= 0.0
             else:
-                FAb.np[:] *= -1.0/nbeta
+                FAb.np[:] *= -FA[1]/nbeta
             Fa.axpy(1.0, FAa)
             Fb.axpy(1.0, FAb)
 
@@ -221,7 +221,7 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
         D.copy(Da)
         D.axpy(1.0, Db)
         SCF_E += 0.5 * J.vector_dot(D)
-        if FA:
+        if FA[0]:
             SCF_E += 0.5 * FAa.vector_dot(Da)
             SCF_E += 0.5 * FAb.vector_dot(Db)
         SCF_E += g_e
