@@ -392,16 +392,26 @@ In alignment with Table III and Eq.~\eqref{eq: Density Asymptotics}, Fig. 1 show
 \end{figure}
 We still put it on the plot to show that, as expected, the choice of exchange functional does not fundamentally alter the LPS density structure, i.e., the FA exchange does not recover atomic shell structure, which remains absent due to the monotonic nature of the TF$\lambda$W kinetic model. However, Eq.~\eqref{eq: Density Asymptotics} applies to the LPS densities in Fig. 2, showing the more rapid asymptotic decay in the FA density is consistent with Table III. The more rapid assymptotic decay has been reported before within statistical atomic theory~\cite{Gombas.2013.statistische}.
 
-\subsection{Dissociation Profiles}
-
+Similar assymptotic behavior is observed when the Tran--Wesołowski kinetci functional is combined with the exchange functionals (Fig.3 and Fig.4).
 \begin{figure}[h]
-\includegraphics[scale=0.40]{Figures/h2_diss.png}
-\caption{H$_2$ SCF potential energy surface for Fermi--Amaldi, LDA, and PBE exchange functionals combined with TF$\frac{1}{6}$W and TF$\frac{1}{5}$W kinetic energy functionals, respectively. Calculations were performed with the basis set containing 13 $s$- and 4 $p$-functions (see Sec. III D). Self-consistent calculations were performed only at the marked points. The connecting curves are interpolations.}
+\includegraphics[scale=0.37]{Figures/he_density_tw.png}
+\caption{He SCF radial distribution function $4\pi r^2n(\textbf{r})$ for FA, LDA, and PBE exchange functionals combined with TW kinetic energy functional.}
 \end{figure}
+\begin{figure}[h]
+\includegraphics[scale=0.37]{Figures/be_density_3_tw.png}
+\caption{Be SCF radial distribution function $4\pi r^2n(\textbf{r})$ for FA, LDA, and PBE exchange functionals combined with TW kinetic energy functional.}
+\end{figure}
+
+
+\subsection{Dissociation Profiles}
 
 Diatomic calculations employed the basis set containing 13 $s$- and 4 $p$-functions taken from the UGBS basis set ($\alpha_s\in[9.34\times10^2, 7.67\times10^{-2}]$ and $\alpha_p\in[5.76\times10^{-1}, 3.92\times10^{-2}]$). Correspondingly, a radial grid of 1000 points and spherical grid of 974 points was used. In difficult convergence cases, the number of points was reduced to 350 and 74, respectively, to obtain an initial guess density for the larger grid calculations.
 
 Figure II shows the H$_2$ dissociation curves computed using the same models as in the previous section for density plotting. An RHF curve with the same basis set is included as the reference. Although spin-polarized functionals were used, our LPS implementation lacks a symmetry-breaking mechanism. As such, it converges to the spin-symmetric solution, making RHF the appropriate spin-symmetric reference rather than the broken-symmetry UHF solution.
+\begin{figure}[h]
+\includegraphics[scale=0.40]{Figures/h2_diss.png}
+\caption{H$_2$ SCF potential energy surface for Fermi--Amaldi, LDA, and PBE exchange functionals combined with TF$\frac{1}{6}$W and TF$\frac{1}{5}$W kinetic energy functionals, respectively. Calculations were performed with the basis set containing 13 $s$- and 4 $p$-functions (see Sec. III D). Self-consistent calculations were performed only at the marked points. The connecting curves are interpolations.}
+\end{figure}
 
 As shown in Figure II, the FA functional exhibits better long-range behavior and a distinct potential well unlike both the LDA and PBE functionals. The FA functional also yields an equilibrium distance, $r_e$, significantly closer to the RHF reference, e.g., 2.00 a.u. against 3.00 and 3.25 a.u. for LDA and PBE, respectively. The FA binding energy estimate, $E(4\,\text{a.u.})-E(r_e) = 0.0134$ a.u., is closer to the RHF reference ($0.2191$ a.u.) compared to $0.0028$ and $0.0007$ a.u. for LDA and PBE, respectively.
 

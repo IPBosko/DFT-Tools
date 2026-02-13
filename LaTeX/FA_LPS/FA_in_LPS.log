@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 16:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 17:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -410,17 +410,27 @@ File: Figures/be_density_3.png Graphic file (type png)
 Package pdftex.def Info: Figures/be_density_3.png  used on input line 390.
 (pdftex.def)             Requested size: 240.65532pt x 181.82848pt.
 [4 <./Figures/he_density.png> <./Figures/be_density_3.png>]
-<Figures/h2_diss.png, id=224, 650.43pt x 491.436pt>
+<Figures/he_density_tw.png, id=224, 650.43pt x 491.436pt>
+File: Figures/he_density_tw.png Graphic file (type png)
+<use Figures/he_density_tw.png>
+Package pdftex.def Info: Figures/he_density_tw.png  used on input line 397.
+(pdftex.def)             Requested size: 240.65532pt x 181.82848pt.
+<Figures/be_density_3_tw.png, id=225, 650.43pt x 491.436pt>
+File: Figures/be_density_3_tw.png Graphic file (type png)
+<use Figures/be_density_3_tw.png>
+Package pdftex.def Info: Figures/be_density_3_tw.png  used on input line 401.
+(pdftex.def)             Requested size: 240.65532pt x 181.82848pt.
+<Figures/h2_diss.png, id=226, 650.43pt x 491.436pt>
 File: Figures/h2_diss.png Graphic file (type png)
 <use Figures/h2_diss.png>
-Package pdftex.def Info: Figures/h2_diss.png  used on input line 398.
+Package pdftex.def Info: Figures/h2_diss.png  used on input line 412.
 (pdftex.def)             Requested size: 260.16739pt x 196.5709pt.
 
-Overfull \hbox (14.16739pt too wide) in paragraph at lines 398--399
+Overfull \hbox (14.16739pt too wide) in paragraph at lines 412--413
  [][] 
  []
 
-(./FA_in_LPS.bbl [5 <./Figures/h2_diss.png>]
+[5 <./Figures/he_density_tw.png> <./Figures/be_density_3_tw.png> <./Figures/h2_diss.png>] (./FA_in_LPS.bbl
 Underfull \hbox (badness 1824) in paragraph at lines 87--88
  []\OT1/cmr/m/n/9 V. Karasiev and S. Trickey, Is-sues and chal-lenges
  []
@@ -439,18 +449,18 @@ Package rerunfilecheck Info: File `FA_in_LPS.out' has not changed.
 (rerunfilecheck)             Checksum: DE51D81B440F826EAEF1399CFB8997CD;2147.
  ) 
 Here is how much of TeX's memory you used:
- 12192 strings out of 473190
- 184964 string characters out of 5715801
- 613527 words of memory out of 5000000
- 35203 multiletter control sequences out of 15000+600000
+ 12207 strings out of 473190
+ 185430 string characters out of 5715801
+ 612589 words of memory out of 5000000
+ 35216 multiletter control sequences out of 15000+600000
  569191 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,2830b,719s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,2830b,690s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on FA_in_LPS.pdf (7 pages, 388731 bytes).
+Output written on FA_in_LPS.pdf (7 pages, 479846 bytes).
 PDF statistics:
- 344 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
- 87 named destinations out of 1000 (max. 500000)
- 112 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 297 compressed objects within 3 object streams
+ 89 named destinations out of 1000 (max. 500000)
+ 122 words of extra memory for PDF output out of 10000 (max. 10000000)
 
