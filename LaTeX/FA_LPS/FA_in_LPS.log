@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 15:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 16:49
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -399,44 +399,38 @@ Underfull \hbox (badness 4096) in paragraph at lines 302--303
 
 LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 372.
 
-<Figures/be_density_1.png, id=203, 650.43pt x 491.436pt>
-File: Figures/be_density_1.png Graphic file (type png)
-<use Figures/be_density_1.png>
-Package pdftex.def Info: Figures/be_density_1.png  used on input line 377.
-(pdftex.def)             Requested size: 260.16739pt x 196.5709pt.
-
-Overfull \hbox (14.16739pt too wide) in paragraph at lines 377--378
- [][] 
- []
-
-<Figures/h2_diss.png, id=206, 650.43pt x 491.436pt>
+<Figures/he_density.png, id=203, 650.43pt x 491.436pt>
+File: Figures/he_density.png Graphic file (type png)
+<use Figures/he_density.png>
+Package pdftex.def Info: Figures/he_density.png  used on input line 384.
+(pdftex.def)             Requested size: 240.65532pt x 181.82848pt.
+<Figures/be_density_3.png, id=208, 650.43pt x 491.436pt>
+File: Figures/be_density_3.png Graphic file (type png)
+<use Figures/be_density_3.png>
+Package pdftex.def Info: Figures/be_density_3.png  used on input line 390.
+(pdftex.def)             Requested size: 240.65532pt x 181.82848pt.
+[4 <./Figures/he_density.png> <./Figures/be_density_3.png>]
+<Figures/h2_diss.png, id=224, 650.43pt x 491.436pt>
 File: Figures/h2_diss.png Graphic file (type png)
 <use Figures/h2_diss.png>
-Package pdftex.def Info: Figures/h2_diss.png  used on input line 386.
+Package pdftex.def Info: Figures/h2_diss.png  used on input line 398.
 (pdftex.def)             Requested size: 260.16739pt x 196.5709pt.
 
-Overfull \hbox (14.16739pt too wide) in paragraph at lines 386--387
+Overfull \hbox (14.16739pt too wide) in paragraph at lines 398--399
  [][] 
  []
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[4 <./Figures/be_density_1.png>]
-
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 394.
-
-(./FA_in_LPS.bbl
+(./FA_in_LPS.bbl [5 <./Figures/h2_diss.png>]
 Underfull \hbox (badness 1824) in paragraph at lines 87--88
  []\OT1/cmr/m/n/9 V. Karasiev and S. Trickey, Is-sues and chal-lenges
  []
 
-[5 <./Figures/h2_diss.png>]
+
 Underfull \hbox (badness 1484) in paragraph at lines 132--133
  []\OT1/cmr/m/n/9 J. D. Gled-hill and D. J. Tozer, System-dependent
  []
 
-) [6] (./FA_in_LPS.aux)
+[6]) [7] (./FA_in_LPS.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -445,18 +439,18 @@ Package rerunfilecheck Info: File `FA_in_LPS.out' has not changed.
 (rerunfilecheck)             Checksum: DE51D81B440F826EAEF1399CFB8997CD;2147.
  ) 
 Here is how much of TeX's memory you used:
- 12183 strings out of 473190
- 184733 string characters out of 5715801
- 621851 words of memory out of 5000000
- 35197 multiletter control sequences out of 15000+600000
+ 12192 strings out of 473190
+ 184964 string characters out of 5715801
+ 613527 words of memory out of 5000000
+ 35203 multiletter control sequences out of 15000+600000
  569191 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,2830b,666s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,2830b,719s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on FA_in_LPS.pdf (6 pages, 326875 bytes).
+Output written on FA_in_LPS.pdf (7 pages, 388731 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 283 compressed objects within 3 object streams
- 84 named destinations out of 1000 (max. 500000)
- 107 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 344 PDF objects out of 1000 (max. 8388607)
+ 295 compressed objects within 3 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 112 words of extra memory for PDF output out of 10000 (max. 10000000)
 

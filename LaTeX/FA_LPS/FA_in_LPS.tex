@@ -372,13 +372,25 @@ rMAE & 80.31 & 77.80 & 40.98 & $-$\\
 
 The chemical potentials obtained with the FA functional are consistently closer to the RHF/UGBS reference values compared to those from LDA and PBE functionals. Overall, the FA functional demonstrates almost a two-fold improvement in accuracy for chemical potentials over both LDA and PBE functionals with the smallest errors of 0.0369, 0.0282, and 0.0133 Hartrees for the alkaline earth metals (Be, Mg, and Ca, respectively). 
 
-According to the LPS theory, the solution density assymptotically behaves like $n(\textbf{r})\sim \exp{-2\sqrt{-2\mu}r}$. This implies that the bigger magnitude of the chemical potential is associated with a faster decay of the density. To validate this, we examine a self-consistent radial distribution functions for the Be atom in Fig. 1. The optimal TF$\lambda$W kinetic functionals were employed for each exchange functional. All calculations used the basis set with 31 $s$-type basis functions described above. 
+According to the LPS theory, the solution density assymptotically behaves like 
+\begin{equation}\label{eq: Density Asymptotics}
+    n(\textbf{r})
+    \sim
+    \exp{-2\sqrt{-2\mu}r}.
+\end{equation}
+This implies that the bigger magnitude of the chemical potential is associated with a faster decay of the density. To validate this, we examine a self-consistent radial distribution functions for He in Fig. 1. All calculations used the basis set with 31 $s$-type basis functions described above. 
+
 \begin{figure}[h]
-\includegraphics[scale=0.40]{Figures/be_density_1.png}
-\caption{Be SCF radial distribution function $4\pi r^2n(\textbf{r})$ for Fermi--Amaldi, LDA, and PBE exchange functionals combined with TF$\frac{1}{6}$W and TF$\frac{1}{5}$W kinetic energy functionals, respectively. The basis set with 31 $s$-type basis functions was used. The RHF reference is included for comparison.}
+\includegraphics[scale=0.37]{Figures/he_density.png}
+\caption{He SCF radial distribution function $4\pi r^2n(\textbf{r})$ for FA, LDA, and PBE exchange functionals combined with TF$\frac{1}{6}$W kinetic energy functional. The RHF reference is included for comparison.}
 \end{figure}
 
-The TF$\frac{1}{6}$W FA density decays more rapidly than either the TF$\frac{1}{5}$W LDA or TF$\frac{1}{5}$W PBE densities. As expected, the choice of exchange functional does not fundamentally alter the density structure, i.e., the FA exchange does not recover atomic shell structure, which remains absent due to the monotonic nature of the TF$\lambda$W kinetic model. The more rapid asymptotic decay observed in the FA density is consistent with established results from statistical atomic theory~\cite{Gombas.2013.statistische}.
+In alignment with Table III and Eq.~\eqref{eq: Density Asymptotics}, Fig. 1 shows that the FA density decays more rapidly than either the LDA or PBE densities, but slower than the RHF one. Comparison to the RHF density using Eq.~\eqref{eq: Density Asymptotics} is valid for He, because it is a one-orbital system. For a system with more than one orbital, like Be (Fig. 2), Eq.~\eqref{eq: Density Asymptotics} does not apply to the RHF density.
+\begin{figure}[h]
+\includegraphics[scale=0.37]{Figures/be_density_3.png}
+\caption{Be SCF radial distribution function $4\pi r^2n(\textbf{r})$ for FA, LDA, and PBE exchange functionals combined with TF$\frac{1}{6}$W kinetic energy functional. The RHF reference is included for comparison.}
+\end{figure}
+We still put it on the plot to show that, as expected, the choice of exchange functional does not fundamentally alter the LPS density structure, i.e., the FA exchange does not recover atomic shell structure, which remains absent due to the monotonic nature of the TF$\lambda$W kinetic model. However, Eq.~\eqref{eq: Density Asymptotics} applies to the LPS densities in Fig. 2, showing the more rapid asymptotic decay in the FA density is consistent with Table III. The more rapid assymptotic decay has been reported before within statistical atomic theory~\cite{Gombas.2013.statistische}.
 
 \subsection{Dissociation Profiles}
 
