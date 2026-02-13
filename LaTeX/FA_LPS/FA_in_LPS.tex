@@ -299,32 +299,30 @@ Since the atoms are minimized with spherical densities within LPS framework~\cit
 Table I contains the mean absolute errors $\text{MAE}=\left( \sum_a\Delta E_a \right) /N_A$, where $\Delta E_a=|E_a^{\text{LPS}}-E_a^{\text{UHF}}|$, across $N_A=10$ atoms, in a.u., and the relative mean absolute errors $\text{rMAE}=\left( -\sum_a\Delta E_a/E_a^{\text{UHF}}\right)/N_A\times100\%$ expressed as a percentage of the UHF/UGBS energy. 
 In alignment with other authors~\cite{Chan.2001.JCP.114.631, Karasiev.2012.CPC.183.2519}, Table I shows that the optimal von Weizsäcker mixing parameter for the PBE and LDA pure exchange functionals is $\lambda=1/5$. As for the FA functional, the optimal value is $\lambda=1/6$, with the second best being $\lambda=0.186$. This result indicates that the FA functional can outperform both LDA and PBE exchange functionals when paired with an appropriate kinetic energy density functional.
 
-Interestingly, in the SCF calculations, the highly-accurate Tran--Wesołowski kinetic functional yields higher errors for all exchange functionals compared to the optimal TF$\lambda$W models. This observation suggests that the TW functional may not be well-suited for the self-consistent densities lacking the shell structure, as it was developed and parametrized for atomic densities exhibiting shell structure~\cite{Tran.2002.IJQC.89.441}. For post-SCF calculations, the TW PBE approximation applied to the UHF/UGBS densities (H-Ne) yields MAE = 0.07 a.u. and rMAE = 0.60\%, respectively. The TF$0.2$W PBE model yields MAE = 2.93 a.u. and rMAE = 8.31\% on the same set of atomic densities. Clearly, the TW functional is superior for post-SCF calculations, but its performance degrades in self-consistent calculations within the LPS framework.
-
-Table II summarizes the performance of the FA, LDA, and PBE exchange functionals combined with the optimal TF$\lambda$W kinetic functionals for each exchange functional on a set of closed-shell atoms He through Kr. The basis set and numerical grid are the same as in Table I. 
+Interestingly, in the SCF calculations, the highly-accurate Tran--Wesołowski kinetic functional yields higher errors for all exchange functionals compared to the optimal TF$\lambda$W models. This observation suggests that the TW functional may not be well-suited for the self-consistent densities lacking the shell structure, as it was developed and parametrized for atomic densities exhibiting shell structure~\cite{Tran.2002.IJQC.89.441}. For post-SCF calculations, the TW PBE approximation applied to the UHF/UGBS densities (H--Ne) yields MAE = 0.07 a.u. and rMAE = 0.60\%, respectively. The TF$0.2$W PBE model yields MAE = 2.93 a.u. and rMAE = 8.31\% on the same set of atomic densities. Clearly, the TW functional is superior for post-SCF calculations, but its performance degrades in self-consistent calculations within the LPS framework.
 
 \begin{table}[htb]
-\caption{SCF atomic energies (a.u.) for closed-shell atoms from He to Kr calculated using optimal TF$\lambda$W models for each exchange functional identified in Table I. Calculations are done with the same basis set and grid as in Table I. The MAE (a.u.) and rMAE (\%) are with respect to RHF/UGBS values.}
+\caption{SCF atomic energies (a.u.) for closed-shell atoms from He to Kr calculated using TF$\frac{1}{6}$W model for LDA, PBE, and FA exchange functionals. Calculations are done with the same basis set and grid as in Table I. The MAE (a.u.) and rMAE (\%) are with respect to RHF/UGBS values.}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
-Atom & TF$\frac{1}{5}$W LDA & TF$\frac{1}{5}$W PBE & TF$\frac{1}{6}$W FA & RHF/UGBS \\[2pt]
+Atom & TF$\frac{1}{6}$W LDA & TF$\frac{1}{6}$W PBE & TF$\frac{1}{6}$W FA & RHF/UGBS \\[2pt]
 \hline\\[-9pt]
-He    & $-$2.8184   & $-$2.9571   & $-$3.0195   & $-$2.8617   \\[1.5pt]
-Be    & $-$14.4841  & $-$14.8182  & $-$14.6605  & $-$14.5730  \\[1.5pt]
-Ne    & $-$128.8016 & $-$129.8300 & $-$128.2917 & $-$128.5471 \\[1.5pt]
-Mg    & $-$199.1390 & $-$200.4191 & $-$198.3054 & $-$199.6146 \\[1.5pt]
-Ar    & $-$524.7548 & $-$526.8270 & $-$522.9290 & $-$526.8175 \\[1.5pt]
-Ca    & $-$674.9299 & $-$677.2756 & $-$672.8084 & $-$676.7582 \\[1.5pt]
-Zn    & $-$1776.6511& $-$1780.4172& $-$1773.7276& $-$1777.8481\\[1.5pt]
-Kr    & $-$2744.2896& $-$2748.9405& $-$2741.6652& $-$2752.0549\\[1.5pt]
+He    & $-$2.9512   & $-$3.0971   & $-$3.0195   & $-$2.8617   \\[1.5pt]
+Be    & $-$15.0404  & $-$15.3889  & $-$14.6605  & $-$14.5730  \\[1.5pt]
+Ne    & $-$132.5089 & $-$133.5737 & $-$128.2917 & $-$128.5471 \\[1.5pt]
+Mg    & $-$204.5407 & $-$205.8645 & $-$198.3054 & $-$199.6146 \\[1.5pt]
+Ar    & $-$537.2088 & $-$539.3465 & $-$522.9289 & $-$526.8175 \\[1.5pt]
+Ca    & $-$690.3963 & $-$692.8150 & $-$672.8085 & $-$676.7582 \\[1.5pt]
+Zn    & $-$1812.1925& $-$1816.0679& $-$1773.7277& $-$1777.8481\\[1.5pt]
+Kr    & $-$2795.9146& $-$2800.6966& $-$2741.6652& $-$2752.0549\\[1.5pt]
 \hline\\[-9pt]
-MAE & 1.71 & 1.08 & 3.02 & $-$\\[1.5pt]
-rMAE & 0.45 & 0.84 & 1.11 & $-$\\
+MAE & 13.96 & 15.97 & 3.02 & $-$\\[1.5pt]
+rMAE & 2.42 & 3.69 & 1.11 & $-$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
 
-In contrast to the results for light atoms H--Ne reported in Table I, where the TF$\frac{1}{6}$W FA model achieved the lowest MAE and rMAE, its accuracy degraded significantly for heavier atoms. Conversely,the TF$\frac{1}{5}$W LDA and TF$\frac{1}{5}$W PBE models exhibit more robust scaling with increasing atomic number, providing lower mean absolute errors (1.71 a.u. and 1.08 a.u., respectively) and significantly reduced relative errors (0.45\% and 0.84\%, respectively) compared to the FA model. This result seems logical since the LDA and PBE exchange functionals are designed to capture the behavior of electrons in a uniform electron gas, which becomes more relevant in larger atoms.
+Table II summarizes the performance of the FA, LDA, and PBE exchange functionals combined with TF$\frac{1}{6}$W kinetic functional for each exchange functional on a set of closed-shell atoms He through Kr. The basis set and numerical grid are the same as in Table I. Comparing to Table I, MAE values increased significantly for all tested exchange functionals which is the consequence of the larger magnitute of the total energies in Table II. Conversely, rMAEs are decreased for all models indicating the lowering of the relative error with increasing atomic number. For both MAE and rMAE values, the FA functional outperforms both LDA and PBE significantly when paired with TF$\frac{1}{6}$W kinetic functional.
 
 \subsection{Chemical Potentials and Atomic Densities}
 
@@ -350,24 +348,24 @@ In contrast to the results for light atoms H--Ne reported in Table I, where the 
 % \label{tab:errors} 
 % \end{table*}
 
-Table III summarizes the chemical potentials $\mu$ of the LPS equation~\eqref{eq: LPS Differential Equation} for closed-shell atoms He through Kr calculated using the optimal TF$\lambda$W models for each exchange functional identified in Table I.  
+Table III summarizes the chemical potentials $\mu$ of the LPS equation~\eqref{eq: LPS Differential Equation} for closed-shell atoms He through Kr calculated using TF$\frac{1}{6}$W model for each exchange functional.  
 \begin{table}[htb]
-\caption{Chemical potentials (a.u.) for closed-shell atoms from He to Kr calculated using optimal TF$\lambda$W models for each exchange functional identified in Table I. The MAE (a.u.) and rMAE (\%) are with respect to RHF/UGBS values.}
+\caption{Chemical potentials (a.u.) for closed-shell atoms from He to Kr calculated using TF$\frac{1}{6}$W model for LDA, PBE, and FA exchange functionals. The MAE (a.u.) and rMAE (\%) are with respect to RHF/UGBS values.}
 \begin{ruledtabular}
 \begin{tabular}{lrrrr}
-Atom & TF$\frac{1}{5}$W LDA & TF$\frac{1}{5}$W PBE & TF$\frac{1}{6}$W FA & RHF/UGBS \\[2pt]
+Atom & TF$\frac{1}{6}$W LDA & TF$\frac{1}{6}$W PBE & TF$\frac{1}{6}$W FA & RHF/UGBS \\[2pt]
 \hline\\[-9pt]
-He    & $-$0.0704   & $-$0.0843   & $-$0.3135   & $-$0.9180   \\[1.5pt]
-Be    & $-$0.0737   & $-$0.0854   & $-$0.2724   & $-$0.3093   \\[1.5pt]
-Ne    & $-$0.0769   & $-$0.0864   & $-$0.2314   & $-$0.8504   \\[1.5pt]
-Mg    & $-$0.0775   & $-$0.0866   & $-$0.2248   & $-$0.2531   \\[1.5pt]
-Ar    & $-$0.0785   & $-$0.0869   & $-$0.2119   & $-$0.5910   \\[1.5pt]
-Ca    & $-$0.0788   & $-$0.0869   & $-$0.2089   & $-$0.1955   \\[1.5pt]
-Zn    & $-$0.0796   & $-$0.0872   & $-$0.1983   & $-$0.2925   \\[1.5pt]
-Kr    & $-$0.0800   & $-$0.0873   & $-$0.1941   & $-$0.5242   \\[1.5pt]
+He    & $-$0.0671   & $-$0.0812   & $-$0.3135   & $-$0.9180   \\[1.5pt]
+Be    & $-$0.0698   & $-$0.0818   & $-$0.2724   & $-$0.3093   \\[1.5pt]
+Ne    & $-$0.0725   & $-$0.0822   & $-$0.2314   & $-$0.8504   \\[1.5pt]
+Mg    & $-$0.0730   & $-$0.0823   & $-$0.2248   & $-$0.2530   \\[1.5pt]
+Ar    & $-$0.0738   & $-$0.0824   & $-$0.2119   & $-$0.5910   \\[1.5pt]
+Ca    & $-$0.0740   & $-$0.0825   & $-$0.2089   & $-$0.1955   \\[1.5pt]
+Zn    & $-$0.0748   & $-$0.0826   & $-$0.1983   & $-$0.2925   \\[1.5pt]
+Kr    & $-$0.0751   & $-$0.0826   & $-$0.1941   & $-$0.5242   \\[1.5pt]
 \hline\\[-9pt]
-MAE & 0.41 & 0.41 & 0.26 & $-$\\[1.5pt]
-rMAE & 79.10 & 75.69 & 40.98 & $-$\\
+MAE & 0.42 & 0.41 & 0.26 & $-$\\[1.5pt]
+rMAE & 80.31 & 77.80 & 40.98 & $-$\\
 \end{tabular}
 \end{ruledtabular}
 \end{table}
