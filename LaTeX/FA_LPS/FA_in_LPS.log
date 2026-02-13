@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  4 FEB 2026 16:26
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  13 FEB 2026 11:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/ivanbosko/Documents/UWO/Thesis/Manuscripts/FA_in_LPS/LATEX/FA_in_LPS
-(/Users/ivanbosko/Documents/UWO/Thesis/Manuscripts/FA_in_LPS/LATEX/FA_in_LPS.tex
+**/Users/ivanbosko/Documents/CODES/GIT/DFT-Tutorials/LaTeX/FA_LPS/FA_in_LPS
+(/Users/ivanbosko/Documents/CODES/GIT/DFT-Tutorials/LaTeX/FA_LPS/FA_in_LPS.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/revtex/revtex4-2.cls
@@ -397,7 +397,7 @@ Underfull \hbox (badness 4096) in paragraph at lines 302--303
 
 [3]
 
-LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 329.
+LaTeX Warning: A float is stuck (cannot be placed); try class option [floatfix] on input line 374.
 
 <Figures/be_density_1.png, id=203, 650.43pt x 491.436pt>
 File: Figures/be_density_1.png Graphic file (type png)
@@ -446,14 +446,14 @@ Package rerunfilecheck Info: File `FA_in_LPS.out' has not changed.
  ) 
 Here is how much of TeX's memory you used:
  12182 strings out of 473190
- 184729 string characters out of 5715801
- 623398 words of memory out of 5000000
+ 184723 string characters out of 5715801
+ 623083 words of memory out of 5000000
  35196 multiletter control sequences out of 15000+600000
  569191 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,2832b,660s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,2830b,664s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on FA_in_LPS.pdf (6 pages, 327114 bytes).
+Output written on FA_in_LPS.pdf (6 pages, 327119 bytes).
 PDF statistics:
  329 PDF objects out of 1000 (max. 8388607)
  283 compressed objects within 3 object streams
