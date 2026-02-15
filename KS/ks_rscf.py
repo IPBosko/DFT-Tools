@@ -1,7 +1,7 @@
 """
-LPS-RSCF: Levi-Perdew-Sahni Restricted Self-Consistent Field Solver
-Implementation of the LPS DFT method using Psi4 KS DFT code.
-See LPS-RSCF.ipynb for details.
+KS-RSCF: Kohn-Sham Restricted Self-Consistent Field Solver
+Implementation of the KS DFT method using Psi4 open-source software.
+See KS-RSCF.ipynb for details.
 """
 
 import time
@@ -11,7 +11,7 @@ import psi4
 def diag_lps(diag, A, nel):
     """
     Diagonalizes the Fock matrix and builds the density matrix 
-    from the lowest eigenvector only.
+    from N/2 lowest eigenvectors.
     """
     Fp = psi4.core.triplet(A, diag, A, True, False, True)
     nbf = A.shape[0]
@@ -21,12 +21,10 @@ def diag_lps(diag, A, nel):
 
     C = psi4.core.doublet(A, Cp, False, False)
     Cocc = psi4.core.Matrix(nbf, 1)
-    
-    # Normalize lowest eigenvector to number of electrons
-    Cocc.np[:] = np.sqrt(nel) * C.np[:, :1]
+    Cocc.np[:] = C.np[:, :nel/2]
 
     D = psi4.core.doublet(Cocc, Cocc, False, True)  
-    return D, eigvals.np[0]
+    return D, eigvals
 
 def Vpot_init(build_superfunctional, wfn, alias, vname, restricted=True):
     """Initializes a Psi4 VBase potential object."""
@@ -45,7 +43,7 @@ def Vpot_builder(Vpot, D, V, D_half):
     e = Vpot.quadrature_values()['FUNCTIONAL']
     return e, V
 
-def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
+def ks_solver(maxiter, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
     """
     Main LPS-RSCF Solver Loop.
     
