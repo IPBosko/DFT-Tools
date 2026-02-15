@@ -21,7 +21,8 @@ def diag_lps(diag, A, nel):
 
     C = psi4.core.doublet(A, Cp, False, False)
     Cocc = psi4.core.Matrix(nbf, 1)
-    Cocc.np[:] = C.np[:, :nel/2]
+    ## For now let's keep an integer number orbitals
+    Cocc.np[:] = C.np[:, :nel//2]
 
     D = psi4.core.doublet(Cocc, Cocc, False, True)  
     return D, eigvals
@@ -43,15 +44,13 @@ def Vpot_builder(Vpot, D, V, D_half):
     e = Vpot.quadrature_values()['FUNCTIONAL']
     return e, V
 
-def ks_solver(maxiter, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
+def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
     """
-    Main LPS-RSCF Solver Loop.
+    Main KS-RSCF Solver Loop.
     
     Args:
         maxiter (int):      Maximum SCF iterations.
-        TP (list):          Pauli kinetic options [Functional_Name, Alpha].
         EXC (list):         XC options [X_Name, X_Alpha, C_Name, C_Alpha].
-        lam (float):        Lambda parameter for T_vW subtraction.
         mol (Molecule):     Psi4 Molecule object.
         damp (list):        [damp_start, damp_end, cutoff].
         FA (list):          [Apply_FA (bool), Scaling_Factor (float)].
@@ -64,8 +63,8 @@ def ks_solver(maxiter, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose
     """
     
     ## Convergence thresholds
-    E_conv = 1.0e-5
-    D_conv = 1.0e-5
+    E_conv = 1.0e-8
+    D_conv = 1.0e-8
     
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
@@ -81,15 +80,6 @@ def ks_solver(maxiter, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose
     build_superfunctional = psi4.driver.dft.build_superfunctional
     D_half = psi4.core.Matrix(nbf, nbf)
 
-    Pauli = {
-    "name": "Pauli",
-    "x_functionals": {"LDA_X": {"alpha": 0.00}},
-    "c_functionals": {TP[0]: {"alpha": TP[1]}}
-    }
-    VPpot = Vpot_init(build_superfunctional, wfn, Pauli, "RV", restricted=True)
-    VPpot.initialize()
-    VP_null = psi4.core.Matrix(nbf, nbf)
-
     XC = {
     "name": "XC",
     "x_functionals": {EXC[0]: {"alpha": EXC[1]}},
@@ -98,16 +88,6 @@ def ks_solver(maxiter, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose
     VXCpot = Vpot_init(build_superfunctional, wfn, XC, "RV", restricted=True)
     VXCpot.initialize()
     VXC_null = psi4.core.Matrix(nbf, nbf)
-
-    ## Initialize the von Weizsacker potential
-    vW = {
-        "name": "vW",
-        "x_functionals": {"LDA_X": {"alpha": 0.00}},
-        "c_functionals": {"GGA_K_VW": {"alpha": 1.00}}
-    }
-    VvWpot = Vpot_init(build_superfunctional, wfn, vW, "RV", restricted=True)
-    VvWpot.initialize()
-    VvW_null = psi4.core.Matrix(nbf, nbf)
 
     ## Calculate and store V, T, H_core, ERI (I), and diagonalization matrix (A)
     V = mints.ao_potential()
@@ -121,16 +101,16 @@ def ks_solver(maxiter, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose
     ## Initialize necessary matrices
     F = psi4.core.Matrix(nbf, nbf)
     J = psi4.core.Matrix(nbf, nbf)
-    VG = psi4.core.Matrix(nbf, nbf)
+    Vxc = psi4.core.Matrix(nbf, nbf)
     D_diff = psi4.core.Matrix(nbf, nbf)
     
     if D_guess is not None:
         ## Use D_GUESS as an initial guess
         D = D_guess.clone()
-        mu = 0.0
+        eigenvals = []
     else:
         ## Calculate an initial Core guess
-        D, mu = diag_lps(H, A, nel)
+        D, eigenvals = diag_lps(H, A, nel)
     
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
