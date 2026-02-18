@@ -65,7 +65,7 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
     
     ## Convergence thresholds
     E_conv = 1.0e-5
-    D_conv = 1.0e-5
+    D_conv = 1.0e-4
     
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
