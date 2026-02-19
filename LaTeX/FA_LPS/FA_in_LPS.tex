@@ -286,7 +286,7 @@ The LPS energy functional of Eq.~\eqref{eq: LPS Energy} can be fully recovered w
 \caption{Atomic (H--Ar, Ca, Zn, and Kr) atomic SCF energy errors (relative to UHF/UGBS) for Fermi--Amaldi, LDA, and PBE exchange functionals combined with TF$\lambda$W kinetic energy functionals using the basis set of 31 $s$-type basis functions for all atoms (see Sec. III B).}
 \begin{ruledtabular}
 \begin{tabular*}{\textwidth}{lccccc}
-$\lambda$ & 1/9 & 1/6 & 1/5 & 1/3 & 1.0\\ [3pt]
+ & TF$\frac{1}{9}$W & TF$\frac{1}{6}$W & TF$\frac{1}{5}$W & TF$\frac{1}{3}$W & TFW\\ [3pt]
 \hline\\[-7pt]
 \multicolumn{6}{c}{Mean Absolute Error (a.u.)}\\[2pt]
 \hline\\[-7pt]
@@ -313,12 +313,12 @@ A Core Hamiltonian initial guess was employed, and molecular integrals were comp
 
 \subsection{Atomic Energies}
 
-In this section, we present benchmark calculations for a set of atoms of the first through third rows, as well as Ca, Zn, and Kr. We compare the exact LPS exchange (FA)~\eqref{eq: LPS Exact Exchange} with the LDA exchange of Eq.~\eqref{eq: LDA exchange}, and the PBE exchange functional~\cite{Perdew.1996.PRL.77.3865, Perdew.1997.PRL.78.1396}. To fully define $G[n]$, these exchange functionals are paired with the TF$\lambda$W kinetic energy functional defined in Eq.~\eqref{eq: TFDLW} and the Tran--Wesołowski kinetic energy functional~\cite{Tran.2002.IJQC.89.441}. Specific values of $\lambda$ were adopted from the literature: $\lambda=1$, the original Weizsäcker value~\cite{Weizsäcker.1935.ZP.96.431}, known to substantially overestimate the kinetic energy~\cite{Acharya.1980.PNAS.77.6978,Ludeña.2002.Reviews}; $\lambda=1/3$, derived from a two-point trapezoidal discretization of the density matrix~\cite{Yang.1986.PRA.34.4586}; $\lambda=1/5$, determined empirically for hydrogenic atoms~\cite{Yonei.1965.JPSJ.20.1051,Tomishima.1966.JPSJ.21.142}; $\lambda=1/9$, the coefficient for the second-order gradient expansion~\cite{Parr.1989.density}; and $\lambda=1/6$, which approximates the inclusion of the fourth-order correction~\cite{Brack.1985.Semiclassical}. For the TW functional, we utilized parameters fitted to the He and Ne ($\mu=0.2335$, $\kappa=0.8209$).
+In this section, we present benchmark calculations for a set of 21 atoms of the first through third rows, as well as Ca, Zn, and Kr. We compare the exact LPS exchange (FA)~\eqref{eq: LPS Exact Exchange} with the LDA exchange of Eq.~\eqref{eq: LDA exchange}, and the PBE exchange functional~\cite{Perdew.1996.PRL.77.3865, Perdew.1997.PRL.78.1396}. To fully define $G[n]$, these exchange functionals are paired with the TF$\lambda$W kinetic energy functional defined in Eq.~\eqref{eq: TFDLW} and the Tran--Wesołowski kinetic energy functional~\cite{Tran.2002.IJQC.89.441}. Specific values of $\lambda$ were adopted from the literature: $\lambda=1$, the original Weizsäcker value~\cite{Weizsäcker.1935.ZP.96.431}, known to substantially overestimate the kinetic energy~\cite{Acharya.1980.PNAS.77.6978,Ludeña.2002.Reviews}; $\lambda=1/3$, derived from a two-point trapezoidal discretization of the density matrix~\cite{Yang.1986.PRA.34.4586}; $\lambda=1/5$, determined empirically for hydrogenic atoms~\cite{Yonei.1965.JPSJ.20.1051,Tomishima.1966.JPSJ.21.142}; $\lambda=1/9$, the coefficient for the second-order gradient expansion~\cite{Parr.1989.density}; and $\lambda=1/6$, which approximates the inclusion of the fourth-order correction~\cite{Brack.1985.Semiclassical}. For the TW functional, we utilized parameters fitted to the He and Ne ($\mu=0.2335$, $\kappa=0.8209$).
 
 Since the atoms are minimized with spherical densities within LPS framework~\cite{Chan.2001.JCP.114.631, Karasiev.2012.CPC.183.2519}, we use an ad hoc basis set consisting of 31 $s$-type Gaussians, $\exp(-\alpha r^2)$ ($\alpha\in [1.14\times10^7, 2.00\times10^{-2}]$), taken from the UGBS basis set~\cite{Castro.1998.JCP.108.5225,Pritchard.2019.JCIM.59.4814,Feller.1996.JCC.17.1571,Schuchardt.2007.JCIM.47.1045}. Correspondingly, the large radial grid of 1000 points was used with the minimal number of spherical points (6) in the Lebedev grid. 
 
 Table I contains the mean absolute errors $\text{MAE}=\left( \sum_a\Delta E_a \right) /N_A$, where $\Delta E_a=|E_a^{\text{LPS}}-E_a^{\text{UHF}}|$, across $N_A=10$ atoms, in a.u., and the relative mean absolute errors $\text{rMAE}=\left( -\sum_a\Delta E_a/E_a^{\text{UHF}}\right)/N_A\times100\%$ expressed as a percentage of the UHF/UGBS energy. 
-In alignment with other authors~\cite{Chan.2001.JCP.114.631, Karasiev.2012.CPC.183.2519}, Table I shows that PBE and LDA pure exchange functionals minimize errors with the empirical $\lambda=1/5$, whereas the exact exchange (FA) strictly prefers the theoretical $\lambda=1/6$. While PBE combined with $\lambda=1/5$ yields the lowest mean absolute error (0.79 a.u.), the FA functional paired with $\lambda=1/6$ achieves the superior relative accuracy (0.87\%) across the test set. This confirms that the exact exchange functional is physically compatible with the fourth-order gradient expansion, unlike standard DFT approximations which rely on error cancellation with the $\lambda=1/5$ model. This conclusion is further strengthened by the performance of the theoretical second-order coefficient ($\lambda=1/9$), where FA significantly outperforms both LDA and PBE, confirming that the exact exchange functional is far more compatible with the gradient expansion series than standard DFT approximations.
+In alignment with other authors~\cite{Chan.2001.JCP.114.631, Karasiev.2012.CPC.183.2519}, Table I shows that PBE and LDA pure exchange functionals minimize errors with the empirical $\lambda=1/5$, whereas the exact exchange (FA) strictly prefers the theoretical $\lambda=1/6$. While PBE combined with $\lambda=1/5$ yields the lowest mean absolute error (0.79 a.u.), the FA functional paired with $\lambda=1/6$ achieves the superior relative accuracy (0.87\%) across the test set. This confirms that the exact exchange functional is physically compatible with the fourth-order gradient expansion, unlike standard DFT approximations which rely on error cancellation with the $\lambda=1/5$ model. This conclusion is further strengthened by the performance of the theoretical second-order coefficient ($\lambda=1/9$), where FA significantly outperforms both LDA and PBE, confirming that the exact exchange functional is far more compatible with the gradient expansion series than standard DFT approximations. An extended Table I with the energies of each atom is given in the Appendix.
 
 Interestingly, in the SCF calculations, the highly-accurate Tran--Wesołowski kinetic functional yields higher errors for all exchange functionals compared to the optimal TF$\lambda$W models. This observation suggests that the TW functional may not be well-suited for the self-consistent densities lacking the shell structure, as it was developed and parametrized for atomic densities exhibiting shell structure~\cite{Tran.2002.IJQC.89.441}. For post-SCF calculations, the TW PBE approximation applied to the UHF/UGBS densities (H--Ne) yields MAE = 0.07 a.u. and rMAE = 0.60\%, respectively. The TF$0.2$W PBE model yields MAE = 2.93 a.u. and rMAE = 8.31\% on the same set of atomic densities. Clearly, the TW functional is superior for post-SCF calculations, but its performance degrades in self-consistent calculations within the LPS framework.
 
@@ -451,6 +451,105 @@ In this work, we have reinterpreted the Levy--Perdew--Sahni (LPS) scheme to demo
 The Fermi--Amaldi functional exhibits several highly desirable properties for an exchange functional. It is self-interaction free for one-orbital systems~\cite{Bosko.2023.JCP.159.131101, Ayers.2005.MP.103.2061}, possesses the correct long-range asymptotic behavior~\cite{Ayers.2005.MP.103.2061}, and exhibits the necessary derivative discontinuity at integer electron numbers $N$~\cite{Bosko.2025.JCP.163.054108}. Furthermore, unlike the exact Kohn--Sham exchange potential, the Fermi--Amaldi potential is strictly multiplicative. Recently, we also extended the FA functional to fractional electron number~\cite{Bosko.2025.JCP.163.054108}. In this work we also showed that the FA functional can be more accurate than LDA and PBE in self-consistent calculations. Collectively, these features identify the FA functional as a promising building block for future developments in LPS DFT.
 
 \bibliography{bibliography}
+
+\appendix*
+
+\section{SCF Atomic Energies in Table I}
+
+Table IV includes all atomic energies from Table I. 
+
+\begin{table*}[t]
+\caption{Total atomic energies (in Hartrees) calculated using the TF$\lambda$W kinetic energy functional combined with LDA, PBE, and FA exchange functionals. The columns correspond to specific values of $\lambda$: $1/9$, $1/6$, $1/5$ (0.2), $1/3$, and $1.0$. The last column lists the reference RHF/UGBS values.}
+\label{tab:all_energies}
+\footnotesize 
+\begin{ruledtabular}
+\begin{tabular}{lrrrrrr}
+Atom & $\lambda=1/9$ & $\lambda=1/6$ & $\lambda=1/5$ & $\lambda=1/3$ & $\lambda=1$ & Ref. (UHF) \\
+\hline
+\multicolumn{7}{c}{LDA Exchange} \\
+\hline
+H  & $-$0.5079 & $-$0.4688 & $-$0.4494 & $-$0.3894 & $-$0.2433 & $-$0.5000 \\
+He & $-$3.2228 & $-$2.9512 & $-$2.8183 & $-$2.4150 & $-$1.4775 & $-$2.8617 \\
+Li & $-$8.2237 & $-$7.5992 & $-$7.2912 & $-$6.3460 & $-$4.0700 & $-$7.4328 \\
+Be & $-$16.1631 & $-$15.0404 & $-$14.4841 & $-$12.7628 & $-$8.4922 & $-$14.5730 \\
+B  & $-$27.2674 & $-$25.4891 & $-$24.6047 & $-$21.8516 & $-$14.8890 & $-$24.5293 \\
+C  & $-$41.7928 & $-$39.2018 & $-$37.9091 & $-$33.8662 & $-$23.4874 & $-$37.6900 \\
+N  & $-$59.9319 & $-$56.3704 & $-$54.5890 & $-$48.9970 & $-$34.4682 & $-$54.4045 \\
+O  & $-$82.4885 & $-$77.8154 & $-$75.4741 & $-$68.1029 & $-$48.7245 & $-$74.8140 \\
+F  & $-$109.0440 & $-$103.0992 & $-$100.1162 & $-$90.7018 & $-$65.7327 & $-$99.4114 \\
+Ne & $-$139.8867 & $-$132.5089 & $-$128.8016 & $-$117.0754 & $-$85.7344 & $-$128.5471 \\
+Na & $-$175.2204 & $-$166.2470 & $-$161.7322 & $-$147.4232 & $-$108.9121 & $-$161.8589 \\
+Mg & $-$215.2650 & $-$204.5407 & $-$199.1390 & $-$181.9894 & $-$135.5536 & $-$199.6146 \\
+Al & $-$260.1174 & $-$247.4787 & $-$241.1064 & $-$220.8429 & $-$165.6699 & $-$241.8768 \\
+Si & $-$309.9098 & $-$295.1940 & $-$287.7674 & $-$264.1171 & $-$199.3923 & $-$288.8546 \\
+P  & $-$364.7553 & $-$347.8000 & $-$339.2358 & $-$311.9259 & $-$236.8336 & $-$340.7193 \\
+S  & $-$425.0881 & $-$405.7456 & $-$395.9690 & $-$364.7582 & $-$278.6012 & $-$397.5065 \\
+Cl & $-$490.7239 & $-$468.8309 & $-$457.7577 & $-$422.3712 & $-$324.3246 & $-$459.4829 \\
+Ar & $-$561.8164 & $-$537.2088 & $-$524.7548 & $-$484.9162 & $-$374.1464 & $-$526.8175 \\
+Ca & $-$720.9217 & $-$690.3963 & $-$674.9299 & $-$625.3660 & $-$486.6772 & $-$676.7582 \\
+Zn & $-$1882.0612 & $-$1812.1925 & $-$1776.6511 & $-$1662.0373 & $-$1334.0529 & $-$1777.8481 \\
+Kr & $-$2897.2366 & $-$2795.9146 & $-$2744.2909 & $-$2577.3941 & $-$2095.4398 & $-$2752.0549 \\
+\hline
+MAE & 24.93 & 7.81 & 1.07 & 28.69 & 106.73 & $-$ \\
+rMAE (\%) & 8.23 & 2.88 & 0.97 & 10.03 & 34.54 & $-$ \\
+\hline
+\multicolumn{7}{c}{PBE Exchange} \\
+\hline
+H  & $-$0.5523 & $-$0.5094 & $-$0.4881 & $-$0.4224 & $-$0.2634 & $-$0.5000 \\
+He & $-$3.3833 & $-$3.0971 & $-$2.9571 & $-$2.5325 & $-$1.5480 & $-$2.8617 \\
+Li & $-$8.4853 & $-$7.8388 & $-$7.5202 & $-$6.5429 & $-$4.1941 & $-$7.4328 \\
+Be & $-$16.5413 & $-$15.3889 & $-$14.8182 & $-$13.0533 & $-$8.6817 & $-$14.5730 \\
+B  & $-$27.7610 & $-$25.9458 & $-$25.0433 & $-$22.2359 & $-$15.1454 & $-$24.5293 \\
+C  & $-$42.4038 & $-$39.7685 & $-$38.4541 & $-$34.3461 & $-$23.8129 & $-$37.6900 \\
+N  & $-$60.6625 & $-$57.0493 & $-$55.2428 & $-$49.5746 & $-$34.8647 & $-$54.4045 \\
+O  & $-$83.3563 & $-$78.6238 & $-$76.2535 & $-$68.7949 & $-$49.2072 & $-$74.8140 \\
+F  & $-$110.0478 & $-$104.0359 & $-$101.0202 & $-$91.5070 & $-$66.3008 & $-$99.4114 \\
+Ne & $-$141.0263 & $-$133.5737 & $-$129.8300 & $-$117.9937 & $-$86.3879 & $-$128.5471 \\
+Na & $-$176.4945 & $-$167.4390 & $-$162.8842 & $-$148.4541 & $-$109.6515 & $-$161.8589 \\
+Mg & $-$216.6787 & $-$205.8645 & $-$200.4191 & $-$183.1372 & $-$136.3823 & $-$199.6146 \\
+Al & $-$261.6692 & $-$248.9334 & $-$242.5137 & $-$222.1071 & $-$166.5883 & $-$241.8768 \\
+Si & $-$311.5999 & $-$296.7798 & $-$289.3023 & $-$265.4980 & $-$200.4009 & $-$288.8546 \\
+P  & $-$366.5849 & $-$349.5178 & $-$340.8991 & $-$313.4244 & $-$237.9333 & $-$340.7193 \\
+S  & $-$427.0651 & $-$407.6032 & $-$397.7684 & $-$366.3816 & $-$279.7983 & $-$397.5065 \\
+Cl & $-$492.8488 & $-$470.8287 & $-$459.6936 & $-$424.1198 & $-$325.6193 & $-$459.4829 \\
+Ar & $-$564.0890 & $-$539.3465 & $-$526.8269 & $-$486.7898 & $-$375.5388 & $-$526.8175 \\
+Ca & $-$723.4902 & $-$692.8150 & $-$677.2756 & $-$627.4912 & $-$488.2675 & $-$676.7582 \\
+Zn & $-$1886.1611 & $-$1816.0679 & $-$1780.4173 & $-$1665.4732 & $-$1336.6865 & $-$1777.8481 \\
+Kr & $-$2902.2877 & $-$2800.6966 & $-$2748.9418 & $-$2581.6491 & $-$2098.7331 & $-$2752.0549 \\
+\hline
+MAE & 26.43 & 9.22 & 0.79 & 27.46 & 105.82 & $-$ \\
+rMAE (\%) & 9.85 & 3.78 & 0.99 & 8.78 & 33.73 & $-$ \\
+\hline
+\multicolumn{7}{c}{FA Exchange} \\
+\hline
+H  & $-$0.5354 & $-$0.4970 & $-$0.4778 & $-$0.4170 & $-$0.2638 & $-$0.5000 \\
+He & $-$3.2845 & $-$3.0195 & $-$2.8891 & $-$2.4895 & $-$1.5392 & $-$2.8617 \\
+Li & $-$8.1303 & $-$7.5233 & $-$7.2234 & $-$6.3000 & $-$4.0554 & $-$7.4328 \\
+Be & $-$15.7453 & $-$14.6605 & $-$14.1233 & $-$12.4604 & $-$8.3185 & $-$14.5730 \\
+B  & $-$26.4657 & $-$24.7412 & $-$23.8843 & $-$21.2188 & $-$14.4728 & $-$24.5293 \\
+C  & $-$40.5377 & $-$38.0152 & $-$36.7580 & $-$32.8299 & $-$22.7538 & $-$37.6900 \\
+N  & $-$58.1447 & $-$54.6665 & $-$52.9287 & $-$47.4788 & $-$33.3418 & $-$54.4045 \\
+O  & $-$79.9014 & $-$75.3393 & $-$73.0568 & $-$65.8824 & $-$47.0742 & $-$74.8140 \\
+F  & $-$105.5886 & $-$99.7793 & $-$96.8689 & $-$87.7003 & $-$63.4697 & $-$99.4114 \\
+Ne & $-$135.5113 & $-$128.2917 & $-$124.6696 & $-$113.2345 & $-$82.7901 & $-$128.5471 \\
+Na & $-$169.8768 & $-$161.0831 & $-$156.6655 & $-$142.6900 & $-$105.2260 & $-$161.8589 \\
+Mg & $-$208.8267 & $-$198.3054 & $-$193.0138 & $-$176.2449 & $-$131.0251 & $-$199.6146 \\
+Al & $-$252.5369 & $-$240.1237 & $-$233.8741 & $-$214.0362 & $-$160.2419 & $-$241.8768 \\
+Si & $-$301.1357 & $-$286.6675 & $-$279.3759 & $-$256.1952 & $-$193.0080 & $-$288.8546 \\
+P  & $-$354.7314 & $-$338.0454 & $-$329.6283 & $-$302.8315 & $-$229.4347 & $-$340.7193 \\
+S  & $-$413.5774 & $-$394.5306 & $-$384.9158 & $-$354.2725 & $-$270.0144 & $-$397.5065 \\
+Cl & $-$477.6782 & $-$456.1063 & $-$445.2094 & $-$410.4428 & $-$314.4926 & $-$459.4829 \\
+Ar & $-$547.1908 & $-$522.9289 & $-$510.6652 & $-$471.4976 & $-$363.0166 & $-$526.8175 \\
+Ca & $-$702.9383 & $-$672.8085 & $-$657.5604 & $-$608.7698 & $-$472.7571 & $-$676.7582 \\
+Zn & $-$1842.9402 & $-$1773.7277 & $-$1738.5519 & $-$1625.2525 & $-$1302.0397 & $-$1777.8481 \\
+Kr & $-$2842.1676 & $-$2741.6652 & $-$2690.4999 & $-$2525.2604 & $-$2049.4330 & $-$2752.0549 \\
+\hline
+MAE & 15.20 & 1.89 & 10.26 & 37.65 & 114.26 & $-$ \\
+rMAE (\%) & 5.95 & 0.87 & 2.86 & 11.93 & 36.00 & $-$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
 \end{document}
 
 % \begin{table*}
