@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  22 JAN 2026 15:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  19 FEB 2026 19:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/Users/ivanbosko/Documents/UWO/Thesis/Manuscripts/Attempts/N-dependent_orbital_free_functionals/N-dependent_orbital_free_functionals
-(/Users/ivanbosko/Documents/UWO/Thesis/Manuscripts/Attempts/N-dependent_orbital_free_functionals/N-dependent_orbital_free_functionals.tex
+**/Users/ivanbosko/Documents/CODES/GIT/DFT-Tutorials/LaTeX/G_LPS/G_LPS
+(/Users/ivanbosko/Documents/CODES/GIT/DFT-Tutorials/LaTeX/G_LPS/G_LPS.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/revtex/revtex4-2.cls
@@ -328,8 +328,8 @@ Class revtex4-2 Info: multicol was not loaded (OK!) on input line 66.
 File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count302
 \l__pdf_internal_box=\box71
-) (./N-dependent_orbital_free_functionals.aux)
-\openout1 = `N-dependent_orbital_free_functionals.aux'.
+) (./G_LPS.aux)
+\openout1 = `G_LPS.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 66.
 LaTeX Font Info:    ... okay on input line 66.
@@ -357,9 +357,9 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 Package color Info: Driver file: pdftex.def on input line 149.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/graphics/mathcolor.ltx))
 Package hyperref Info: Link coloring ON on input line 66.
- (./N-dependent_orbital_free_functionals.out) (./N-dependent_orbital_free_functionals.out)
+ (./G_LPS.out) (./G_LPS.out)
 \@outlinefile=\write4
-\openout4 = `N-dependent_orbital_free_functionals.out'.
+\openout4 = `G_LPS.out'.
 
  (/usr/local/texlive/2025/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -381,48 +381,33 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Class revtex4-2 Info: Taking \maketitle back from hyperref on input line 66.
-\openout3 = `N-dependent_orbital_free_functionalsNotes.bib'.
+\openout3 = `G_LPSNotes.bib'.
 
-
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 83.
-
-LaTeX Font Info:    Trying to load font information for U+msa on input line 85.
-(/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
+LaTeX Font Info:    Trying to load font information for U+msa on input line 87.
+ (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 85.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 87.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
-LaTeX Warning: Reference `eq: OF Ts' on page 2 undefined on input line 228.
+LaTeX Warning: Reference `eq: OF Ts' on page 2 undefined on input line 230.
 
 
-LaTeX Warning: Reference `eq: LDA exchange' on page 2 undefined on input line 257.
+LaTeX Warning: Reference `eq: LDA exchange' on page 2 undefined on input line 259.
 
 
-LaTeX Warning: Reference `eq: LDA exchange' on page 2 undefined on input line 257.
+LaTeX Warning: Reference `eq: LDA exchange' on page 2 undefined on input line 259.
 
 
-LaTeX Warning: Reference `eq: TF' on page 2 undefined on input line 293.
-
-
-Package natbib Warning: Citation `Acharya.1980.PNAS.77.6978' on page 2 undefined on input line 304.
-
-
-Package natbib Warning: Citation `Cedillo.1986.JCP.85.7188' on page 2 undefined on input line 304.
+LaTeX Warning: Reference `eq: TF' on page 2 undefined on input line 295.
 
 [2]
 
-LaTeX Warning: Reference `eq: OFDFT Differential Equation' on page 3 undefined on input line 306.
+LaTeX Warning: Reference `eq: OFDFT Differential Equation' on page 3 undefined on input line 308.
 
-(./N-dependent_orbital_free_functionals.bbl)
-
-Package natbib Warning: There were undefined citations.
-
-[3] (./N-dependent_orbital_free_functionals.aux)
+(./G_LPS.bbl) [3] (./G_LPS.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -431,22 +416,22 @@ L3 programming layer <2025-01-18>
 
 LaTeX Warning: There were undefined references.
 
-Package rerunfilecheck Info: File `N-dependent_orbital_free_functionals.out' has not changed.
-(rerunfilecheck)             Checksum: DDF6558547C873618B3B99C943312106;2063.
+Package rerunfilecheck Info: File `G_LPS.out' has not changed.
+(rerunfilecheck)             Checksum: A793867027779263FD653D71E561527E;2177.
  ) 
 Here is how much of TeX's memory you used:
- 12000 strings out of 473190
- 180483 string characters out of 5715801
- 609048 words of memory out of 5000000
- 35059 multiletter control sequences out of 15000+600000
+ 12009 strings out of 473190
+ 179813 string characters out of 5715801
+ 609351 words of memory out of 5000000
+ 35065 multiletter control sequences out of 15000+600000
  569537 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,886b,519s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,822b,519s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on N-dependent_orbital_free_functionals.pdf (3 pages, 203659 bytes).
+Output written on G_LPS.pdf (3 pages, 204766 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 158 compressed objects within 2 object streams
- 38 named destinations out of 1000 (max. 500000)
- 49 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 204 PDF objects out of 1000 (max. 8388607)
+ 166 compressed objects within 2 object streams
+ 41 named destinations out of 1000 (max. 500000)
+ 57 words of extra memory for PDF output out of 10000 (max. 10000000)
 
