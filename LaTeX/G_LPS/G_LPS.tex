@@ -65,7 +65,7 @@ pra,
 
 \begin{document}
 
-\title{Approximate and Exact Functionals with Explicit Dependence on Spin and Electron Number}% Force line breaks with \\
+\title{Self-Interaction-Free Levy--Perdew--Sahni Density Functional Theory}% Force line breaks with \\
 
 \author{Ivan P. Bosko and Viktor N. Staroverov}
  % \email{vstarove@uwo.ca}
@@ -81,6 +81,33 @@ pra,
 \maketitle
 
 \section{Introduction}
+
+Levi, Perdew, and Sahni derived a Schrödinger-like equation for a square-root of the electron density
+\begin{equation}\label{eq: LPS Differential Equation}
+    \left\{
+    -\frac{1}{2}\nabla^2
+    +
+    v_{\text{eff}}([n];\textbf{r})
+    \right\}
+    n^{1/2}(\textbf{r})
+    =
+    \mu n^{1/2}(\textbf{r}),
+\end{equation} 
+where $v_{\text{eff}}([n];\textbf{r})$ acts as the multiplicative effective potential. The eigenvalue $\mu$ represents the chemical potential, which corresponds to the negative of the ionization energy in exact DFT~\cite{Levy.1984.PRA.30.2745}. The exact form of the effective potential has to be approximated 
+\begin{equation}\label{eq: LPS Effective Potential}
+    v_{\text{eff}}([n]; \textbf{r})
+    =
+    v_{\text{ext}}(\textbf{r})
+    +
+    \int\frac{n(\textbf{r}')}{|\textbf{r}-\textbf{r}'|}
+    d\textbf{r}'
+    +
+    \frac{\delta G[n]}{\delta n(\textbf{r})}.
+\end{equation}
+
+Recently, we have shown that the Fermi--Amaldi functional is the exact exchange in LPS DFT. Therefore, the LPS energy functional can be recasted into the sum of exact terms and an approximate functional $G[n]$, where exact terms serve as a `bosonic baseline' for the total energy.
+
+\section{Discussion}
 
 \subsection{Spin-Dependence of Exact and Approximate Functionals}
 
