@@ -151,9 +151,8 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
     e_conv_list = []
     d_conv_list = []
 
-    if DIIS:
-        diis_objA = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
-        diis_objB = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
+    diis_objA = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
+    diis_objB = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
 
     for SCF_ITER in range(1, maxiter + 1):
         Da_old = Da
@@ -272,10 +271,13 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
             Eold = SCF_E
         
         ## Dynamic damping
-        if (dRMS > damp[2]):
+        # if (dRMS > damp[2]):
+        if (abs(SCF_E - Eold) > damp[2]):
             current_damp = damp[0]
+            DIIS = True
         else:
             current_damp = damp[1]
+            DIIS = True
         Da.scale(1.0 - current_damp)
         Da.axpy(current_damp, Da_old)
         Db.scale(1.0 - current_damp)
