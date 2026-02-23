@@ -109,6 +109,15 @@ Recently, we have shown that the Fermi--Amaldi functional is the exact exchange 
 
 Acharya \textit{et al.}~\cite{Acharya.1980.PNAS.77.6978} as well as Cedillo \textit{et al.}~\cite{Cedillo.1986.JCP.85.7188} explored the possibility for including the $N$-dependent factor into the approximate functionals to improve their performance. Here, we elaborate on this idea through analytical derivation of $N$-dependent self-interaction-corrected $G[n]$ functionals in LPS theory. Our results suggest a universal way of developing such approximations without empirical fitting and with straightforward generalization to spin-polarized systems.
 
+\section{Self-Interaction-Corrected LPS Theory}
+
+In electronic structure theory, an exchange functional serves two physical roles: the interelectronic exchange and the self-interaction. 
+As we showed, the FA functional is the exact exchange in LPS DFT. However, due to the nature of the LPS reference system, the role of the exact exchange (FA) in LPS is srictly reduced to the cancelation of self-repulsion between coulombically-interacting particles. This holds true for any $N$ since, within LPS theory, they all occupy the same orbital which is the condition when the Fermi--Amaldi functional becomes exact and $N$-electron self-interaction-free~\cite{Bosko.2023.PRA.108.052803}. Thus, the role of the interelectronic exchange is played by an approximate exchange functional, e.g., LDA or GGA approximations. 
+
+Approximate functionals can be shown to contain a spurious approximation to the self-interaction part, which is exactly captured by FA. Therefore, we propose to describe an exchange part in LPS theory by a hybrid of the Fermi--Amaldi term and a fraction of the approximate exchange excluding its self-interaction part.
+
+
+
 \section{Discussion}
 
 \subsection{Spin-Dependence of Exact and Approximate Functionals}

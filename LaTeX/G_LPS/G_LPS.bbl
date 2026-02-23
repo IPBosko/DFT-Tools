@@ -58,6 +58,9 @@
 \bibitem [{\citenamefont {Cedillo}\ \emph {et~al.}(1986)\citenamefont {Cedillo}, \citenamefont {Ortiz},\ and\ \citenamefont {Gazquez}}]{Cedillo.1986.JCP.85.7188}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {A.}~\bibnamefont {Cedillo}}, \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Ortiz}},\ and\ \bibinfo {author} {\bibfnamefont {J.~L.}\ \bibnamefont {Gazquez}},\ }\bibfield  {title} {\bibinfo {title} {An exchange energy functional based on the dirac and the fermi--amaldi approximations},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J. Chem. Phys.}\ }\textbf {\bibinfo {volume} {85}},\ \bibinfo {pages} {7188} (\bibinfo {year} {1986})}\BibitemShut {NoStop}%
+\bibitem [{\citenamefont {Bosko}\ and\ \citenamefont {Staroverov}(2023{\natexlab{a}})}]{Bosko.2023.PRA.108.052803}%
+  \BibitemOpen
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~P.}\ \bibnamefont {Bosko}}\ and\ \bibinfo {author} {\bibfnamefont {V.~N.}\ \bibnamefont {Staroverov}},\ }\bibfield  {title} {\bibinfo {title} {Exchange energies and density functionals for systems of fermions of arbitrary spin},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {108}},\ \bibinfo {pages} {052803} (\bibinfo {year} {2023}{\natexlab{a}})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Fermi}\ and\ \citenamefont {Amaldi}(1934)}]{Fermi.1934.MRAI.6.117}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Fermi}}\ and\ \bibinfo {author} {\bibfnamefont {E.}~\bibnamefont {Amaldi}},\ }\bibfield  {title} {\bibinfo {title} {Le orbite $\infty$s degli elementi},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Mem. Reale Accad. Italia}\ }\textbf {\bibinfo {volume} {6}},\ \bibinfo {pages} {117} (\bibinfo {year} {1934})}\BibitemShut {NoStop}%
@@ -70,12 +73,9 @@
 \bibitem [{\citenamefont {Ayers}\ \emph {et~al.}(2005)\citenamefont {Ayers}, \citenamefont {Morrison},\ and\ \citenamefont {Parr}}]{Ayers.2005.MP.103.2061}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {P.~W.}\ \bibnamefont {Ayers}}, \bibinfo {author} {\bibfnamefont {R.~C.}\ \bibnamefont {Morrison}},\ and\ \bibinfo {author} {\bibfnamefont {R.~G.}\ \bibnamefont {Parr}},\ }\bibfield  {title} {\bibinfo {title} {Fermi-amaldi model for exchange-correlation: atomic excitation energies from orbital energy differences},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Mol. Phys.}\ }\textbf {\bibinfo {volume} {103}},\ \bibinfo {pages} {2061} (\bibinfo {year} {2005})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Bosko}\ and\ \citenamefont {Staroverov}(2023{\natexlab{a}})}]{Bosko.2023.JCP.159.131101}%
+\bibitem [{\citenamefont {Bosko}\ and\ \citenamefont {Staroverov}(2023{\natexlab{b}})}]{Bosko.2023.JCP.159.131101}%
   \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~P.}\ \bibnamefont {Bosko}}\ and\ \bibinfo {author} {\bibfnamefont {V.~N.}\ \bibnamefont {Staroverov}},\ }\bibfield  {title} {\bibinfo {title} {Derivation and reinterpretation of the fermi--amaldi functional},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J. Chem. Phys.}\ }\textbf {\bibinfo {volume} {159}},\ \bibinfo {pages} {131101} (\bibinfo {year} {2023}{\natexlab{a}})}\BibitemShut {NoStop}%
-\bibitem [{\citenamefont {Bosko}\ and\ \citenamefont {Staroverov}(2023{\natexlab{b}})}]{Bosko.2023.PRA.108.052803}%
-  \BibitemOpen
-  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~P.}\ \bibnamefont {Bosko}}\ and\ \bibinfo {author} {\bibfnamefont {V.~N.}\ \bibnamefont {Staroverov}},\ }\bibfield  {title} {\bibinfo {title} {Exchange energies and density functionals for systems of fermions of arbitrary spin},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {108}},\ \bibinfo {pages} {052803} (\bibinfo {year} {2023}{\natexlab{b}})}\BibitemShut {NoStop}%
+  \bibfield  {author} {\bibinfo {author} {\bibfnamefont {I.~P.}\ \bibnamefont {Bosko}}\ and\ \bibinfo {author} {\bibfnamefont {V.~N.}\ \bibnamefont {Staroverov}},\ }\bibfield  {title} {\bibinfo {title} {Derivation and reinterpretation of the fermi--amaldi functional},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {J. Chem. Phys.}\ }\textbf {\bibinfo {volume} {159}},\ \bibinfo {pages} {131101} (\bibinfo {year} {2023}{\natexlab{b}})}\BibitemShut {NoStop}%
 \bibitem [{\citenamefont {Oliver}\ and\ \citenamefont {Perdew}(1979)}]{Oliver.1979.PRA.20.397}%
   \BibitemOpen
   \bibfield  {author} {\bibinfo {author} {\bibfnamefont {G.}~\bibnamefont {Oliver}}\ and\ \bibinfo {author} {\bibfnamefont {J.}~\bibnamefont {Perdew}},\ }\bibfield  {title} {\bibinfo {title} {Spin-density gradient expansion for the kinetic energy},\ }\href@noop {} {\bibfield  {journal} {\bibinfo  {journal} {Phys. Rev. A}\ }\textbf {\bibinfo {volume} {20}},\ \bibinfo {pages} {397} (\bibinfo {year} {1979})}\BibitemShut {NoStop}%
