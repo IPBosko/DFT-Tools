@@ -104,12 +104,9 @@ where $v_{\text{eff}}([n];\textbf{r})$ acts as the multiplicative effective pote
     +
     \frac{\delta G[n]}{\delta n(\textbf{r})}.
 \end{equation}
-
-Recently, we have shown that the Fermi--Amaldi functional is the exact exchange in LPS DFT. Therefore, the LPS energy functional can be recasted into the sum of exact terms and an approximate functional $G[n]$, where exact terms serve as a `bosonic baseline' for the total energy.
-
 Acharya \textit{et al.}~\cite{Acharya.1980.PNAS.77.6978} as well as Cedillo \textit{et al.}~\cite{Cedillo.1986.JCP.85.7188} explored the possibility for including the $N$-dependent factor into the approximate functionals to improve their performance. Here, we elaborate on this idea through analytical derivation of $N$-dependent self-interaction-corrected $G[n]$ functionals in LPS theory. Our results suggest a universal way of developing such approximations without empirical fitting and with straightforward generalization to spin-polarized systems.
 
-In one-determinantal approximations (Hartree--Fock, Kohn--Sham DFT), the exact exchange, $K[n]$, is given by
+In one-determinantal approximations (Hartree--Fock, Kohn--Sham DFT), the exact exchange, $K[\{\varphi_i\}]$, is given by
 \begin{equation}
     K[\{\varphi_i\}]
     =
@@ -127,21 +124,31 @@ Each exchange integral, $K_{ij}$, is expressed via spin-orbitals as
 \begin{equation}
     K_{ij}
     =
+    -
     \int\int
     \frac{\varphi_i^*(\textbf{x})\varphi_j(\textbf{x})
           \varphi_j^*(\textbf{x}')\varphi_i(\textbf{x}')}
           {|\textbf{x}-\textbf{x}'|}
     d\textbf{x}d\textbf{x}'.
 \end{equation} 
+For one-orbital systems, the whole exact exchange reduces to the self-exchange alone and is equal to the Fermi--Amaldi functional
+\begin{equation}
+    K_{\text{FA}}[n]
+    =
+    -
+    \frac{1}{2N}
+    \int\int
+    \frac{n(\textbf{r})n(\textbf{r}')}
+    {|\textbf{r}-\textbf{r}'|}
+    d\textbf{r}d\textbf{r}'.
+\end{equation}
+Recently, we have shown that the Fermi--Amaldi functional is the exact exchange in LPS DFT. Due to the nature of the bosn-like LPS reference system, the role of the LPS exact exchange (FA) is reduced to the cancelation of self-repulsion between coulombically-interacting particles~\cite{Bosko.2023.PRA.108.052803}. When used as an approximation to the full electronic exchange within LPS theory
 
 \section{Self-Interaction-Corrected LPS Theory}
 
-In electronic structure theory, an exchange functional serves two physical roles: the interelectronic exchange and the self-interaction. 
-As we showed, the FA functional is the exact exchange in LPS DFT. However, due to the nature of the LPS reference system, the role of the exact exchange (FA) in LPS is srictly reduced to the cancelation of self-repulsion between coulombically-interacting particles. This holds true for any $N$ since, within LPS theory, they all occupy the same orbital which is the condition when the Fermi--Amaldi functional becomes exact and $N$-electron self-interaction-free~\cite{Bosko.2023.PRA.108.052803}. Thus, the role of the interelectronic exchange is played by an approximate exchange functional, e.g., LDA or GGA approximations. 
+In electronic structure theory, an exchange functional serves two physical roles: the interelectronic exchange and the self-interaction. Thus, the role of the interelectronic exchange is played by an approximate exchange functional, e.g., LDA or GGA approximations. 
 
 Approximate functionals can be shown to contain a spurious approximation to the self-interaction part, which is exactly captured by FA. Therefore, we propose to describe an exchange part in LPS theory by a hybrid of the Fermi--Amaldi term and a fraction of the approximate exchange excluding its self-interaction part.
-
-
 
 \section{Discussion}
 
