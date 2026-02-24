@@ -109,6 +109,31 @@ Recently, we have shown that the Fermi--Amaldi functional is the exact exchange 
 
 Acharya \textit{et al.}~\cite{Acharya.1980.PNAS.77.6978} as well as Cedillo \textit{et al.}~\cite{Cedillo.1986.JCP.85.7188} explored the possibility for including the $N$-dependent factor into the approximate functionals to improve their performance. Here, we elaborate on this idea through analytical derivation of $N$-dependent self-interaction-corrected $G[n]$ functionals in LPS theory. Our results suggest a universal way of developing such approximations without empirical fitting and with straightforward generalization to spin-polarized systems.
 
+In one-determinantal approximations (Hartree--Fock, Kohn--Sham DFT), the exact exchange, $K[n]$, is given by
+\begin{equation}
+    K[\{\varphi_i\}]
+    =
+    \sum^N_{i,j}
+    K_{ij}
+    =
+    \sum^N_{i=1}
+    K_{ii}
+    +
+    \sum^N_{i\neq j}
+    K_{ij},
+\end{equation}
+where the sum over $i$ only represents the self-exchange and the sum over all distinct pairs of $i$ and $j$ represents the interelectronic exchange contribution.
+Each exchange integral, $K_{ij}$, is expressed via spin-orbitals as
+\begin{equation}
+    K_{ij}
+    =
+    \int\int
+    \frac{\varphi_i^*(\textbf{x})\varphi_j(\textbf{x})
+          \varphi_j^*(\textbf{x}')\varphi_i(\textbf{x}')}
+          {|\textbf{x}-\textbf{x}'|}
+    d\textbf{x}d\textbf{x}'.
+\end{equation} 
+
 \section{Self-Interaction-Corrected LPS Theory}
 
 In electronic structure theory, an exchange functional serves two physical roles: the interelectronic exchange and the self-interaction. 
