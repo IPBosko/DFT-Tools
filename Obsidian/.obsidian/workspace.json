@@ -11,10 +11,14 @@
             "id": "17b722147c07417c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Kinetic Energy Functional"
             }
           }
         ]
@@ -74,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 245.50260543823242
+    "width": 245.50260543823242,
+    "collapsed": true
   },
   "right": {
     "id": "9de1ee87910bf5cb",
@@ -165,8 +170,11 @@
       "bases:Create new base": false
     }
   },
-  "active": "efc0c6d0bed0d0cb",
+  "active": "17b722147c07417c",
   "lastOpenFiles": [
+    "Quantum Chemistry/Density Functional Theory/von Weizsäcker Kinetic Functional.md",
+    "Quantum Chemistry/Density Functional Theory/Tran–Wesołowski Kinetic Functional.md",
+    "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
     "Set.md",
     "Propositional Logic.md",
     "Predicate Logic.md",
@@ -174,9 +182,7 @@
     "Untitled 1.md",
     "Quantum Chemistry/Density Functional Theory/Levy–Perdew–Sahni Density Functional Theory.md",
     "Physics",
-    "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
     "Quantum Chemistry/Density Functional Theory/Lee–Lee–Parr (LLP) Kinetic Functional.md",
-    "Quantum Chemistry/Density Functional Theory/Tran–Wesołowski Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Orbital-Free DFT.md",
     "Quantum Chemistry/Density Functional Theory/Lembarki–Chermette-94 (LC94) Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Lieb–Oxford Bound.md",
@@ -191,7 +197,6 @@
     "Quantum Chemistry/Density Functional Theory/Hartree Energy.md",
     "Quantum Chemistry/Density Functional Theory/N-Representability.md",
     "Quantum Chemistry/Density Functional Theory/Reduced Density Gradient.md",
-    "Quantum Chemistry/Density Functional Theory/von Weizsäcker Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Libxc Library.md",
     "Quantum Chemistry/Ionization Energy.md",
     "Quantum Chemistry/Density Functional Theory",
