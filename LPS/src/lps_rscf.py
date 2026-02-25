@@ -141,6 +141,8 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
         print('\nStarting SCF iterations:')
         print("\n    Iter               Energy         ChemPot       Delta E         dRMS\n")
     t = time.time()
+    e_conv_list = []
+    d_conv_list = []
 
     if DIIS:
         diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
@@ -184,6 +186,7 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
         
             diis_obj.add(F, diis_e)
             dRMS = diis_e.rms()
+            d_conv_list.append(np.log10(dRMS))
 
         ## Energy calculation
         SCF_E = H.vector_dot(D)
@@ -192,6 +195,8 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
             SCF_E += 0.5 * J.vector_dot(D) * ( - FA[1] / nel )
         SCF_E += g_e
         SCF_E += Enuc
+
+        e_conv_list.append(np.log10(abs(SCF_E - Eold)))
 
         ##  DIIS convergence check
         if DIIS:
@@ -213,6 +218,9 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
             D_diff.copy(D)
             D_diff.subtract(D_old)
             dRMS = D_diff.rms()
+
+            d_conv_list.append(np.log10(dRMS))
+
             if verbose:
                 print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
                     % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
@@ -233,9 +241,9 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
         if SCF_ITER == maxiter:
             SCF_D = D
             print("\nWARNING ! SCF did not converge. The final values are printed")
-            return SCF_E, SCF_D, mu, SCF_ITER
+            return SCF_E, SCF_D, mu, SCF_ITER, e_conv_list, d_conv_list
     
     if verbose:
         print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
-    return SCF_E, D, mu, SCF_ITER
+    return SCF_E, D, mu, SCF_ITER, e_conv_list, d_conv_list
