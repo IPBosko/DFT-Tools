@@ -1,0 +1,11 @@
+The basic form of hybrid [[Exchange-Correlation Energy|exchange-correlation functionals]] is $$E_{\text{xc}} = aE_{\text{x}}^{\text{exact}} + (1-a)E_{\text{x}}^{\text{DFA}} + E^{\text{DFA}}_{\text{c}},$$where $E_{\text{x}}^{\text{exact}}$ is the [[Exact Exchange|exact exchange]], $E^{\text{DFA}}_{\text{x}}$ and $E^{\text{DFA}}_{\text{c}}$ are some [[Jacob's Ladder of DFT|semi-local]] [[Density Functional Approximation|density functional approximations]] (DFA) and $a$ ($0\leq a\leq1$) is a universal parameter called a mixing fraction [1]. 
+The value of $a$ is usually determined by empirical fitting of to reproduce experimental [[Atomization Energy|atomization energies]], exact nonrelativistic energies, [[Reaction Barrier Height|reaction barrier heights]], and other data. Fitting to atomization energies typically gives $a\approx0.2$ for [[Generalized Gradient Approximation|GGAs]] and $a\approx0.1$ for [[meta-GGA Density Functionals|meta-GGAs]], while fitting to reaction barrier heights yields $a\approx0.5$ [1].
+### Global Hybrids 
+A hybrid functional is qualified as global, when the mixing parameter is position-independent: $$E_{\text{xc}}=\int\left[ae_{\text{x}}^{\text{exact}}(\textbf{r})+(1-a)e_{\text{x}}^{\text{DFA}}(\textbf{r})+e_{\text{c}}^{\text{DFA}}(\textbf{r})\right]d\textbf{r},$$where $e_{\text{x}}$ and $e_{\text{c}}$ are the exchange and correlation [[Energy Density|energy densities]] [1]. 
+### Local Hybrids
+A generalization of the idea of a global hybrid functional is to treat the mixing fraction as a function of distance: $$E_{\text{xc}}=\int\left\{a(\textbf{r})e_{\text{x}}^{\text{exact}}(\textbf{r})+[1-a(\textbf{r})]e_{\text{x}}^{\text{DFA}}(\textbf{r})+e_{\text{c}}^{\text{DFA}}(\textbf{r})\right\}d\textbf{r}.$$The objective is to develop the mixing fraction that adapts to the changing local chemical environment. The basic requirements are that $a(\textbf{r})$ is restricted to the range of values between 0 and 1, and reduces to 1 for any one-electron density [1]. 
+ 
+
+# References
+1. V. N. Staroverov, in: _A Matter of Density: Exploring the Electron Density Concept in the Chemical, Biological, and Materials Sciences_, edited by N. Sukumar (John Wiley & Sons, Hoboken, NJ, 2013), pp. 125–156.
+2. 
