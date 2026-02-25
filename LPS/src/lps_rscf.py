@@ -65,10 +65,6 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=Non
         tuple: (SCF_E, SCF_D, SCF_ITER)
     """
     
-    ## Convergence thresholds
-    # E_conv = 1.0e-5
-    # D_conv = 1.0e-5
-    
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
     mints = psi4.core.MintsHelper(wfn.basisset())
@@ -141,6 +137,7 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=Non
         print('\nStarting SCF iterations:')
         print("\n    Iter               Energy         ChemPot       Delta E         dRMS\n")
     t = time.time()
+    e_list = []
     e_conv_list = []
     d_conv_list = []
 
@@ -197,6 +194,7 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=Non
         SCF_E += Enuc
 
         e_conv_list.append(np.log10(abs(SCF_E - Eold)))
+        e_list.append(SCF_E)
 
         ##  DIIS convergence check
         if DIIS:
@@ -241,9 +239,9 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=Non
         if SCF_ITER == maxiter:
             SCF_D = D
             print("\nWARNING ! SCF did not converge. The final values are printed")
-            return SCF_E, SCF_D, mu, SCF_ITER, e_conv_list, d_conv_list
+            return SCF_E, SCF_D, mu, SCF_ITER, e_list, e_conv_list, d_conv_list
     
     if verbose:
         print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
-    return SCF_E, D, mu, SCF_ITER, e_conv_list, d_conv_list
+    return SCF_E, D, mu, SCF_ITER, e_list, e_conv_list, d_conv_list
