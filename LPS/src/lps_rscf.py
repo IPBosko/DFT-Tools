@@ -45,7 +45,7 @@ def Vpot_builder(Vpot, D, V, D_half):
     e = Vpot.quadrature_values()['FUNCTIONAL']
     return e, V
 
-def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
+def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=None, DIIS=True, verbose=True):
     """
     Main LPS-RSCF Solver Loop.
     
@@ -66,8 +66,8 @@ def lps_solver(maxiter, TP, EXC, lam, mol, damp, FA, D_guess=None, DIIS=True, ve
     """
     
     ## Convergence thresholds
-    E_conv = 1.0e-5
-    D_conv = 1.0e-5
+    # E_conv = 1.0e-5
+    # D_conv = 1.0e-5
     
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
