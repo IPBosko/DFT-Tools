@@ -134,9 +134,11 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
     
+    header = "\n    Iter               Energy         ChemPot       Delta E         dRMS\n"
+    psi4.core.print_out(header)
     if verbose:
         print('\nStarting SCF iterations:')
-        print("\n    Iter               Energy         ChemPot       Delta E         dRMS\n")
+        print(header)
     t = time.time()
     e_list = []
     e_conv_list = []
@@ -199,9 +201,10 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
 
         ##  DIIS convergence check
         if DIIS:
+            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS)
+            psi4.core.print_out(output_str)
             if verbose:
-                print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-                    % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
+                print(output_str.strip())
             
             if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
                 break
@@ -220,9 +223,10 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
 
             d_conv_list.append(np.log10(dRMS))
 
+            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS)
+            psi4.core.print_out(output_str)
             if verbose:
-                print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-                    % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
+                print(output_str.strip())
             
             if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
                 break
@@ -239,9 +243,11 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
         
         if SCF_ITER == maxiter:
             SCF_D = D
+            psi4.core.print_out("\nWARNING ! SCF did not converge. The final values are printed\n")
             print("\nWARNING ! SCF did not converge. The final values are printed")
             return SCF_E, SCF_D, mu, SCF_ITER, e_list, e_conv_list, d_conv_list
     
+    psi4.core.print_out('\nTotal time for SCF iterations: %.3f seconds \n' % (time.time() - t))
     if verbose:
         print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
