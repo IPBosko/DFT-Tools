@@ -65,6 +65,7 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
         tuple: (SCF_E, SCF_D, SCF_ITER)
     """
     
+    psi4.core.set_output_file('output.dat', False)
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
     mints = psi4.core.MintsHelper(wfn.basisset())
