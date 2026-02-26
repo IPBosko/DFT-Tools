@@ -45,7 +45,7 @@ def Vpot_builder(Vpot, D, V, D_half):
     e = Vpot.quadrature_values()['FUNCTIONAL']
     return e, V
 
-def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=None, DIIS=True, verbose=True):
+def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None, DIIS=True, verbose=True):
     """
     Main LPS-RSCF Solver Loop.
     
@@ -122,7 +122,7 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, D_guess=Non
     VG = psi4.core.Matrix(nbf, nbf)
     D_diff = psi4.core.Matrix(nbf, nbf)
     
-    if D_guess is not None:
+    if Guess is not None:
         ## Use D_GUESS as an initial guess
         D = D_guess.clone()
         mu = 0.0
