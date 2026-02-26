@@ -125,7 +125,7 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     
     if Guess is not None:
         ## Use D_GUESS as an initial guess
-        D = D_guess.clone()
+        D = Guess.clone()
         mu = 0.0
     else:
         ## Calculate an initial Core guess
