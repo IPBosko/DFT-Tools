@@ -28,7 +28,7 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
         damp (list):        [damp_start, damp_end, cutoff].
         FA (list):          [Apply_FA (bool), Scaling_Factor (float)].
         D_guess (Matrix):   Optional density matrix for initial guess.
-        DIIS (bool):        Enable DIIS extrapolation.
+        DIIS (list):        Enable DIIS extrapolation.
         verbose (bool):     Print iteration details.
         
     Returns:
