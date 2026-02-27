@@ -15,7 +15,7 @@ if project_root not in sys.path:
 from src.build_density import diag_lps
 from src.build_Vpot import Vpot_init, Vpot_builder
 
-def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None, DIIS=True, verbose=True):
+def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess=None, verbose=True):
     """
     Main LPS-RSCF Solver Loop.
     
@@ -134,7 +134,6 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
         diis_e = psi4.core.triplet(F, D, S, False, False, False)
         diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
         diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
-        # diis_obj.add(F, diis_e)
         dRMS = diis_e.rms()
         d_conv_list.append(np.log10(dRMS))
 
@@ -155,15 +154,19 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
             break
         
         Eold = SCF_E
-        if DIIS:
-            diis_obj.add(F, diis_e)
-            F = diis_obj.extrapolate()
-        D, mu = diag_lps(F, A, nel)
-        
+
         if (dRMS > damp[2]):
             current_damp = damp[0]
+            diis_active = DIIS[0]
         else:
             current_damp = damp[1]
+            diis_active = DIIS[1]
+
+        if diis_active:
+            diis_obj.add(F, diis_e)
+            F = diis_obj.extrapolate()
+        
+        D, mu = diag_lps(F, A, nel)
         D.scale(1.0 - current_damp)
         D.axpy(current_damp, D_old)
         
