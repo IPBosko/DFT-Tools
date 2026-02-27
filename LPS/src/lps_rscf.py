@@ -36,7 +36,6 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     """
     
     psi4.core.set_output_file('output.dat', False)
-    ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
     mints = psi4.core.MintsHelper(wfn.basisset())
     S = mints.ao_overlap()
@@ -46,7 +45,6 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     if verbose:
         print(f'Number of basis functions:   {nbf}')
 
-    ## Potential Initialization
     build_superfunctional = psi4.driver.dft.build_superfunctional
     D_half = psi4.core.Matrix(nbf, nbf)
 
@@ -68,7 +66,6 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     VXCpot.initialize()
     VXC_null = psi4.core.Matrix(nbf, nbf)
 
-    ## Initialize the von Weizsacker potential
     vW = {
         "name": "vW",
         "x_functionals": {"LDA_X": {"alpha": 0.00}},
@@ -78,7 +75,6 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     VvWpot.initialize()
     VvW_null = psi4.core.Matrix(nbf, nbf)
 
-    ## Calculate and store V, T, H_core, ERI (I), and diagonalization matrix (A)
     V = mints.ao_potential()
     T = mints.ao_kinetic()
     H = T.clone()
@@ -87,18 +83,14 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     A = mints.ao_overlap()
     A.power(-0.5, 1.e-14)
 
-    ## Initialize necessary matrices
     F = psi4.core.Matrix(nbf, nbf)
     J = psi4.core.Matrix(nbf, nbf)
     VG = psi4.core.Matrix(nbf, nbf)
-    D_diff = psi4.core.Matrix(nbf, nbf)
     
     if Guess is not None:
-        ## Use D_GUESS as an initial guess
         D = Guess.clone()
         mu = 0.0
     else:
-        ## Calculate an initial Core guess
         D, mu = diag_lps(H, A, nel)
     
     Enuc = mol.nuclear_repulsion_energy()
@@ -114,96 +106,60 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
     e_conv_list = []
     d_conv_list = []
 
-    if DIIS:
-        diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
+    diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
 
     for SCF_ITER in range(1, maxiter + 1):
-        D_old = D
         
-        ## Build J (Coulomb)
+        D_old = D
         J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
         J.np[:] = J_np
-
-        ## Build F = H + J
         F.copy(H)
         F.axpy(1.0, J)
-
-        ## Add Fermi–Amaldi potential if requested
         if FA[0]:
             if nel == 0:
                 F.axpy(0.0, J)
             else: 
                 F.axpy(-FA[1]/nel, J)
 
-        ## Build DFT potentials and calculate corresponding energies
         pau_e, VP = Vpot_builder(VPpot, D, VP_null, D_half)
         xc_e, VXC = Vpot_builder(VXCpot, D, VXC_null, D_half)
         vw_e, VvW = Vpot_builder(VvWpot, D, VvW_null, D_half)
-        
-        ## Caclulate G[n] = T_P[n] + E_xc[n] + (lam - 1)T_vW
         g_e = pau_e + xc_e + ( lam - 1.0 ) * vw_e 
 
-        ## Add DFT potentials to Fock matrix
         VG.copy(VP)
         VG.axpy(1.0, VXC)
         VG.axpy((lam - 1.0), VvW)
         F.axpy(1.0, VG)
 
-        if DIIS:
-            diis_e = psi4.core.triplet(F, D, S, False, False, False)
-            diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
-            diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
-        
-            diis_obj.add(F, diis_e)
-            dRMS = diis_e.rms()
-            d_conv_list.append(np.log10(dRMS))
+        diis_e = psi4.core.triplet(F, D, S, False, False, False)
+        diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
+        diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
+        # diis_obj.add(F, diis_e)
+        dRMS = diis_e.rms()
+        d_conv_list.append(np.log10(dRMS))
 
-        ## Energy calculation
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
         if FA[0]:
             SCF_E += 0.5 * J.vector_dot(D) * ( - FA[1] / nel )
         SCF_E += g_e
         SCF_E += Enuc
-
         e_conv_list.append(np.log10(abs(SCF_E - Eold)))
         e_list.append(SCF_E)
 
-        ##  DIIS convergence check
-        if DIIS:
-            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS)
-            psi4.core.print_out(output_str)
-            if verbose:
-                print(output_str.strip())
-            
-            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
-                break
-            
-            Eold = SCF_E
-            F = diis_obj.extrapolate()
-
-        ## Diagonalize Fock matrix.
-        D, mu = diag_lps(F, A, nel)
-
-        ## non-DIIS convergence check
-        if not DIIS:
-            D_diff.copy(D)
-            D_diff.subtract(D_old)
-            dRMS = D_diff.rms()
-
-            d_conv_list.append(np.log10(dRMS))
-
-            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS)
-            psi4.core.print_out(output_str)
-            if verbose:
-                print(output_str.strip())
-            
-            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
-                break
-
-            Eold = SCF_E
+        output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS)
+        psi4.core.print_out(output_str)
+        if verbose:
+            print(output_str.strip())
+        if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
+            break
         
-        ## Dynamic damping
+        Eold = SCF_E
+        if DIIS:
+            diis_obj.add(F, diis_e)
+            F = diis_obj.extrapolate()
+        D, mu = diag_lps(F, A, nel)
+        
         if (dRMS > damp[2]):
             current_damp = damp[0]
         else:
@@ -222,3 +178,8 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, Guess=None,
         print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
     return SCF_E, D, mu, SCF_ITER, e_list, e_conv_list, d_conv_list
+
+# D_diff.copy(D)
+# D_diff.subtract(D_old)
+# dRMS = D_diff.rms()
+# d_conv_list.append(np.log10(dRMS))
