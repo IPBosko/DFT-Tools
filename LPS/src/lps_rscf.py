@@ -15,7 +15,7 @@ if project_root not in sys.path:
 from src.build_density import diag_lps
 from src.build_Vpot import Vpot_init, Vpot_builder
 
-def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess=None, verbose=True):
+def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess=None, lehtomaki=True, verbose=True):
     """
     Main LPS-RSCF Solver Loop.
     
@@ -113,13 +113,21 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
         D_old = D
         J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
         J.np[:] = J_np
-        F.copy(H)
-        F.axpy(1.0, J)
+        if lehtomaki:
+            F.copy(T)
+            F.axpy(1/lam, V)
+            F.axpy(1/lam, J)
+        else:
+            F.copy(H)
+            F.axpy(1.0, J)
         if FA[0]:
             if nel == 0:
                 F.axpy(0.0, J)
-            else: 
-                F.axpy(-FA[1]/nel, J)
+            else:
+                if lehtomaki:
+                    F.axpy(-FA[1]/(nel*lam), J)
+                else:
+                    F.axpy(-FA[1]/nel, J)
 
         pau_e, VP = Vpot_builder(VPpot, D, VP_null, D_half)
         xc_e, VXC = Vpot_builder(VXCpot, D, VXC_null, D_half)
@@ -128,8 +136,11 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
 
         VG.copy(VP)
         VG.axpy(1.0, VXC)
-        VG.axpy((lam - 1.0), VvW)
-        F.axpy(1.0, VG)
+        if lehtomaki:
+            F.axpy(1/lam, VG)
+        else:
+            VG.axpy((lam - 1.0), VvW)
+            F.axpy(1.0, VG)
 
         diis_e = psi4.core.triplet(F, D, S, False, False, False)
         diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
@@ -167,6 +178,8 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
             F = diis_obj.extrapolate()
         
         D, mu = diag_lps(F, A, nel)
+        if lehtomaki:
+            mu *= lam
         D.scale(1.0 - current_damp)
         D.axpy(current_damp, D_old)
         
