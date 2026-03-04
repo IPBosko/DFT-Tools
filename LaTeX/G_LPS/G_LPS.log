@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  24 FEB 2026 13:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  4 MAR 2026 17:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -390,24 +390,23 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+) [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
-LaTeX Warning: Reference `eq: OF Ts' on page 2 undefined on input line 300.
-
-[2]
-
-LaTeX Warning: Reference `eq: LDA exchange' on page 3 undefined on input line 329.
+LaTeX Warning: Reference `eq: OF Ts' on page 3 undefined on input line 348.
 
 
-LaTeX Warning: Reference `eq: LDA exchange' on page 3 undefined on input line 329.
+LaTeX Warning: Reference `eq: LDA exchange' on page 3 undefined on input line 377.
 
 
-LaTeX Warning: Reference `eq: TF' on page 3 undefined on input line 365.
+LaTeX Warning: Reference `eq: LDA exchange' on page 3 undefined on input line 377.
 
 
-LaTeX Warning: Reference `eq: OFDFT Differential Equation' on page 3 undefined on input line 378.
+LaTeX Warning: Reference `eq: TF' on page 3 undefined on input line 413.
 
-(./G_LPS.bbl [3]) [4] (./G_LPS.aux)
+
+LaTeX Warning: Reference `eq: OFDFT Differential Equation' on page 3 undefined on input line 426.
+
+[3] (./G_LPS.bbl) [4] (./G_LPS.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
@@ -417,21 +416,21 @@ L3 programming layer <2025-01-18>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `G_LPS.out' has not changed.
-(rerunfilecheck)             Checksum: 92DE93990A4EAF1A6B22717E0DD95569;2406.
+(rerunfilecheck)             Checksum: 63CB6E61073851F2B152B6D8FD3572A8;2985.
  ) 
 Here is how much of TeX's memory you used:
- 12028 strings out of 473190
- 180117 string characters out of 5715801
- 617468 words of memory out of 5000000
- 35075 multiletter control sequences out of 15000+600000
+ 12035 strings out of 473190
+ 180197 string characters out of 5715801
+ 608026 words of memory out of 5000000
+ 35076 multiletter control sequences out of 15000+600000
  569537 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,11n,79p,822b,632s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,11n,79p,822b,519s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on G_LPS.pdf (4 pages, 214057 bytes).
+Output written on G_LPS.pdf (4 pages, 217703 bytes).
 PDF statistics:
- 228 PDF objects out of 1000 (max. 8388607)
- 189 compressed objects within 2 object streams
- 50 named destinations out of 1000 (max. 500000)
- 73 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 242 PDF objects out of 1000 (max. 8388607)
+ 202 compressed objects within 3 object streams
+ 56 named destinations out of 1000 (max. 500000)
+ 89 words of extra memory for PDF output out of 10000 (max. 10000000)
 

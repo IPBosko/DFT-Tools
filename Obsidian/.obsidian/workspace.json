@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
+                "file": "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Kinetic Energy Functional"
+              "title": "Hybrid Density Functionals"
             }
           }
         ]
@@ -172,9 +172,13 @@
   },
   "active": "17b722147c07417c",
   "lastOpenFiles": [
+    "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
+    "Self-Interaction Error.md",
+    "Quantum Chemistry/Exchange-Correlation Energy.md",
+    "Homogeneous Coordinate Scaling.md",
+    "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
     "Quantum Chemistry/Density Functional Theory/von Weizsäcker Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Tran–Wesołowski Kinetic Functional.md",
-    "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
     "Set.md",
     "Propositional Logic.md",
     "Predicate Logic.md",
@@ -195,10 +199,6 @@
     "Quantum Chemistry/Density Functional Theory/Perdew–Burke–Ernzerhof Exchange-Correlation Functional.md",
     "Quantum Chemistry/Electron-Electron Repulsion.md",
     "Quantum Chemistry/Density Functional Theory/Hartree Energy.md",
-    "Quantum Chemistry/Density Functional Theory/N-Representability.md",
-    "Quantum Chemistry/Density Functional Theory/Reduced Density Gradient.md",
-    "Quantum Chemistry/Density Functional Theory/Libxc Library.md",
-    "Quantum Chemistry/Ionization Energy.md",
     "Quantum Chemistry/Density Functional Theory",
     "Calculus",
     "Untitled.canvas",

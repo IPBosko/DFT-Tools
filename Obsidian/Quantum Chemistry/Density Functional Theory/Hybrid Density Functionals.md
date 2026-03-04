@@ -3,9 +3,21 @@ The value of $a$ is usually determined by empirical fitting of to reproduce expe
 ### Global Hybrids 
 A hybrid functional is qualified as global, when the mixing parameter is position-independent: $$E_{\text{xc}}=\int\left[ae_{\text{x}}^{\text{exact}}(\textbf{r})+(1-a)e_{\text{x}}^{\text{DFA}}(\textbf{r})+e_{\text{c}}^{\text{DFA}}(\textbf{r})\right]d\textbf{r},$$where $e_{\text{x}}$ and $e_{\text{c}}$ are the exchange and correlation [[Energy Density|energy densities]] [1]. 
 ### Local Hybrids
-A generalization of the idea of a global hybrid functional is to treat the mixing fraction as a function of distance: $$E_{\text{xc}}=\int\left\{a(\textbf{r})e_{\text{x}}^{\text{exact}}(\textbf{r})+[1-a(\textbf{r})]e_{\text{x}}^{\text{DFA}}(\textbf{r})+e_{\text{c}}^{\text{DFA}}(\textbf{r})\right\}d\textbf{r}.$$The objective is to develop the mixing fraction that adapts to the changing local chemical environment. The basic requirements are that $a(\textbf{r})$ is restricted to the range of values between 0 and 1, and reduces to 1 for any one-electron density [1]. 
- 
+A generalization of the idea of a global hybrid functional is to treat the mixing fraction as a function of distance: $$E_{\text{xc}}=\int\left\{a(\textbf{r})e_{\text{x}}^{\text{exact}}(\textbf{r})+[1-a(\textbf{r})]e_{\text{x}}^{\text{DFA}}(\textbf{r})+e_{\text{c}}^{\text{DFA}}(\textbf{r})\right\}d\textbf{r}.$$The objective is to develop the mixing fraction that adapts to the changing local chemical environment. The basic requirements are that $a(\textbf{r})$ is restricted to the range of values between zero and one, and reduces to one for any one-electron density [1].
+#### Local Mixing Functions
+A possible choice of the LMF is Becke's self-correlation detection function: $$a(\mathbf{r})=\frac{\tau_{\text{W}}}{\tau},$$where $\tau$ is the [[Kinetic Energy Functional|kinetic energy density]], and $\tau_{\text{W}}$ is the Weizsäcker kinetic energy density [2]. This LMF highlights the single orbital dominated regions, meaning the exchange is becoming exact in the one orbital limit: $\tau_{\text{W}}/\tau=1$. Since $\tau>0$, $\tau_{\text{W}}\geq0$, and $\tau\geq\tau_{\text{W}}$, $$0\leq\frac{\tau_{\text{W}}}{\tau}\leq1.$$
+##### Theoretical Constraints for LMFs [3]
+1. **One-electron limit**
+   In the one-electron limit, correlation should be absent, and the only role of exchange is to cancel [[Electron-Electron Repulsion|Coulomb]] self-interaction. Here, one hundred percent of [[Exact Exchange|exact exchange]] and no [[Density Functional Approximation|semi-local exchange]] is required.
+2. **Asymptotic limit**
+   When an electron is infinitely separated from a molecule in real space, it enters a one-electron region. To cancel its self-interaction the LMF must approach one (full exact exchange). A special case of the one-electron limit.
+3. **High-density limit**
+   As [[Electron Density|electron density]] approaches infinity, exchange energy [[Homogeneous Coordinate Scaling|scales]] linearly while [[Exchange-Correlation Energy|correlation]] energy scales to a constant. Because the correlation energy becomes negligible compared to exchange, such a region becomes exchange-dominated and the full exact exchange is required to cancel [[Self-Interaction Error|self-interaction error]], formally:$$\lim_{\gamma\to\infty}{\frac{E_{\text{xc}}[\rho_{\gamma}]}{E^{\text{exact}}_{\text{x}}[\rho_{\gamma}]}}=1.$$This constraint determines directly the exact scaling property of the LMF: the complement of the LMF, $1-a(\mathbf{r})$ must scale as $\gamma^{-1}.$
+4. **Homogeneous limit**
+   Unlike the previous constraints, this is a highly-desirable feature rather than an exact boundary condition. For a homogeneous electron density, semi-local exchange functionals are exact by construction. The exact exchange is also correct in homogeneous regions, however, it lacks the desirable implicit consideration of nondynamical correlation and the beneficial error compensation with the semi-local correlation functional. Therefore, in homogeneous limits, the LMF should ideally be zero or very small so that semi-local exchange dominates.
+   
 
 # References
 1. V. N. Staroverov, in: _A Matter of Density: Exploring the Electron Density Concept in the Chemical, Biological, and Materials Sciences_, edited by N. Sukumar (John Wiley & Sons, Hoboken, NJ, 2013), pp. 125–156.
-2. 
+2. Jaramillo J., Scuseria G. E., Ernzerhof M. Local hybrid functionals, *J. Chem. Phys.* **2003**,*118*,1068–1073.
+3. Maier T. M., Arbuznikov A. V., & Kaupp M. Local hybrid functionals: Theory, implementation, and performance of an emerging new tool in quantum chemistry and beyond. _Wiley Interdisciplinary Reviews: Computational Molecular Science_ **2019**, _9_, e1378.
