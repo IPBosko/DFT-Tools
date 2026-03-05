@@ -1,0 +1,109 @@
+% ****** Start of file apssamp.tex ******
+%
+%   This file is part of the APS files in the REVTeX 4.2 distribution.
+%   Version 4.2a of REVTeX, December 2014
+%
+%   Copyright (c) 2014 The American Physical Society.
+%
+%   See the REVTeX 4 README file for restrictions and more information.
+%
+% TeX'ing this file requires that you have AMS-LaTeX 2.0 installed
+% as well as the rest of the prerequisites for REVTeX 4.2
+%
+% See the REVTeX 4 README file
+% It also requires running BibTeX. The commands are as follows:
+%
+%  1)  latex apssamp.tex
+%  2)  bibtex apssamp
+%  3)  latex apssamp.tex
+%  4)  latex apssamp.tex
+%
+\documentclass[%
+ reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+%nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,
+pra,
+% prb,
+%rmp,
+%prstab,
+%prstper,
+%floatfix,
+]{revtex4-2}
+
+\usepackage{braket}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black,
+    }
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+\begin{document}
+
+\title{Fermi--Amaldi-Based Local Mixing Function}% Force line breaks with \\
+
+\author{Ivan P. Bosko and Viktor N. Staroverov}
+ % \email{vstarove@uwo.ca}
+\affiliation{%
+ Department of Chemistry, The University of Western Ontario, London, Ontario N6A 5B7, Canada
+}%
+
+\date{\today}
+
+\begin{abstract}
+
+\end{abstract}
+\maketitle
+
+\section{Main Text}
+
+We can show that the proposed LMF satisfies the zero to one boundary range:
+\begin{gather*}
+    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    \leq
+    0,\\[10pt]
+    e_{\text{x}}^{\text{FA}}(\mathbf{r})
+    \leq
+    0,\\[10pt]
+    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    \leq
+    e_{\text{x}}^{\text{FA}}(\mathbf{r}),
+\end{gather*}
+thus
+\begin{equation}
+    0
+    \leq
+    \frac{e_{\text{x}}^{\text{FA}}}
+    {e_{\text{x}}^{\text{exact}}}
+    \leq
+    1.
+\end{equation}
+
+\bibliography{../bibliography}
+\end{document}
+
