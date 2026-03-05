@@ -108,15 +108,15 @@ and the latter is expressed via molecular orbitals $\{\varphi_i(\mathbf{r})\}$ a
  
 We can show that the proposed LMF satisfies the zero to one boundary range:
 \begin{gather*}
-    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    e_{\text{x}}^{\text{exact}}
+    \le
+    0,\\[10pt]
+    e_{\text{x}}^{\text{FA}}
     \leq
     0,\\[10pt]
-    e_{\text{x}}^{\text{FA}}(\mathbf{r})
+    e_{\text{x}}^{\text{exact}}
     \leq
-    0,\\[10pt]
-    e_{\text{x}}^{\text{exact}}(\mathbf{r})
-    \leq
-    e_{\text{x}}^{\text{FA}}(\mathbf{r}),
+    e_{\text{x}}^{\text{FA}},
 \end{gather*}
 thus
 \begin{equation}
@@ -127,6 +127,16 @@ thus
     \leq
     1.
 \end{equation}
+
+For one-electron regions, $e_{\text{x}}^{\text{FA}}=e_{\text{x}}^{\text{exact}}$, therefore, the one-electron constraint is satisfied. A particular case of a one-electron limit, i.e., the asymptotic limit ($r\to\infty$) where the exact exchange must cancel out an excessive self-repulsion of the Coulomb potential, is also satisfied:
+\begin{equation}
+    \lim_{r\to\infty}
+    \frac{e_{\text{x}}^{\text{FA}}}
+    {e_{\text{x}}^{\text{exact}}}
+    =
+    1
+\end{equation}
+since both energy densities approach $-1/2r$ as $r\to\infty$.
 
 \bibliography{../bibliography}
 \end{document}
