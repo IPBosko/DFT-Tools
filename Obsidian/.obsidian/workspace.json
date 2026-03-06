@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quantum Chemistry/Density Functional Theory/Lieb–Oxford Bound.md",
+                "file": "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Lieb–Oxford Bound"
+              "title": "Hybrid Density Functionals"
             }
           },
           {
@@ -185,18 +185,19 @@
   },
   "active": "17b722147c07417c",
   "lastOpenFiles": [
-    "Quantum Chemistry/Density Functional Theory/Levy–Perdew–Sahni Density Functional Theory.md",
-    "Quantum Chemistry/Density Functional Theory/Homogeneous Electron Gas.md",
-    "Quantum Chemistry/Density Functional Theory/Hartree Energy.md",
-    "Quantum Chemistry/Density Functional Theory/Density Functional Approximation.md",
-    "Quantum Chemistry/Density Functional Theory/Becke Exchange Functional.md",
-    "Quantum Chemistry/Density Functional Theory/Hohenberg–Kohn Theorems.md",
+    "Homogeneous Coordinate Scaling.md",
     "Quantum Chemistry/Density Functional Theory/Kinetic Energy Functional.md",
+    "Quantum Chemistry/Density Functional Theory/Hohenberg–Kohn Theorems.md",
+    "Quantum Chemistry/Density Functional Theory/Becke Exchange Functional.md",
+    "Quantum Chemistry/Density Functional Theory/Density Functional Approximation.md",
+    "Quantum Chemistry/Density Functional Theory/Hartree Energy.md",
+    "Quantum Chemistry/Density Functional Theory/Homogeneous Electron Gas.md",
+    "Quantum Chemistry/Density Functional Theory/Levy–Perdew–Sahni Density Functional Theory.md",
+    "Quantum Chemistry/Density Functional Theory/Lieb–Oxford Bound.md",
     "Quantum Chemistry/Density Functional Theory/Tran–Wesołowski Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Thomas–Fermi (TF) Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Lembarki–Chermette-94 (LC94) Kinetic Functional.md",
     "Quantum Chemistry/Density Functional Theory/Lee–Lee–Parr (LLP) Kinetic Functional.md",
-    "Homogeneous Coordinate Scaling.md",
     "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
     "Self-Interaction Error.md",
     "Quantum Chemistry/Exchange-Correlation Energy.md",
@@ -208,7 +209,6 @@
     "Untitled 1.md",
     "Physics",
     "Quantum Chemistry/Density Functional Theory/Orbital-Free DFT.md",
-    "Quantum Chemistry/Density Functional Theory/Lieb–Oxford Bound.md",
     "Quantum Chemistry/Density Functional Theory/Local Density Approximation.md",
     "Quantum Chemistry/Density Functional Theory/Density Functional Theory.md",
     "Quantum Chemistry/Density Functional Theory/Conjointness Conjecture.md",

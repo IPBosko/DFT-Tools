@@ -82,13 +82,21 @@ pra,
 
 \section{Main Text}
 
-We propose a new local mixing function (LMF) for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
+A hybrid exchange functional is called local when 
 \begin{equation}
-    \text{LMF}
+    E^{\text{LH}}_{\text{x}}
     =
-    \frac{e_{\text{x}}^{\text{FA}}}{e_{\text{x}}^{\text{exact}}}.
+    \int
+    \left\{
+        g(\textbf{r})
+        e_{\text{x}}^{\text{exact}}(\textbf{r})
+        +
+        [1-g(\textbf{r})]
+        e_{\text{x}}^{\text{SL}}(\textbf{r})
+    \right\}
+    d\textbf{r},
 \end{equation}
-The (closed-shell) exact exchange energy density in terms of a one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')=2\sum^{N/2}_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$, is given by~\cite{Staroverov.2012.Matter,Parr.1989.density}
+where $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ is a semi-local and the exact exchange energy density, respectively. The closed-shell form of the latter quantity is given in terms of a one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')=2\sum^{N/2}_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$, by~\cite{Staroverov.2012.Matter,Parr.1989.density}
 \begin{equation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
@@ -98,6 +106,14 @@ The (closed-shell) exact exchange energy density in terms of a one-electron redu
     \frac{|\gamma(\mathbf{r};\mathbf{r}')|^2}
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
+\end{equation}
+In the equation above, the integrand is a linear combination of two exchange densities multiplied by a position-dependent function, $g(\mathbf{r})$, called local mixing function (LMF). 
+
+Here, we propose a new local mixing function for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
+\begin{equation}
+    g(\mathbf{r})
+    =
+    \frac{e_{\text{x}}^{\text{FA}}}{e_{\text{x}}^{\text{exact}}}.
 \end{equation}
 The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density is expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
 \begin{equation}

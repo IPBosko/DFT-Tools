@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 MAR 2026 13:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  6 MAR 2026 15:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -390,27 +390,42 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
  (/usr/local/texlive/2025/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (./FA_Local_Hybrids.bbl) [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./FA_Local_Hybrids.aux)
+)
+Underfull \hbox (badness 1132) in paragraph at lines 98--100
+\OT1/cmr/m/n/10 ex-change en-ergy den-sity, re-spec-tively. The closed-
+ []
+
+(./FA_Local_Hybrids.bbl) [1{/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./FA_Local_Hybrids.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-Package rerunfilecheck Info: File `FA_Local_Hybrids.out' has not changed.
-(rerunfilecheck)             Checksum: ED5E3DB7B3D41D5824BF5CD428698344;462.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+
+Package rerunfilecheck Warning: File `FA_Local_Hybrids.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `FA_Local_Hybrids.out':
+(rerunfilecheck)             Before: E3882AC146FEC5D85BE8AC4CAD0B0523;360
+(rerunfilecheck)             After:  ED5E3DB7B3D41D5824BF5CD428698344;462.
  ) 
 Here is how much of TeX's memory you used:
- 11934 strings out of 473190
- 178640 string characters out of 5715801
- 604508 words of memory out of 5000000
- 35016 multiletter control sequences out of 15000+600000
+ 11936 strings out of 473190
+ 178660 string characters out of 5715801
+ 607508 words of memory out of 5000000
+ 35017 multiletter control sequences out of 15000+600000
  569191 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,5n,79p,790b,519s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti9.pfb>
-Output written on FA_Local_Hybrids.pdf (1 page, 159155 bytes).
+Output written on FA_Local_Hybrids.pdf (1 page, 161560 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 83 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
- 25 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 112 PDF objects out of 1000 (max. 8388607)
+ 81 compressed objects within 1 object stream
+ 17 named destinations out of 1000 (max. 500000)
+ 17 words of extra memory for PDF output out of 10000 (max. 10000000)
 
