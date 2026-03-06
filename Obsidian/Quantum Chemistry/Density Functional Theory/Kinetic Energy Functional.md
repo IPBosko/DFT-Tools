@@ -3,12 +3,17 @@ A big issue in the design of kinetic energy functionals is to avoid the [[Variat
 attributed to an insufficient incorporation of the [[Pauli Exclusion Principle|Pauli exclusion principle]] in the [[Pauli Energy|Pauli kinetic energy]] and the corresponding Pauli potential [1].
 ## Popular Kinetic Functionals
 1) **Thomas–Fermi**
-   
+   The first [[Kinetic Energy Functional|kinetic energy functional]] developed in 1928 [1-3]. 
 2) **von Weizsäcker**
    It is defined in terms of the electron density $\rho(\mathbf{r})$ and its gradient:$$T_{\text{W}}[\rho] = \frac{1}{8}\int\frac{|\nabla\rho(\mathbf{r})|^2}{\rho(\mathbf{r})}d\mathbf{r}.$$The functional is exact for one-electron and one-orbital systems. For example, this is the exact non-interacting kinetic energy for H and He atoms. It is also the exact ground-state kinetic energy functional for a system of non-interacting bosons.
 3) **$\gamma$-Thomas–Fermi-$\lambda$-Weizsäcker**
    The model is non-$N$-[[N-Representability|representable]] when $\lambda<1$. It means that the functional might yield a density that does not map to any antisymmetric $N$-particle wave function. This may lead to lowering a ground-state energy below the variational bottom.
-
+4) **LLP**
+   [[Generalized Gradient Approximation|GGA]] kinetic density functional [Lee.1991.PRA.44.768] developed by Lee, Lee, and Parr. The LLP KEDF has a spin-polarized form $$T^{\text{LLP}}[\rho_{\alpha}, \rho_{\beta}]=T_{\text{TF}}[\rho_{\alpha}, \rho_{\beta}] + 2^{2/3}\alpha C_{\text{F}}\sum_{\sigma}\int\rho_{\sigma}^{5/3}(\textbf{r})F^{\text{LLP}}_{\text{s}}(s_{\sigma})\;d\textbf{r},$$where $T_{\text{TF}}[\rho]$ is the [[Thomas–Fermi (TF) Kinetic Functional]], $C_{\text{F}}$ is the TF constant, $\alpha$ is a constant, and $F^{\text{LLP}}_{\text{s}}(s)$ is an [[Enhancement Factor]] given by$$F^{\text{LLP}}_{\text{s}}(s_{\sigma})=\frac{s_{\sigma}^2\rho_{\sigma}^{2/3}k_{\text{F}}^{-2}}{1+s_{\sigma}\rho_{\sigma}^{1/3}k_{\text{F}}^{-1}\beta'\;\text{sinh}^{-1}(s_{\sigma}\rho_{\sigma}^{1/3}k_{\text{F}}^{-1})},$$where $s$ is the [[Reduced Density Gradient]] and $\beta'$ is a constant. This KEDF is written in the same form as Becke's [[Exchange Energy]] [[B88]] [Becke.1988.PRA.38.3098] using [[Conjointness Conjecture]] [Lembarki.1994.PRA.50.5328].
+5) **LC94**
+   The [[Kinetic Energy Functional|kinetic energy functional]] developed by Lembarki and Chermette in 1994. [[Generalized Gradient Approximation]] [[Kinetic Energy]] density functional. The LC94 KEDF has a spin-polarized form$$T^{\text{LC94}}[\rho_{\alpha}, \rho_{\beta}]=2^{2/3}C_{\text{F}}\sum_{\sigma}\int\rho_{\sigma}^{5/3}(\textbf{r})F^{\text{LC94}}_{\text{s}}(s_{\sigma})\;d\textbf{r},$$where $C_{\text{F}}$ is the [[Thomas–Fermi (TF) Kinetic Functional]] constant, and $F_{\text{s}}(s)$ is an [[Enhancement Factor]] given by$$F^{\text{LC94}}_{\text{s}}(s_{\sigma})=\frac{1+A_1s_{\sigma}\text{sinh}^{-1}(As_{\sigma})+(A_2-A_3e^{-A_4s^2_{\sigma}})s^2_{\sigma}}{1+A_1s_{\sigma}\text{sinh}^{-1}(As_{\sigma})+B_1s^4_{\sigma}},$$where $s_{\sigma}$ is the [[Reduced Density Gradient]] and $A_1$, $A_2$, $A_3$, $A_4$, $A$, and $B_1$ are constants [Lembarki.1994.PRA.50.5328]. The functional contains five empirical parameters fitted to atoms [Constantin.2011.PRL.106.186406] and is written in the same form as the [[PW91]] [[Exchange Energy]][Perdew.1991.ESS] using [[Conjointness Conjecture]] [Constantin.2011.PRL.106.186406].
 ## References
 
 1. K. Finzel, P. Bultinck, _Acta Phys.-Chim. Sin._ **2018**, _34_, 650.
+2. L. H. Thomas, _Proc. Cambridge Philos. Soc._ **1927**, _23_, 542.
+3. E. Fermi, _Zeitschrift für Physik_ **1928**, _48_, 73.
