@@ -88,7 +88,7 @@ We propose a new local mixing function (LMF) for local hybrid functionals. This 
     =
     \frac{e_{\text{x}}^{\text{FA}}}{e_{\text{x}}^{\text{exact}}}.
 \end{equation}
-The (closed-shell) exact exchange energy density in terms of a one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')$ is given by~\cite{Staroverov.2012.Matter,Parr.1989.density}
+The (closed-shell) exact exchange energy density in terms of a one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')=2\sum^{N/2}_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$, is given by~\cite{Staroverov.2012.Matter,Parr.1989.density}
 \begin{equation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
@@ -97,9 +97,8 @@ The (closed-shell) exact exchange energy density in terms of a one-electron redu
     \int
     \frac{|\gamma(\mathbf{r};\mathbf{r}')|^2}
     {|\mathbf{r}-\mathbf{r}'|}
-    d\mathbf{r}',
+    d\mathbf{r}'.
 \end{equation}
-where $\gamma(\mathbf{r};\mathbf{r}')=\sum_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$.
 The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density is expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
 \begin{equation}
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
@@ -112,24 +111,14 @@ The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy densit
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
 \end{equation} 
-
- 
-The proposed LMF satisfies the \textit{zero to one} boundary range: both $e_{\text{x}}^{\text{exact}}$ and $e_{\text{x}}^{\text{FA}}$ are manifestly non-positive
+Both exchange densities are manifestly non-positive and equivalent for one-electron systems and two-electron singlets. Although, for $N>2$, one can show that
 \begin{equation}
     e_{\text{x}}^{\text{exact}}
-    \le
-    0,\quad
+    \leq
     e_{\text{x}}^{\text{FA}}
-    \leq
-    0,
+    \leq0,
 \end{equation}
-and both are equivalent for $N\leq 2$, while for $N\geq 2$
-\begin{equation}
-    e_{\text{x}}^{\text{exact}}
-    \leq
-    e_{\text{x}}^{\text{FA}},
-\end{equation}
-since $e_{\text{x}}^{\text{FA}}$ is scaled down by $N$. Therefore,
+since $e_{\text{x}}^{\text{FA}}$ is scaled down by $N$. Combining these equations, we find that the proposed LMF is bound between zero and one:
 \begin{equation}
     0
     \leq
@@ -138,8 +127,7 @@ since $e_{\text{x}}^{\text{FA}}$ is scaled down by $N$. Therefore,
     \leq
     1.
 \end{equation}
-
-For one-electron regions, $e_{\text{x}}^{\text{FA}}=e_{\text{x}}^{\text{exact}}$, therefore, the one-electron constraint is satisfied. A particular case of a one-electron limit, i.e., the asymptotic limit ($r\to\infty$) where the exact exchange must cancel out an excessive self-repulsion of the Coulomb potential, is also satisfied:
+This inequality reflects the fact, that $e_{\text{x}}^{\text{FA}}=e_{\text{x}}^{\text{exact}}$ for one-electron systems. Therefore, the one-electron constraint on LMF is satisfied. A particular case of a one-electron limit, i.e., the asymptotic limit ($r\to\infty$) where the exact exchange must cancel out an excessive self-repulsion of the Coulomb potential, is also satisfied:
 \begin{equation}
     \lim_{r\to\infty}
     \frac{e_{\text{x}}^{\text{FA}}}
