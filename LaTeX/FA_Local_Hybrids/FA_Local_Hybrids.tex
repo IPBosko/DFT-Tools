@@ -82,29 +82,31 @@ pra,
 
 \section{Main Text}
 
-Here we propose a new local mixing function (LMF) for local hybrid functionals. This LMF is Fermi--Amaldi (FA) based and represents the ratio between the FA and the exact exchange energy densities. The first is given by 
+We propose a new local mixing function (LMF) for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities. The (closed-shell) exact exchange energy density is given by~\cite{Staroverov.2012.Matter}
+\begin{equation}
+    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    =
+    -
+    \sum^{N/2}_{k,l=1}
+    \int
+    \frac{\varphi_k(\mathbf{r})\varphi_k^*(\mathbf{r}')
+    \varphi^*_l(\mathbf{r})\varphi_l(\mathbf{r}')}
+    {|\mathbf{r}-\mathbf{r}'|}
+    d\mathbf{r}'.
+\end{equation}
+The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density is expressed as
 \begin{equation}
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
     =
     -
     \frac{1}{2N}
-    \int\frac{\rho(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}
-    d\mathbf{r}',
-\end{equation} 
-and the latter is expressed via molecular orbitals $\{\varphi_i(\mathbf{r})\}$ and the ground-state density matrix $\mathbf{D}$ as 
-\begin{gather}
-    e_{\text{x}}^{\text{exact}}(\mathbf{r})\nonumber\\[10pt]
-    =
-    -\frac{1}{2}
-    \sum_{pqrs}
-    D_{pq}
-    D_{rs}
     \int
-    \frac{\varphi^*_p(\mathbf{r})\varphi_s(\mathbf{r})
-    \varphi^*_r(\mathbf{r}')\varphi_q(\mathbf{r}')}
+    \frac
+    {\rho(\mathbf{r})\rho(\mathbf{r}')}
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
-\end{gather}
+\end{equation} 
+
  
 We can show that the proposed LMF satisfies the zero to one boundary range:
 \begin{gather*}
