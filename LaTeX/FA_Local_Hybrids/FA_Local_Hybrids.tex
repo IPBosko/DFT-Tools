@@ -82,19 +82,25 @@ pra,
 
 \section{Main Text}
 
-We propose a new local mixing function (LMF) for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities. The (closed-shell) exact exchange energy density is given by~\cite{Staroverov.2012.Matter}
+We propose a new local mixing function (LMF) for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
+\begin{equation}
+    \text{LMF}
+    =
+    \frac{e_{\text{x}}^{\text{FA}}}{e_{\text{x}}^{\text{exact}}}.
+\end{equation}
+The (closed-shell) exact exchange energy density in terms of a one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')$ is given by~\cite{Staroverov.2012.Matter,Parr.1989.density}
 \begin{equation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
     -
-    \sum^{N/2}_{k,l=1}
+    \frac{1}{4}
     \int
-    \frac{\varphi_k(\mathbf{r})\varphi_k^*(\mathbf{r}')
-    \varphi^*_l(\mathbf{r})\varphi_l(\mathbf{r}')}
+    \frac{|\gamma(\mathbf{r};\mathbf{r}')|^2}
     {|\mathbf{r}-\mathbf{r}'|}
-    d\mathbf{r}'.
+    d\mathbf{r}',
 \end{equation}
-The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density is expressed as
+where $\gamma(\mathbf{r};\mathbf{r}')=\sum_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$.
+The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density is expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
 \begin{equation}
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
     =
@@ -108,19 +114,22 @@ The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy densit
 \end{equation} 
 
  
-We can show that the proposed LMF satisfies the zero to one boundary range:
-\begin{gather*}
+The proposed LMF satisfies the \textit{zero to one} boundary range: both $e_{\text{x}}^{\text{exact}}$ and $e_{\text{x}}^{\text{FA}}$ are manifestly non-positive
+\begin{equation}
     e_{\text{x}}^{\text{exact}}
     \le
-    0,\\[10pt]
+    0,\quad
     e_{\text{x}}^{\text{FA}}
     \leq
-    0,\\[10pt]
+    0,
+\end{equation}
+and both are equivalent for $N\leq 2$, while for $N\geq 2$
+\begin{equation}
     e_{\text{x}}^{\text{exact}}
     \leq
     e_{\text{x}}^{\text{FA}},
-\end{gather*}
-thus
+\end{equation}
+since $e_{\text{x}}^{\text{FA}}$ is scaled down by $N$. Therefore,
 \begin{equation}
     0
     \leq
