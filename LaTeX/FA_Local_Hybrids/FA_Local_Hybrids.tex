@@ -96,7 +96,7 @@ A hybrid exchange functional is called local when
     \right\}
     d\textbf{r},
 \end{equation}
-where $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ is a semi-local and the exact exchange energy density, respectively. The closed-shell form of the latter quantity is given in terms of a one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')=2\sum^{N/2}_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$, by~\cite{Staroverov.2012.Matter,Parr.1989.density}
+In the equation above, the integrand is a linear combination of two exchange densities multiplied by a position-dependent function, $g(\mathbf{r})$, called local mixing function (LMF). The $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ quantities are a semi-local and the exact exchange energy densities, respectively. The closed-shell form of the exact exchange density via one-electron reduced density matrix, $\gamma(\mathbf{r};\mathbf{r}')=2\sum^{N/2}_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$, is given by~\cite{Staroverov.2012.Matter,Parr.1989.density}
 \begin{equation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
@@ -107,7 +107,6 @@ where $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ is a semi-loc
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
 \end{equation}
-In the equation above, the integrand is a linear combination of two exchange densities multiplied by a position-dependent function, $g(\mathbf{r})$, called local mixing function (LMF). 
 
 Here, we propose a new local mixing function for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
 \begin{equation}
