@@ -8,13 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "beb6ec55b94e3f09",
+            "id": "d543c294211f58f1",
             "type": "leaf",
             "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "type": "markdown",
+              "state": {
+                "file": "Asymptotic Bounds.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Asymptotic Bounds"
             }
           }
         ]
@@ -74,7 +78,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 245.50260543823242
+    "width": 245.50260543823242,
+    "collapsed": true
   },
   "right": {
     "id": "9de1ee87910bf5cb",
@@ -165,8 +170,9 @@
       "bases:Create new base": false
     }
   },
-  "active": "efc0c6d0bed0d0cb",
+  "active": "d543c294211f58f1",
   "lastOpenFiles": [
+    "Asymptotic Bounds.md",
     "Untitled",
     "Algorithms and Data Structures",
     "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
