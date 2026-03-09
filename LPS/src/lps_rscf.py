@@ -15,7 +15,7 @@ if project_root not in sys.path:
 from src.build_density import diag_lps
 from src.build_Vpot import Vpot_init, Vpot_builder
 
-def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess=None, lehtomaki=True, verbose=True):
+def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess=None, lehtomaki=True, verbose=True, conv_metric='diis'):
     """
     Main LPS-RSCF Solver Loop.
     
@@ -35,6 +35,8 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
         tuple: (SCF_E, SCF_D, SCF_ITER)
     """
     
+    if conv_metric not in ['diis', 'density']:
+        raise ValueError("conv_metric must be either 'diis' or 'density'")
     psi4.core.set_output_file('output.dat', False)
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
     mints = psi4.core.MintsHelper(wfn.basisset())
@@ -108,9 +110,19 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
 
     diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
 
+    D_prev = D.clone()
+
     for SCF_ITER in range(1, maxiter + 1):
         
         D_old = D
+
+        if conv_metric == 'density' and SCF_ITER > 1:
+            D_diff = D.clone()
+            D_diff.subtract(D_prev)
+            dRMS_density = D_diff.rms()
+
+        D_prev = D.clone()
+
         J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
         J.np[:] = J_np
         if lehtomaki:
@@ -145,8 +157,14 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
         diis_e = psi4.core.triplet(F, D, S, False, False, False)
         diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
         diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
-        dRMS = diis_e.rms()
-        d_conv_list.append(np.log10(dRMS))
+
+        if conv_metric == 'diis' or SCF_ITER == 1:
+            dRMS = diis_e.rms()
+        elif conv_metric == 'density':
+            dRMS = dRMS_density
+        
+        dRMS_val = dRMS if dRMS > 0 else 1e-16
+        d_conv_list.append(np.log10(dRMS_val))
 
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
@@ -154,13 +172,17 @@ def lps_solver(mol, E_conv, D_conv, maxiter, TP, lam, EXC, FA, damp, DIIS, Guess
             SCF_E += 0.5 * J.vector_dot(D) * ( - FA[1] / nel )
         SCF_E += g_e
         SCF_E += Enuc
-        e_conv_list.append(np.log10(abs(SCF_E - Eold)))
+        
+        e_diff = abs(SCF_E - Eold)
+        e_diff_val = e_diff if e_diff > 0 else 1e-16
+        e_conv_list.append(np.log10(e_diff_val))
         e_list.append(SCF_E)
 
         output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS)
         psi4.core.print_out(output_str)
         if verbose:
             print(output_str.strip())
+            
         if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
             break
         
