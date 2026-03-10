@@ -83,7 +83,7 @@ pra,
 \section{Main Text}
 
 A local hybrid exchange functional is given by
-\begin{equation}
+\begin{equation}\label{eq: Local Hybrid Exchange}
     E^{\text{LH}}_{\text{x}}
     =
     \int
@@ -107,7 +107,14 @@ where the integrand is a mixture of two exchange density energies weighed by a l
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}',
 \end{equation}
-where $\gamma(\mathbf{r};\mathbf{r}')=2\sum^{N/2}_{i=1}\varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')$ is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}.
+where 
+\begin{equation}
+    \gamma(\mathbf{r},\mathbf{r}')
+    =
+    2\sum^{N/2}_{i=1}
+    \varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')
+\end{equation}
+is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}.
 
 Here, we propose a new local mixing function for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
 \begin{equation}
@@ -132,18 +139,60 @@ Both exchange densities are manifestly non-positive and equivalent for one-elect
 \begin{equation}
     e_{\text{x}}^{\text{FA}}
     >
-    e_{\text{x}}^{\text{exact}},
+    e_{\text{x}}^{\text{exact}}
+    \quad
+    \text{when}
     \quad
     N>2
 \end{equation}
-since $e_{\text{x}}^{\text{FA}}$ is scaled down by $N$, therefore,
+by considering corresponding exchange holes. The exchange hole is defined via
+\begin{equation}
+    E_{\text{x}}
+    =
+    \frac{1}{2}
+    \int\int
+    \frac
+    {\rho(\mathbf{r})\rho_{\text{x}}(\mathbf{r},\mathbf{r}')}
+    {|\mathbf{r}-\mathbf{r}'|}
+\end{equation}
+leading to expressions for the exact and the Fermi--Amaldi exchange holes:
+\begin{equation}
+    \rho^{\text{exact}}_{\text{x}}(\mathbf{r},\mathbf{r}')
+    =
+    -
+    \frac
+    {|\gamma(\mathbf{r},\mathbf{r}')|^2}
+    {2\rho(\mathbf{r})}
+\end{equation}
+and 
+\begin{equation}
+    \rho^{\text{FA}}_{\text{x}}(\mathbf{r}')
+    =
+    -
+    \frac{\rho(\mathbf{r}')}{N}.
+\end{equation}
+Now, compare diagonal elements ($\mathbf{r}=\mathbf{r}'$) of the exact exchange hole to the Fermi--Amaldi exchange hole:
+\begin{equation}
+    \rho^{\text{FA}}_{\text{x}}
+    >
+    \left.
+    \rho^{\text{exact}}_{\text{x}}
+    \right|_{\mathbf{r}=\mathbf{r}'}
+    \quad
+    \text{when}
+    \quad
+    N
+    >
+    2.
+\end{equation}
+Since, $\rho^{\text{exact}}_{\text{x}}$ off-diagonal elements are negative, adding them on to the diagonal part makes $\rho^{\text{exact}}_{\text{x}}$ even more negative. Thus, for any number of electrons:
 \begin{equation}
     e_{\text{x}}^{\text{exact}}
     \leq
     e_{\text{x}}^{\text{FA}}
     \leq0.
 \end{equation}
-Combining these properties, we find that the proposed LMF is bound between zero and one:
+Combining these observations, we find that the proposed LMF is bound between zero and one:
 \begin{equation}
     0
     \leq
@@ -152,7 +201,7 @@ Combining these properties, we find that the proposed LMF is bound between zero 
     \leq
     1.
 \end{equation}
-This inequality ensures that one hundred percent of exact exchange is employed for one-electron systems, satisfying the one-electron constraint~\cite{Jaramillo.2003.JCP.118.1068,Maier.2018.WIRCMS.9.e1378}.
+This inequality ensures that one hundred percent of exact exchange is employed in Eq.~\eqref{eq: Local Hybrid Exchange} for one-electron systems, satisfying the one-electron constraint~\cite{Jaramillo.2003.JCP.118.1068,Maier.2018.WIRCMS.9.e1378}.
 
 A particular case of a one-electron limit, i.e., the asymptotic limit ($r\to\infty$) where the exact exchange must cancel out an excessive self-repulsion of the Coulomb potential, is also satisfied:
 \begin{equation}
