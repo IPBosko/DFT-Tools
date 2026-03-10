@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Asymptotic Bounds.md",
+                "file": "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Asymptotic Bounds"
+              "title": "Hybrid Density Functionals"
             }
           }
         ]
