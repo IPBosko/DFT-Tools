@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Quantum Chemistry/Exchange Energy.md",
+                "file": "Asymptotic Bounds.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Exchange Energy"
+              "title": "Asymptotic Bounds"
             }
           }
         ]
@@ -172,6 +172,7 @@
   },
   "active": "d543c294211f58f1",
   "lastOpenFiles": [
+    "Quantum Chemistry/Exchange Energy.md",
     "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
     "Asymptotic Bounds.md",
     "Untitled",
@@ -200,7 +201,6 @@
     "Physics",
     "Quantum Chemistry/Density Functional Theory/Orbital-Free DFT.md",
     "Quantum Chemistry/Density Functional Theory/Local Density Approximation.md",
-    "Quantum Chemistry/Density Functional Theory/Density Functional Theory.md",
     "Quantum Chemistry/Density Functional Theory",
     "Calculus",
     "Untitled.canvas",

@@ -82,21 +82,7 @@ pra,
 
 \section{Main Text}
 
-A local hybrid exchange functional is given by
-\begin{equation}\label{eq: Local Hybrid Exchange}
-    E^{\text{LH}}_{\text{x}}
-    =
-    \int
-    \left\{
-        g(\textbf{r})
-        e_{\text{x}}^{\text{exact}}(\textbf{r})
-        +
-        [1-g(\textbf{r})]
-        e_{\text{x}}^{\text{SL}}(\textbf{r})
-    \right\}
-    d\textbf{r},
-\end{equation}
-where the integrand is a mixture of two exchange density energies weighed by a local mixing function (LMF), $g(\mathbf{r})$, which is position-dependent. The $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ quantities are a semi-local and the exact exchange energy densities, respectively. The exact exchange density (closed-shell) is given by
+Consider the exact exchange energy density (closed-shell):
 \begin{equation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
@@ -114,15 +100,7 @@ where
     2\sum^{N/2}_{i=1}
     \varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')
 \end{equation}
-is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}.
-
-Here, we propose a new local mixing function for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
-\begin{equation}
-    g(\mathbf{r})
-    =
-    \frac{e_{\text{x}}^{\text{FA}}}{e_{\text{x}}^{\text{exact}}}.
-\end{equation}
-The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density is expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
+is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}, and the Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
 \begin{equation}
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
     =
@@ -134,6 +112,44 @@ The Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy densit
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
 \end{equation} 
+Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|e_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|e_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
+
+For one-orbital systems (one-electron and two-electron singlet), two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
+\begin{equation}
+    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    =
+    e_{\text{x}}^{\text{FA}}(\mathbf{r})
+    \quad
+    N\leq 2
+    \quad
+    \text{for all }
+    \mathbf{r}.
+\end{equation}
+
+\section{SCRAP}
+
+A local hybrid exchange functional is given by
+\begin{equation}\label{eq: Local Hybrid Exchange}
+    E^{\text{LH}}_{\text{x}}
+    =
+    \int
+    \left\{
+        g(\textbf{r})
+        e_{\text{x}}^{\text{exact}}(\textbf{r})
+        +
+        [1-g(\textbf{r})]
+        e_{\text{x}}^{\text{SL}}(\textbf{r})
+    \right\}
+    d\textbf{r},
+\end{equation}
+where the integrand is a mixture of two exchange density energies weighed by a local mixing function (LMF), $g(\mathbf{r})$, which is position-dependent. The $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ quantities are a semi-local and the exact exchange energy densities, respectively. 
+
+Here, we propose a new local mixing function for local hybrid functionals. This LMF is the ratio between the Fermi--Amaldi and the exact exchange energy densities:
+\begin{equation}
+    g(\mathbf{r})
+    =
+    \frac{e_{\text{x}}^{\text{FA}}}{e_{\text{x}}^{\text{exact}}}.
+\end{equation}
 
 Both exchange densities are manifestly non-positive and equivalent for one-electron systems and two-electron singlets. Although, one can show that
 \begin{equation}
