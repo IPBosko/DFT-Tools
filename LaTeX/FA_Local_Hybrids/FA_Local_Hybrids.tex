@@ -112,10 +112,9 @@ is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.de
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
 \end{equation} 
-Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|e_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|e_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
 
 For one-orbital systems (one-electron and two-electron singlet), two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
-\begin{equation}
+\begin{equation}\label{eq: One-Orbital Relation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
@@ -125,6 +124,34 @@ For one-orbital systems (one-electron and two-electron singlet), two quantities 
     \text{for all }
     \mathbf{r}.
 \end{equation}
+For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relation similar to Eq.~\eqref{eq: One-Orbital Relation}. Which is convenient to do analysing the corresponding exchange holes.
+The exchange hole is defined via
+\begin{equation}
+    e_{\text{x}}(\mathbf{r})
+    =
+    \frac{1}{2}
+    \int
+    \frac
+    {\rho(\mathbf{r})\rho_{\text{x}}(\mathbf{r},\mathbf{r}')}
+    {|\mathbf{r}-\mathbf{r}'|}
+    d\mathbf{r}'
+\end{equation}
+leading to expressions for the exact and the Fermi--Amaldi exchange holes, respectively:
+\begin{gather}
+    \rho^{\text{exact}}_{\text{x}}(\mathbf{r},\mathbf{r}')
+    =
+    -
+    \frac{1}{2}
+    \frac
+    {|\gamma(\mathbf{r},\mathbf{r}')|^2}
+    {\rho(\mathbf{r})},\\[10pt]
+    \rho^{\text{FA}}_{\text{x}}(\mathbf{r}')
+    =
+    -
+    \frac{1}{N}
+    \rho(\mathbf{r}').
+\end{gather}
+Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
 
 \section{SCRAP}
 
@@ -161,34 +188,7 @@ Both exchange densities are manifestly non-positive and equivalent for one-elect
     \quad
     N>2
 \end{equation}
-by considering corresponding exchange holes. The exchange hole is defined via
-\begin{equation}
-    E_{\text{x}}
-    =
-    \frac{1}{2}
-    \int\int
-    \frac
-    {\rho(\mathbf{r})\rho_{\text{x}}(\mathbf{r},\mathbf{r}')}
-    {|\mathbf{r}-\mathbf{r}'|}
-    d\mathbf{r}
-    d\mathbf{r}'
-\end{equation}
-leading to expressions for the exact and the Fermi--Amaldi exchange holes:
-\begin{equation}
-    \rho^{\text{exact}}_{\text{x}}(\mathbf{r},\mathbf{r}')
-    =
-    -
-    \frac
-    {|\gamma(\mathbf{r},\mathbf{r}')|^2}
-    {2\rho(\mathbf{r})}
-\end{equation}
-and 
-\begin{equation}
-    \rho^{\text{FA}}_{\text{x}}(\mathbf{r}')
-    =
-    -
-    \frac{\rho(\mathbf{r}')}{N}.
-\end{equation}
+by considering corresponding exchange holes. 
 Now, compare diagonal elements ($\mathbf{r}=\mathbf{r}'$) of the exact exchange hole to the Fermi--Amaldi exchange hole:
 \begin{equation}
     \rho^{\text{FA}}_{\text{x}}
