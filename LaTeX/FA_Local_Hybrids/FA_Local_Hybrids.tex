@@ -151,7 +151,44 @@ leading to expressions for the exact and the Fermi--Amaldi exchange holes, respe
     \frac{1}{N}
     \rho(\mathbf{r}')\label{eq: FA Exchange Hole}.
 \end{gather}
-Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
+% Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
+
+When $N>2$, we cannot establish an unambiguous inequality between these exchnage holes for all $\mathbf{r}$. While, by Cauchy--Schwarz inequality:
+\begin{equation}
+    \rho(\mathbf{r})\rho(\mathbf{r}')
+    \geq
+    |\gamma(\mathbf{r},\mathbf{r}')|^2
+    \quad
+    N>2
+    \quad
+    \text{for all }
+    \mathbf{r},
+\end{equation}
+the Fermi--Amaldi prefactor $1/N$ decays faster than the constant prefactor $1/2$ of the exact exchange hole. Therefore, there are some renges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one hole and others dominated by another.
+
+Next, in the limit of infinitesimaly small interelectronic distances ($r\to r'$) we have:
+\begin{equation}
+    |\gamma(\mathbf{r},\mathbf{r})|^2
+    =
+    \rho(\mathbf{r})^2,
+\end{equation}
+consequently, the depths of the exchang holes are 
+\begin{equation}
+    \rho_{\text{x}}^{\text{exact}}(\mathbf{r})
+    =
+    -
+    \frac{\rho(\mathbf{r})}{2}
+\end{equation}
+and
+\begin{equation}
+    \rho_{\text{x}}^{\text{FA}}(\mathbf{r})
+    =
+    -
+    \frac{\rho(\mathbf{r})}{N}
+\end{equation}
+thus, for $N>2$, the well of the exchange hole is dominated by the exact exchange hole.
+
+In the limit of infinitely large nterelectromic distances ($|r - r'| = \infty$)
 
 Effectively, comparing equations~\eqref{eq: Exact Exchange Hole} and~\eqref{eq: FA Exchange Hole}, we are looking for zeros of the equation:
 \begin{equation}
@@ -166,26 +203,6 @@ Effectively, comparing equations~\eqref{eq: Exact Exchange Hole} and~\eqref{eq: 
     \quad\quad
     N>2,
 \end{equation}
-where, by Cauchy--Schwarz inequality:
-\begin{equation}
-    \rho(\mathbf{r})\rho(\mathbf{r}')
-    \geq
-    |\gamma(\mathbf{r},\mathbf{r}')|^2
-    \quad
-    N>2
-    \quad
-    \text{for all }
-    \mathbf{r}.
-\end{equation}
-In the limit of infinitesimaly small interelectronic distances:
-\begin{equation}
-    \lim_{|\mathbf{r}-\mathbf{r}'|\to 0}
-    \gamma(\mathbf{r},\mathbf{r}')
-    \gamma(\mathbf{r}',\mathbf{r})
-    =
-    \rho(\mathbf{r})\rho(\mathbf{r}'),
-\end{equation}
-thus, the well of the exchange hole is dominated by the exact exchange hole.
 
 \section{SCRAP}
 
