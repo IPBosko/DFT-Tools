@@ -124,7 +124,8 @@ For one-orbital systems (one-electron and two-electron singlet), two quantities 
     \text{for all }
     \mathbf{r}.
 \end{equation}
-For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relation similar to Eq.~\eqref{eq: One-Orbital Relation}. Which is convenient to do analysing the corresponding exchange holes.
+For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relation similar to Eq.~\eqref{eq: One-Orbital Relation}. This is conveniently done by analyzing the corresponding exchange holes.
+
 The exchange hole is defined via
 \begin{equation}
     e_{\text{x}}(\mathbf{r})
@@ -153,7 +154,7 @@ leading to expressions for the exact and the Fermi--Amaldi exchange holes, respe
 \end{gather}
 % Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
 
-When $N>2$, we cannot establish an unambiguous inequality between these exchnage holes for all $\mathbf{r}$. While, by Cauchy--Schwarz inequality:
+When $N>2$, we cannot establish an unambiguous inequality between these exchnage holes for all $\mathbf{r}$. Although the Cauchy--Schwarz inequality states that
 \begin{equation}
     \rho(\mathbf{r})\rho(\mathbf{r}')
     \geq
@@ -164,17 +165,17 @@ When $N>2$, we cannot establish an unambiguous inequality between these exchnage
     \text{for all }
     \mathbf{r},
 \end{equation}
-the Fermi--Amaldi prefactor $1/N$ decays faster than the constant prefactor $1/2$ of the exact exchange hole. Therefore, there are some renges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one hole and others dominated by another.
+the Fermi--Amaldi prefactor, $1/N$, decays faster than the constant prefactor, $1/2$, of the exact exchange hole. Therefore, there are some ranges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one hole and others dominated by another.
 
-Next, in the limit of infinitesimaly small interelectronic distances ($r\to r'$) we have:
+As such, in the limit of infinitesimally small interelectronic distances ($r\to r'$) we have:
 \begin{equation}
     |\gamma(\mathbf{r},\mathbf{r})|^2
     =
     \rho(\mathbf{r})^2,
 \end{equation}
-consequently, the depths of the exchang holes are 
+consequently, the depths of the exchange holes are 
 \begin{equation}
-    \rho_{\text{x}}^{\text{exact}}(\mathbf{r})
+    \rho_{\text{x}}^{\text{exact}}(\mathbf{r}, \mathbf{r})
     =
     -
     \frac{\rho(\mathbf{r})}{2}
@@ -188,21 +189,40 @@ and
 \end{equation}
 thus, for $N>2$, the well of the exchange hole is dominated by the exact exchange hole.
 
-In the limit of infinitely large nterelectromic distances ($|r - r'| = \infty$)
-
-Effectively, comparing equations~\eqref{eq: Exact Exchange Hole} and~\eqref{eq: FA Exchange Hole}, we are looking for zeros of the equation:
+The long-range behavior of the molecular orbital~\cite{Morrell.1975.JCP.62.549} is given by
 \begin{equation}
-    N
-    |\gamma(\mathbf{r},\mathbf{r}')|^2
-    -
-    2
-    \rho(\mathbf{r})
-    \rho(\mathbf{r}')
-    =
-    0
-    \quad\quad
-    N>2,
+    \phi_i(\mathbf{r})
+    \sim
+    \exp{\left[-(-2\varepsilon_i)^{1/2}r\right]},
 \end{equation}
+where $\varepsilon_i$ is the corresponding eigenvalue. Thus, in the limit of infinitely large interelectromic distances ($|\mathbf{r} - \mathbf{r}'| = \infty$),  the electron density is given by:
+\begin{equation}
+    \rho(\mathbf{r})
+    \sim
+    \exp{\left[-2(-2\varepsilon_i)^{1/2}r\right]}
+\end{equation}
+and the one-electron reduced density matrix is given by:
+\begin{equation}
+    \gamma(\mathbf{r},\mathbf{r}')
+    \sim
+    \exp{\left[-2(-2\varepsilon_i)^{1/2}r\right]}
+    \exp{\left[-2(-2\varepsilon_i)^{1/2}r'\right]}.
+\end{equation}
+
+
+% Effectively, comparing equations~\eqref{eq: Exact Exchange Hole} and~\eqref{eq: FA Exchange Hole}, we are looking for zeros of the equation:
+% \begin{equation}
+%     N
+%     |\gamma(\mathbf{r},\mathbf{r}')|^2
+%     -
+%     2
+%     \rho(\mathbf{r})
+%     \rho(\mathbf{r}')
+%     =
+%     0
+%     \quad\quad
+%     N>2,
+% \end{equation}
 
 \section{SCRAP}
 
