@@ -126,7 +126,7 @@ For one-orbital systems (one-electron and two-electron singlet), two quantities 
 \end{equation}
 For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relation similar to Eq.~\eqref{eq: One-Orbital Relation}. This is conveniently done by analyzing the corresponding exchange holes.
 
-The exchange hole is defined via
+The exchange hole, $\rho_{\text{x}}(\mathbf{r},\mathbf{r}')$, is defined via
 \begin{equation}
     e_{\text{x}}(\mathbf{r})
     =
@@ -152,6 +152,7 @@ leading to expressions for the exact and the Fermi--Amaldi exchange holes, respe
     \frac{1}{N}
     \rho(\mathbf{r}')\label{eq: FA Exchange Hole}.
 \end{gather}
+Both exchange holes are strictly non-positive, and both are integrating to $-1$ over all space.
 % Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
 
 When $N>2$, we cannot establish an unambiguous inequality between these exchnage holes for all $\mathbf{r}$. Although the Cauchy--Schwarz inequality states that
@@ -167,7 +168,7 @@ When $N>2$, we cannot establish an unambiguous inequality between these exchnage
 \end{equation}
 the Fermi--Amaldi prefactor, $1/N$, decays faster than the constant prefactor, $1/2$, of the exact exchange hole. Therefore, there are some ranges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one hole and others dominated by another.
 
-As such, in the limit of infinitesimally small interelectronic distances ($r\to r'$) we have:
+As such, in the limit of infinitesimally small interelectronic distances ($|\mathbf{r}|\to |\mathbf{r}'|$) we have:
 \begin{equation}
     |\gamma(\mathbf{r},\mathbf{r})|^2
     =
@@ -189,26 +190,25 @@ and
 \end{equation}
 thus, for $N>2$, the well of the exchange hole is dominated by the exact exchange hole.
 
-The long-range behavior of the molecular orbital~\cite{Morrell.1975.JCP.62.549} is given by
+Regarding the behavior far from the reference electron, the asymptotic decay of the Fermi--Amaldi hole follows that of the total electron density at large distances:
 \begin{equation}
-    \phi_i(\mathbf{r})
+    \rho_{\text{x}}^{\text{FA}}(\mathbf{r}')
     \sim
-    \exp{\left[-(-2\varepsilon_i)^{1/2}r\right]},
+    -
+    \frac{1}{N}
+    \exp\left(-2\sqrt{2I_{\text{min}}}|\mathbf{r}'|\right),
 \end{equation}
-where $\varepsilon_i$ is the corresponding eigenvalue. Thus, in the limit of infinitely large interelectromic distances ($|\mathbf{r} - \mathbf{r}'| = \infty$),  the electron density is given by:
+where $I_{\text{min}}$ is the exact first ionization energy~\cite{Morrell.1975.JCP.62.549,Parr.1989.density}. For the exact exchange hole, the asymptotic behavior is given by:
 \begin{equation}
-    \rho(\mathbf{r})
+    \rho_{\text{x}}^{\text{exact}}(\mathbf{r},\mathbf{r}')
     \sim
-    \exp{\left[-2(-2\varepsilon_i)^{1/2}r\right]}
+    -
+    \frac
+    {2|\varphi_{\text{HOMO}}(\mathbf{r})|^2}
+    {\rho(\mathbf{r})}
+    \exp\left(-2\sqrt{2I_{\text{min}}}|\mathbf{r}'|\right),
 \end{equation}
-and the one-electron reduced density matrix is given by:
-\begin{equation}
-    \gamma(\mathbf{r},\mathbf{r}')
-    \sim
-    \exp{\left[-(-2\varepsilon_i)^{1/2}r\right]}
-    \exp{\left[-(-2\varepsilon_i)^{1/2}r'\right]}.
-\end{equation}
-Therefore, at large distances from the reference electron, both exchange holes decay euivalently. 
+given that of the molecular orbital~\cite{Morrell.1975.JCP.62.549,Parr.1989.density}.
 
 
 % Effectively, comparing equations~\eqref{eq: Exact Exchange Hole} and~\eqref{eq: FA Exchange Hole}, we are looking for zeros of the equation:
