@@ -124,7 +124,28 @@ For one-orbital systems (one-electron and two-electron singlet), two quantities 
     \text{for all }
     \mathbf{r}.
 \end{equation}
-For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relation similar to Eq.~\eqref{eq: One-Orbital Relation}. This is conveniently done by analyzing the corresponding exchange holes.
+For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchnage energy densities. Thus, by the Cauchy--Schwarz inequality:
+\begin{equation}
+    \rho(\mathbf{r})\rho(\mathbf{r}')
+    \geq
+    |\gamma(\mathbf{r},\mathbf{r}')|^2
+    \quad
+    N>2
+    \quad
+    \text{for all }
+    \mathbf{r},
+\end{equation}
+while the Fermi--Amaldi prefactor, $1/N$, decays faster than the constant prefactor, $1/2$, of the exact exchange hole. Therefore, there are some ranges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one energy density and others dominated by another.
+
+As $|\mathbf{r}|\to\infty$ while $|\mathbf{r}'|$ is fixed, both exchange energy densities are approaching the sme limit:
+\begin{equation}
+    e_{\text{x}}^{\text{exact}}(|\mathbf{r}|\to\infty)
+    =
+    e_{\text{x}}^{\text{FA}}(|\mathbf{r}|\to\infty)
+    \sim
+    -
+    \frac{\rho(\mathbf{r})}{2|\mathbf{r}|}.
+\end{equation}
 
 The exchange hole, $\rho_{\text{x}}(\mathbf{r},\mathbf{r}')$, is defined via
 \begin{equation}
@@ -154,19 +175,6 @@ leading to expressions for the exact and the Fermi--Amaldi exchange holes, respe
 \end{gather}
 Both exchange holes are strictly non-positive, and both are integrating to $-1$ over all space.
 % Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
-
-When $N>2$, we cannot establish an unambiguous inequality between these exchnage holes for all $\mathbf{r}$. Although the Cauchy--Schwarz inequality states that
-\begin{equation}
-    \rho(\mathbf{r})\rho(\mathbf{r}')
-    \geq
-    |\gamma(\mathbf{r},\mathbf{r}')|^2
-    \quad
-    N>2
-    \quad
-    \text{for all }
-    \mathbf{r},
-\end{equation}
-the Fermi--Amaldi prefactor, $1/N$, decays faster than the constant prefactor, $1/2$, of the exact exchange hole. Therefore, there are some ranges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one hole and others dominated by another.
 
 As such, in the limit of infinitesimally small interelectronic distances ($|\mathbf{r}|\to |\mathbf{r}'|$) we have:
 \begin{equation}
