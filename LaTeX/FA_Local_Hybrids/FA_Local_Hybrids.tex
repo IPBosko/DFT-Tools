@@ -100,7 +100,7 @@ where
     2\sum^{N/2}_{i=1}
     \varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')
 \end{equation}
-is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}, and the Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
+is the one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}, and the Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
 \begin{equation}
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
     =
@@ -113,7 +113,7 @@ is one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.de
     d\mathbf{r}'.
 \end{equation} 
 
-For one-orbital systems (one-electron and two-electron singlet), two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
+For one-orbital systems (one-electron and two-electron singlet), the two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
 \begin{equation}\label{eq: One-Orbital Relation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
@@ -124,7 +124,7 @@ For one-orbital systems (one-electron and two-electron singlet), two quantities 
     \text{for all }
     \mathbf{r}.
 \end{equation}
-For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchnage energy densities. Thus, by the Cauchy--Schwarz inequality:
+For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchange energy densities. By the Cauchy--Schwarz inequality:
 \begin{equation}
     \rho(\mathbf{r})\rho(\mathbf{r}')
     \geq
@@ -133,90 +133,104 @@ For systems with more than one molecular orbital, the spatial behavior of both q
     N>2
     \quad
     \text{for all }
-    \mathbf{r},
+    \mathbf{r}, \mathbf{r}'.
 \end{equation}
-while the Fermi--Amaldi prefactor, $1/N$, decays faster than the constant prefactor, $1/2$, of the exact exchange hole. Therefore, there are some ranges of $|\mathbf{r}-\mathbf{r}'|$ dominated by one energy density and others dominated by another.
+However, the Fermi--Amaldi global prefactor, $1/(2N)$, is strictly smaller than the exact exchange prefactor, $1/4$, when $N>2$. Because these opposing conditions compete, neither energy density integrand strictly dominates the other everywhere in space.
 
-As $|\mathbf{r}|\to\infty$ while $|\mathbf{r}'|$ is fixed, both exchange energy densities are approaching the sme limit:
+As $|\mathbf{r}|\to\infty$, the denominator can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that both exchange energy densities approach the same asymptotic limit:
 \begin{equation}
-    e_{\text{x}}^{\text{exact}}(|\mathbf{r}|\to\infty)
-    =
-    e_{\text{x}}^{\text{FA}}(|\mathbf{r}|\to\infty)
+    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    \sim
+    e_{\text{x}}^{\text{FA}}(\mathbf{r})
     \sim
     -
     \frac{\rho(\mathbf{r})}{2|\mathbf{r}|}.
 \end{equation}
-
-The exchange hole, $\rho_{\text{x}}(\mathbf{r},\mathbf{r}')$, is defined via
+Thus, in the asymptotic limit:
 \begin{equation}
-    e_{\text{x}}(\mathbf{r})
+    \lim_{|\mathbf{r}|\to\infty}
+    \frac{e_{\text{x}}^{\text{FA}}}
+    {e_{\text{x}}^{\text{exact}}}
     =
-    \frac{1}{2}
-    \int
-    \frac
-    {\rho(\mathbf{r})\rho_{\text{x}}(\mathbf{r},\mathbf{r}')}
-    {|\mathbf{r}-\mathbf{r}'|}
-    d\mathbf{r}'
+    1.
 \end{equation}
-leading to expressions for the exact and the Fermi--Amaldi exchange holes, respectively:
-\begin{gather}
-    \rho^{\text{exact}}_{\text{x}}(\mathbf{r},\mathbf{r}')
-    =
-    -
-    \frac{1}{2}
-    \frac
-    {|\gamma(\mathbf{r},\mathbf{r}')|^2}
-    {\rho(\mathbf{r})}\label{eq: Exact Exchange Hole},\\[10pt]
-    \rho^{\text{FA}}_{\text{x}}(\mathbf{r}')
-    =
-    -
-    \frac{1}{N}
-    \rho(\mathbf{r}')\label{eq: FA Exchange Hole}.
-\end{gather}
-Both exchange holes are strictly non-positive, and both are integrating to $-1$ over all space.
+
+Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r}' \to \mathbf{r}$), the spatial parts of both integrands approach equality:
+\begin{equation}
+    |\gamma(\mathbf{r},\mathbf{r}')|^2
+    \to
+    \rho(\mathbf{r})\rho(\mathbf{r}')
+    \quad
+    \text{as}
+    \quad
+    \mathbf{r}'
+    \to \mathbf{r}.
+\end{equation}
+However, because the exact exchange prefactor, $1/4$, is larger than the Fermi--Amaldi prefactor, $1/(2N)$, for $N>2$, the region where $|\mathbf{r}-\mathbf{r}'| \to 0$ is dominated by the exact exchange energy density. 
+
+% The exchange hole, $\rho_{\text{x}}(\mathbf{r},\mathbf{r}')$, is defined via
+% \begin{equation}
+%     e_{\text{x}}(\mathbf{r})
+%     =
+%     \frac{1}{2}
+%     \int
+%     \frac
+%     {\rho(\mathbf{r})\rho_{\text{x}}(\mathbf{r},\mathbf{r}')}
+%     {|\mathbf{r}-\mathbf{r}'|}
+%     d\mathbf{r}'
+% \end{equation}
+% leading to expressions for the exact and the Fermi--Amaldi exchange holes, respectively:
+% \begin{gather}
+%     \rho^{\text{exact}}_{\text{x}}(\mathbf{r},\mathbf{r}')
+%     =
+%     -
+%     \frac{1}{2}
+%     \frac
+%     {|\gamma(\mathbf{r},\mathbf{r}')|^2}
+%     {\rho(\mathbf{r})}\label{eq: Exact Exchange Hole},\\[10pt]
+%     \rho^{\text{FA}}_{\text{x}}(\mathbf{r}')
+%     =
+%     -
+%     \frac{1}{N}
+%     \rho(\mathbf{r}')\label{eq: FA Exchange Hole}.
+% \end{gather}
+% Both exchange holes are strictly non-positive, and both are integrating to $-1$ over all space.
 % Both quantities are strictly non-positive, hence, we will consider their non-negative absolute values, $|\rho_{\text{x}}^{\text{exact}}(\mathbf{r})|$ and $|\rho_{\text{x}}^{\text{FA}}(\mathbf{r})|$, for convenience. 
+% consequently, the depths of the exchange holes are 
+% \begin{equation}
+%     \rho_{\text{x}}^{\text{exact}}(\mathbf{r}, \mathbf{r})
+%     =
+%     -
+%     \frac{\rho(\mathbf{r})}{2}
+% \end{equation}
+% and
+% \begin{equation}
+%     \rho_{\text{x}}^{\text{FA}}(\mathbf{r})
+%     =
+%     -
+%     \frac{\rho(\mathbf{r})}{N}
+% \end{equation}
+% thus, for $N>2$, the well of the exchange hole is dominated by the exact exchange hole.
 
-As such, in the limit of infinitesimally small interelectronic distances ($|\mathbf{r}|\to |\mathbf{r}'|$) we have:
-\begin{equation}
-    |\gamma(\mathbf{r},\mathbf{r})|^2
-    =
-    \rho(\mathbf{r})^2,
-\end{equation}
-consequently, the depths of the exchange holes are 
-\begin{equation}
-    \rho_{\text{x}}^{\text{exact}}(\mathbf{r}, \mathbf{r})
-    =
-    -
-    \frac{\rho(\mathbf{r})}{2}
-\end{equation}
-and
-\begin{equation}
-    \rho_{\text{x}}^{\text{FA}}(\mathbf{r})
-    =
-    -
-    \frac{\rho(\mathbf{r})}{N}
-\end{equation}
-thus, for $N>2$, the well of the exchange hole is dominated by the exact exchange hole.
-
-Regarding the behavior far from the reference electron, the asymptotic decay of the Fermi--Amaldi hole follows that of the total electron density at large distances:
-\begin{equation}
-    \rho_{\text{x}}^{\text{FA}}(\mathbf{r}')
-    \sim
-    -
-    \frac{1}{N}
-    \exp\left(-2\sqrt{2I_{\text{min}}}|\mathbf{r}'|\right),
-\end{equation}
-where $I_{\text{min}}$ is the exact first ionization energy~\cite{Morrell.1975.JCP.62.549,Parr.1989.density}. For the exact exchange hole, the asymptotic behavior is given by:
-\begin{equation}
-    \rho_{\text{x}}^{\text{exact}}(\mathbf{r},\mathbf{r}')
-    \sim
-    -
-    \frac
-    {2|\varphi_{\text{HOMO}}(\mathbf{r})|^2}
-    {\rho(\mathbf{r})}
-    \exp\left(-2\sqrt{2I_{\text{min}}}|\mathbf{r}'|\right),
-\end{equation}
-given that of the molecular orbital~\cite{Morrell.1975.JCP.62.549,Parr.1989.density}.
+% Regarding the behavior far from the reference electron, the asymptotic decay of the Fermi--Amaldi hole follows that of the total electron density at large distances:
+% \begin{equation}
+%     \rho_{\text{x}}^{\text{FA}}(\mathbf{r}')
+%     \sim
+%     -
+%     \frac{1}{N}
+%     \exp\left(-2\sqrt{2I_{\text{min}}}|\mathbf{r}'|\right),
+% \end{equation}
+% where $I_{\text{min}}$ is the exact first ionization energy~\cite{Morrell.1975.JCP.62.549,Parr.1989.density}. For the exact exchange hole, the asymptotic behavior is given by:
+% \begin{equation}
+%     \rho_{\text{x}}^{\text{exact}}(\mathbf{r},\mathbf{r}')
+%     \sim
+%     -
+%     \frac
+%     {2|\varphi_{\text{HOMO}}(\mathbf{r})|^2}
+%     {\rho(\mathbf{r})}
+%     \exp\left(-2\sqrt{2I_{\text{min}}}|\mathbf{r}'|\right),
+% \end{equation}
+% given that of the molecular orbital~\cite{Morrell.1975.JCP.62.549,Parr.1989.density}.
 
 
 % Effectively, comparing equations~\eqref{eq: Exact Exchange Hole} and~\eqref{eq: FA Exchange Hole}, we are looking for zeros of the equation:
@@ -233,33 +247,23 @@ given that of the molecular orbital~\cite{Morrell.1975.JCP.62.549,Parr.1989.dens
 %     N>2,
 % \end{equation}
 
-\section{SCRAP}
+% \section{SCRAP}
 
-A local hybrid exchange functional is given by
-\begin{equation}\label{eq: Local Hybrid Exchange}
-    E^{\text{LH}}_{\text{x}}
-    =
-    \int
-    \left\{
-        g(\textbf{r})
-        e_{\text{x}}^{\text{exact}}(\textbf{r})
-        +
-        [1-g(\textbf{r})]
-        e_{\text{x}}^{\text{SL}}(\textbf{r})
-    \right\}
-    d\textbf{r},
-\end{equation}
-where the integrand is a mixture of two exchange density energies weighed by a local mixing function (LMF), $g(\mathbf{r})$, which is position-dependent. The $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ quantities are a semi-local and the exact exchange energy densities, respectively. 
-
-A particular case of a one-electron limit, i.e., the asymptotic limit ($r\to\infty$) where the exact exchange must cancel out an excessive self-repulsion of the Coulomb potential, is also satisfied:
-\begin{equation}
-    \lim_{r\to\infty}
-    \frac{e_{\text{x}}^{\text{FA}}}
-    {e_{\text{x}}^{\text{exact}}}
-    =
-    1
-\end{equation}
-since both energy densities approach $-1/2r$ as $r\to\infty$.
+% A local hybrid exchange functional is given by
+% \begin{equation}\label{eq: Local Hybrid Exchange}
+%     E^{\text{LH}}_{\text{x}}
+%     =
+%     \int
+%     \left\{
+%         g(\textbf{r})
+%         e_{\text{x}}^{\text{exact}}(\textbf{r})
+%         +
+%         [1-g(\textbf{r})]
+%         e_{\text{x}}^{\text{SL}}(\textbf{r})
+%     \right\}
+%     d\textbf{r},
+% \end{equation}
+% where the integrand is a mixture of two exchange density energies weighed by a local mixing function (LMF), $g(\mathbf{r})$, which is position-dependent. The $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ quantities are a semi-local and the exact exchange energy densities, respectively. 
 
 \bibliography{../bibliography}
 \end{document}
