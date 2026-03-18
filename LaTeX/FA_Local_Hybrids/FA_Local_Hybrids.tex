@@ -65,10 +65,9 @@ pra,
 
 \begin{document}
 
-\title{Fermi--Amaldi-Based Local Mixing Function}% Force line breaks with \\
+\title{Fermi--Amaldi-Based Local Mixing Function}
 
 \author{Ivan P. Bosko and Viktor N. Staroverov}
- % \email{vstarove@uwo.ca}
 \affiliation{%
  Department of Chemistry, The University of Western Ontario, London, Ontario N6A 5B7, Canada
 }%
@@ -112,7 +111,6 @@ is the one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.198
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
 \end{equation} 
-
 For one-orbital systems (one-electron and two-electron singlet), the two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
 \begin{equation}\label{eq: One-Orbital Relation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
@@ -155,7 +153,7 @@ Thus, in the asymptotic limit:
     1.
 \end{equation}
 
-Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r}' \to \mathbf{r}$), the spatial parts of both integrands approach equality:
+Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r} \to \mathbf{r}'$), the spatial parts of both integrands approach equality:
 \begin{equation}
     |\gamma(\mathbf{r},\mathbf{r}')|^2
     \to
@@ -167,6 +165,10 @@ Conversely, in the limit of infinitesimally small interelectronic distances ($\m
     \to \mathbf{r}.
 \end{equation}
 However, because the exact exchange prefactor, $1/4$, is larger than the Fermi--Amaldi prefactor, $1/(2N)$, for $N>2$, the region where $|\mathbf{r}-\mathbf{r}'| \to 0$ is dominated by the exact exchange energy density. 
+
+\bibliography{../bibliography}
+\end{document}
+
 
 % The exchange hole, $\rho_{\text{x}}(\mathbf{r},\mathbf{r}')$, is defined via
 % \begin{equation}
@@ -264,7 +266,3 @@ However, because the exact exchange prefactor, $1/4$, is larger than the Fermi--
 %     d\textbf{r},
 % \end{equation}
 % where the integrand is a mixture of two exchange density energies weighed by a local mixing function (LMF), $g(\mathbf{r})$, which is position-dependent. The $e_{\text{x}}^{\text{SL}}$ and $e_{\text{x}}^{\text{exact}}$ quantities are a semi-local and the exact exchange energy densities, respectively. 
-
-\bibliography{../bibliography}
-\end{document}
-
