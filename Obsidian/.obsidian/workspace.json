@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Asymptotic Bounds.md",
+                "file": "Quantum Chemistry/Density Functional Theory/Lieb–Oxford Bound.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Asymptotic Bounds"
+              "title": "Lieb–Oxford Bound"
             }
           }
         ]
@@ -172,9 +172,9 @@
   },
   "active": "d543c294211f58f1",
   "lastOpenFiles": [
+    "Asymptotic Bounds.md",
     "Quantum Chemistry/Exchange Energy.md",
     "Quantum Chemistry/Density Functional Theory/Hybrid Density Functionals.md",
-    "Asymptotic Bounds.md",
     "Untitled",
     "Algorithms and Data Structures",
     "Homogeneous Coordinate Scaling.md",

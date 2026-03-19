@@ -65,7 +65,7 @@ pra,
 
 \begin{document}
 
-\title{Fermi--Amaldi-Based Local Mixing Function}
+\title{Relation Between Fermi--Amaldi and Exact Exchange Energy Densities}
 
 \author{Ivan P. Bosko and Viktor N. Staroverov}
 \affiliation{%
@@ -164,7 +164,17 @@ Conversely, in the limit of infinitesimally small interelectronic distances ($\m
     \mathbf{r}'
     \to \mathbf{r}.
 \end{equation}
-However, because the exact exchange prefactor, $1/4$, is larger than the Fermi--Amaldi prefactor, $1/(2N)$, for $N>2$, the region where $|\mathbf{r}-\mathbf{r}'| \to 0$ is dominated by the exact exchange energy density. 
+However, because the exact exchange prefactor, $1/4$, is larger than the Fermi--Amaldi prefactor, $1/(2N)$, for $N>2$, the region where $|\mathbf{r}-\mathbf{r}'| \to 0$ is dominated by the exact exchange energy density:
+\begin{equation}
+    \lim_{|\mathbf{r}|\to|\mathbf{r}'|}
+    \frac{e_{\text{x}}^{\text{FA}}}
+    {e_{\text{x}}^{\text{exact}}}
+    =
+    0
+    \quad
+    \text{for large }
+    N.
+\end{equation}
 
 \bibliography{../bibliography}
 \end{document}
