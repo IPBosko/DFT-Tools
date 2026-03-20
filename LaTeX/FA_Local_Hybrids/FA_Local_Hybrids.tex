@@ -122,7 +122,39 @@ For one-orbital systems (one-electron and two-electron singlet), the two quantit
     \text{for all }
     \mathbf{r}.
 \end{equation}
-For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchange energy densities. By the Cauchy--Schwarz inequality:
+For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchange energy densities.
+
+For two integrals with different integrands $f(x)$ and $g(x)$, on the interval $[a,b]$
+\begin{equation}
+    \int_{a}^{b}
+    f(x)dx
+    \geq
+    \int_{a}^{b}
+    g(x)dx,
+    \quad
+    \text{when }
+    f(x)\geq g(x).
+\end{equation}
+Therefore, let 
+\begin{gather}
+    e_{\text{x}}^{\text{exact}}(\mathbf{r})
+    =
+    \frac{1}{2}
+    \int
+    f(\mathbf{r},\mathbf{r}')
+    g(\mathbf{r},\mathbf{r}')
+    d\mathbf{r}',\\[10pt]
+    e_{\text{x}}^{\text{FA}}(\mathbf{r})
+    =
+    \frac{1}{2}
+    \int
+    \tilde{f}(\mathbf{r},\mathbf{r}')
+    g(\mathbf{r},\mathbf{r}')
+    d\mathbf{r}',
+\end{gather}
+where $f(\mathbf{r},\mathbf{r}') = -|\gamma(\mathbf{r},\mathbf{r}')|^2/2$, $\tilde{f}(\mathbf{r},\mathbf{r}') = -\rho(\mathbf{r})\rho(\mathbf{r}')/N$, and $g(\mathbf{r},\mathbf{r}') = |\mathbf{r}-\mathbf{r}'|^{-1}$. Since $g(\mathbf{r},\mathbf{r}')>0$ everywhere in space and is the same for both exchange energy densities, to establish a relation between $e_{\text{x}}^{\text{exact}}(\mathbf{r})$ and $e_{\text{x}}^{\text{FA}}(\mathbf{r})$, it would suffice to establish a relation between $f(\mathbf{r},\mathbf{r}')$ and $\tilde{f}(\mathbf{r},\mathbf{r}')$.
+
+By the Cauchy--Schwarz inequality:
 \begin{equation}
     \rho(\mathbf{r})\rho(\mathbf{r}')
     \geq
