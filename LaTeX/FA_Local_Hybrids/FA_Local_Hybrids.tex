@@ -82,7 +82,7 @@ pra,
 \section{Main Text}
 
 Consider the exact exchange energy density (closed-shell):
-\begin{equation}
+\begin{equation}\label{eq: Exact EXX Energy Density}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
     -
@@ -100,7 +100,7 @@ where
     \varphi^*_i(\mathbf{r})\varphi_i(\mathbf{r}')
 \end{equation}
 is the one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.1989.density}, and the Fermi--Amaldi~\cite{Fermi.1934.MRAI.6.117,Benilan.1992.186.25} energy density expressed via electron density, $\rho(\mathbf{r})\geq 0$, and electron number, $N$,
-\begin{equation}
+\begin{equation}\label{eq: FA Energy Density}
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
     =
     -
@@ -135,38 +135,43 @@ For two integrals with different integrands $f(x)$ and $g(x)$, on the interval $
     \text{when }
     f(x)\geq g(x).
 \end{equation}
-Therefore, let 
-\begin{gather}
-    e_{\text{x}}^{\text{exact}}(\mathbf{r})
-    =
-    \frac{1}{2}
-    \int
-    f(\mathbf{r},\mathbf{r}')
-    g(\mathbf{r},\mathbf{r}')
-    d\mathbf{r}',\\[10pt]
-    e_{\text{x}}^{\text{FA}}(\mathbf{r})
-    =
-    \frac{1}{2}
-    \int
-    \tilde{f}(\mathbf{r},\mathbf{r}')
-    g(\mathbf{r},\mathbf{r}')
-    d\mathbf{r}',
-\end{gather}
-where $f(\mathbf{r},\mathbf{r}') = -|\gamma(\mathbf{r},\mathbf{r}')|^2/2$, $\tilde{f}(\mathbf{r},\mathbf{r}') = -\rho(\mathbf{r})\rho(\mathbf{r}')/N$, and $g(\mathbf{r},\mathbf{r}') = |\mathbf{r}-\mathbf{r}'|^{-1}$. Since $g(\mathbf{r},\mathbf{r}')>0$ everywhere in space and is the same for both exchange energy densities, to establish a relation between $e_{\text{x}}^{\text{exact}}(\mathbf{r})$ and $e_{\text{x}}^{\text{FA}}(\mathbf{r})$, it would suffice to establish a relation between $f(\mathbf{r},\mathbf{r}')$ and $\tilde{f}(\mathbf{r},\mathbf{r}')$.
-
-By the Cauchy--Schwarz inequality:
+Therefore, since $1/|\mathbf{r}-\mathbf{r}'| > 0$ everywhere in space and is the same for both exchange energy densities, by the Cauchy--Schwarz inequality:
 \begin{equation}
     \rho(\mathbf{r})\rho(\mathbf{r}')
     \geq
     |\gamma(\mathbf{r},\mathbf{r}')|^2
     \quad
-    N>2
+    \text{for all }
+    \mathbf{r}, \mathbf{r}',
+\end{equation}
+leading to the inequality
+\begin{equation}
+    \int
+    \frac
+    {\rho(\mathbf{r})\rho(\mathbf{r}')}
+    {|\mathbf{r}-\mathbf{r}'|}
+    d\mathbf{r}'
+    \geq
+    \int
+    \frac
+    {|\gamma(\mathbf{r},\mathbf{r}')|^2}
+    {|\mathbf{r}-\mathbf{r}'|}
+    d\mathbf{r}'
     \quad
     \text{for all }
-    \mathbf{r}, \mathbf{r}'.
+    \mathbf{r}.
 \end{equation}
-However, the Fermi--Amaldi global prefactor, $1/(2N)$, is strictly smaller than the exact exchange prefactor, $1/4$, when $N>2$. Because these opposing conditions compete, neither energy density integrand strictly dominates the other everywhere in space.
-
+Applying the definitions~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density}, we arrive at another inequality:
+\begin{equation}
+    \frac
+    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
+    {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
+    \geq
+    \frac{2}{N}
+    \quad
+    \text{for all }
+    \mathbf{r}.
+\end{equation}
 As $|\mathbf{r}|\to\infty$, the denominator can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that both exchange energy densities approach the same asymptotic limit:
 \begin{equation}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
