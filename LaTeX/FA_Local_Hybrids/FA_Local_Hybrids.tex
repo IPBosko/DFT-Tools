@@ -172,45 +172,42 @@ Applying the definitions~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA 
     \text{for all }
     \mathbf{r}.
 \end{equation}
-As $|\mathbf{r}|\to\infty$, the denominator can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that both exchange energy densities approach the same asymptotic limit:
-\begin{equation}
+In the asymptotic limit, the denominator can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that the exchange energy densities share the same asymptotic behavior:
+\begin{gather}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     \sim
     e_{\text{x}}^{\text{FA}}(\mathbf{r})
     \sim
     -
-    \frac{\rho(\mathbf{r})}{2|\mathbf{r}|}.
-\end{equation}
-Thus, in the asymptotic limit:
-\begin{equation}
+    \frac{\rho(\mathbf{r})}{2|\mathbf{r}|},\\[10pt]
     \lim_{|\mathbf{r}|\to\infty}
-    \frac{e_{\text{x}}^{\text{FA}}}
-    {e_{\text{x}}^{\text{exact}}}
+    \frac
+    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
+    {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
     =
     1.
-\end{equation}
-
+\end{gather}
 Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r} \to \mathbf{r}'$), the spatial parts of both integrands approach equality:
 \begin{equation}
     |\gamma(\mathbf{r},\mathbf{r}')|^2
     \to
     \rho(\mathbf{r})\rho(\mathbf{r}')
     \quad
-    \text{as}
-    \quad
-    \mathbf{r}'
-    \to \mathbf{r}.
+    \text{as }
+    \mathbf{r}
+    \to \mathbf{r}'.
 \end{equation}
-However, because the exact exchange prefactor, $1/4$, is larger than the Fermi--Amaldi prefactor, $1/(2N)$, for $N>2$, the region where $|\mathbf{r}-\mathbf{r}'| \to 0$ is dominated by the exact exchange energy density:
+Because the exact exchange prefactor is larger than the Fermi--Amaldi prefactor for $N>2$, the region of small interelectronic distances is dominated by the exact exchange energy density:
 \begin{equation}
-    \lim_{|\mathbf{r}|\to|\mathbf{r}'|}
-    \frac{e_{\text{x}}^{\text{FA}}}
-    {e_{\text{x}}^{\text{exact}}}
-    =
-    0
+    \frac
+    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
+    {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
+    \leq
+    1
     \quad
-    \text{for large }
-    N.
+    \text{as }
+    \mathbf{r}
+    \to \mathbf{r}'.
 \end{equation}
 
 \bibliography{../bibliography}
