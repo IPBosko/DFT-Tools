@@ -1,1 +1,0 @@
-A predicate is a proposition-valued function of some variable(s).

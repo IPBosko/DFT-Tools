@@ -1,1 +1,0 @@
-Is a [[Numerical Integration|numerical integration]] technique, where 

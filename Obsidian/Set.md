@@ -1,1 +1,0 @@
-Naively, set is a collection of elements. What is the collection and what are the elements?

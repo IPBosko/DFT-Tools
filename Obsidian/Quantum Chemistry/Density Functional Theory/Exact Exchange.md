@@ -1,5 +1,0 @@
-In [[Density Functional Theory|density functional theory]], the [[Exchange Energy|exchange energy]] is defined as $$E_{\text{x}}^{\text{exact}}[\rho]=\braket{\Phi_{\text{KS}}|\hat{V}_{\text{ee}}|\Phi_{\text{KS}}}-J[\rho],$$where $\rho(\textbf{r})$ is the [[Electron Density|electron density]], $\Phi_{\text{KS}}$ is the [[Kohn–Sham DFT|Kohn–Sham]] [[Wave Function|wave function]], $\hat{V}_{\text{ee}}$ is the [[Electron-Electron Repulsion|electron-electron repulsion]] [[Operator|operator]], and $J[\rho]$ is the [[Hartree Energy|classical Coulomb repulsion]]. Thus, the [[Expectation Value|expectation value]] of the electron-electron repulsion, evaluated on the KS wave function, yields a direct contribution (classical Coulomb/Hartree energy) and an exchange contribution [1].
-
-
-# References
-1. ABC of DFT, K. Burke, p. 67.
