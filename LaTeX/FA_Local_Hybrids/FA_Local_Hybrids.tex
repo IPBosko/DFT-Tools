@@ -65,7 +65,7 @@ pra,
 
 \begin{document}
 
-\title{Relationship Between Fermi--Amaldi and Exact Exchange Energy Densities}
+\title{Ratio Between Fermi--Amaldi and Exact Exchange Energy Densities}
 
 \author{Ivan P. Bosko and Viktor N. Staroverov}
 \affiliation{%
@@ -112,7 +112,7 @@ is the one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.198
     d\mathbf{r}'.
 \end{equation}
 
-When comparing two integrals with different integrands $f(x)$ and $g(x)$, on the interval $[a,b]$, the following is true
+When comparing two integrals with different integrands $f(x)$ and $g(x)$, on the interval $[a,b]$, the following inequality holds:
 \begin{equation}
     \int_{a}^{b}
     f(x)dx
@@ -152,15 +152,30 @@ we obtain the following relationship:
 Then, by the definitions~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density}:
 \begin{equation}
     \frac
-    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
     {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
-    \geq
-    \frac{2}{N}
+    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
+    \leq
+    \frac{N}{2}
     \quad
     \text{for all }
     \mathbf{r}.
 \end{equation}
-Thus, the lower bound of the relationship between the two closed-shell exchange energy densities is given by a function of the electron number. Note, that for $N=2$, the lower bound is a unity~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}.
+Since both exchange energy densities are non-positive, their ratio is non-negative, leading to the inequality:
+\begin{equation}
+    0
+    \leq
+    \frac
+    {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
+    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
+    \leq
+    \frac{N}{2}
+    \quad
+    \text{for all }
+    \mathbf{r}.
+\end{equation}
+Thus, the upper bound of the ratio between the two closed-shell exchange energy densities is given by a function of the electron number. Note that for $N=2$, the upper bound is unity~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}.
+
+\section{Additional Details}
 
 In the asymptotic limit, the denominator of Eqs.~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density} can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that the exchange energy densities share the same asymptotic behavior:
 \begin{gather}
@@ -177,28 +192,51 @@ In the asymptotic limit, the denominator of Eqs.~\eqref{eq: Exact EXX Energy Den
     =
     1.
 \end{gather}
-Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r} \to \mathbf{r}'$), the spatial parts of both integrands approach equality:
+Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r}' \to \mathbf{r}$), the spatial parts of the integrands approach the same value:
 \begin{equation}
-    \lim_{\mathbf{r} \to \mathbf{r}'}
+    \lim_{\mathbf{r}' \to \mathbf{r}}
     |\gamma(\mathbf{r},\mathbf{r}')|^2
     =
-    \lim_{\mathbf{r} \to \mathbf{r}'}
+    \lim_{\mathbf{r}' \to \mathbf{r}}
     \rho(\mathbf{r})\rho(\mathbf{r}')
     =
-    \rho(\mathbf{r})\rho(\mathbf{r}).
+    \rho(\mathbf{r})^2.
 \end{equation}
-Because the exact exchange prefactor is larger than the Fermi--Amaldi prefactor for $N>2$, the region of small interelectronic distances is dominated by the exact exchange energy density:
-\begin{equation}
-    \frac
-    {e_{\text{x}}^{\text{FA}}(\mathbf{r}|\mathbf{r}\to\mathbf{r}')}
-    {e_{\text{x}}^{\text{exact}}(\mathbf{r}|\mathbf{r}\to\mathbf{r}')}
-    \leq
-    1.
-\end{equation}
+Because the exact exchange prefactor $1/4$ is strictly larger than the Fermi--Amaldi prefactor $1/(2N)$ for $N>2$, the exact exchange integrand strongly dominates the Fermi--Amaldi integrand in the vicinity of the reference electron ($\mathbf{r}' \approx \mathbf{r}$). This observation, however, does not imply this type of dominance of the integrated quantity, i.e., the exact exchange energy density.
 
 \bibliography{../bibliography}
 \end{document}
 
+
+% \begin{equation}\label{eq: Lower Bound}
+%     \frac
+%     {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
+%     {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
+%     \geq
+%     \frac{2}{N}
+%     \quad
+%     \text{for all }
+%     \mathbf{r}.
+% \end{equation}
+
+% Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r} \to \mathbf{r}'$), the spatial parts of both integrands approach equality:
+% \begin{equation}
+%     \lim_{\mathbf{r} \to \mathbf{r}'}
+%     |\gamma(\mathbf{r},\mathbf{r}')|^2
+%     =
+%     \lim_{\mathbf{r} \to \mathbf{r}'}
+%     \rho(\mathbf{r})\rho(\mathbf{r}')
+%     =
+%     \rho(\mathbf{r})\rho(\mathbf{r}).
+% \end{equation}
+% Because the exact exchange prefactor is larger than the Fermi--Amaldi prefactor for $N>2$, the region of small interelectronic distances is dominated by the exact exchange energy density:
+% \begin{equation}
+%     \frac
+%     {e_{\text{x}}^{\text{FA}}(\mathbf{r}|\mathbf{r}\to\mathbf{r}')}
+%     {e_{\text{x}}^{\text{exact}}(\mathbf{r}|\mathbf{r}\to\mathbf{r}')}
+%     \leq
+%     1.
+% \end{equation}
 
 % For one-orbital systems (one-electron and two-electron singlet), the two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
 % \begin{equation}\label{eq: One-Orbital Relation}
