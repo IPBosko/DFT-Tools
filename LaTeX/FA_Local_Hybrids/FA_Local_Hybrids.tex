@@ -81,7 +81,7 @@ pra,
 
 \section{Main Text}
 
-Consider the exact exchange energy density (closed-shell):
+The goal is to establish a relationship between the exact exchange energy density (closed-shell):
 \begin{equation}\label{eq: Exact EXX Energy Density}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     =
@@ -110,21 +110,9 @@ is the one-electron reduced density matrix~\cite{Staroverov.2012.Matter,Parr.198
     {\rho(\mathbf{r})\rho(\mathbf{r}')}
     {|\mathbf{r}-\mathbf{r}'|}
     d\mathbf{r}'.
-\end{equation} 
-For one-orbital systems (one-electron and two-electron singlet), the two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
-\begin{equation}\label{eq: One-Orbital Relation}
-    e_{\text{x}}^{\text{exact}}(\mathbf{r})
-    =
-    e_{\text{x}}^{\text{FA}}(\mathbf{r})
-    \quad
-    N\leq 2
-    \quad
-    \text{for all }
-    \mathbf{r}.
 \end{equation}
-For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchange energy densities.
 
-For two integrals with different integrands $f(x)$ and $g(x)$, on the interval $[a,b]$
+When comparing two integrals with different integrands $f(x)$ and $g(x)$, on the interval $[a,b]$, the following is true
 \begin{equation}
     \int_{a}^{b}
     f(x)dx
@@ -135,7 +123,7 @@ For two integrals with different integrands $f(x)$ and $g(x)$, on the interval $
     \text{when }
     f(x)\geq g(x).
 \end{equation}
-Therefore, since $1/|\mathbf{r}-\mathbf{r}'| > 0$ everywhere in space and is the same for both exchange energy densities, by the Cauchy--Schwarz inequality:
+Both integrands in Eqs.~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density} share the same denominator, $1/|\mathbf{r}-\mathbf{r}'|$, which is positive everywhere in space. Therefore, by the Cauchy--Schwarz inequality:
 \begin{equation}
     \rho(\mathbf{r})\rho(\mathbf{r}')
     \geq
@@ -144,7 +132,7 @@ Therefore, since $1/|\mathbf{r}-\mathbf{r}'| > 0$ everywhere in space and is the
     \text{for all }
     \mathbf{r}, \mathbf{r}',
 \end{equation}
-leading to the inequality
+we obtain the following relationship:
 \begin{equation}
     \int
     \frac
@@ -161,7 +149,7 @@ leading to the inequality
     \text{for all }
     \mathbf{r}.
 \end{equation}
-Applying the definitions~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density}, we arrive at another inequality:
+Then, by the definitions~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density}:
 \begin{equation}
     \frac
     {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
@@ -172,7 +160,9 @@ Applying the definitions~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA 
     \text{for all }
     \mathbf{r}.
 \end{equation}
-In the asymptotic limit, the denominator can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that the exchange energy densities share the same asymptotic behavior:
+Thus, the lower bound of the relationship between the two closed-shell exchange energy densities is given by a function of the electron number. Note, that for $N=2$, the lower bound is a unity~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}.
+
+In the asymptotic limit, the denominator of Eqs.~\eqref{eq: Exact EXX Energy Density} and~\eqref{eq: FA Energy Density} can be approximated as $|\mathbf{r}-\mathbf{r}'| \approx |\mathbf{r}|$, revealing that the exchange energy densities share the same asymptotic behavior:
 \begin{gather}
     e_{\text{x}}^{\text{exact}}(\mathbf{r})
     \sim
@@ -213,6 +203,19 @@ Because the exact exchange prefactor is larger than the Fermi--Amaldi prefactor 
 \bibliography{../bibliography}
 \end{document}
 
+
+% For one-orbital systems (one-electron and two-electron singlet), the two quantities are equal for all values of $\mathbf{r}$~\cite{Bosko.2023.JCP.159.131101,Bosko.2023.PRA.108.052803,Ayers.2005.MP.103.2061}:
+% \begin{equation}\label{eq: One-Orbital Relation}
+%     e_{\text{x}}^{\text{exact}}(\mathbf{r})
+%     =
+%     e_{\text{x}}^{\text{FA}}(\mathbf{r})
+%     \quad
+%     N\leq 2
+%     \quad
+%     \text{for all }
+%     \mathbf{r}.
+% \end{equation}
+% For systems with more than one molecular orbital, the spatial behavior of both quantities needs to be studied closer to establish a relationship between the exact and the Fermi--Amaldi exchange energy densities.
 
 % The exchange hole, $\rho_{\text{x}}(\mathbf{r},\mathbf{r}')$, is defined via
 % \begin{equation}
