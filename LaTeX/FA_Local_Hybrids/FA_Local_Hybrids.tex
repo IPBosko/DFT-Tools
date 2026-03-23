@@ -65,7 +65,7 @@ pra,
 
 \begin{document}
 
-\title{Relation Between Fermi--Amaldi and Exact Exchange Energy Densities}
+\title{Relationship Between Fermi--Amaldi and Exact Exchange Energy Densities}
 
 \author{Ivan P. Bosko and Viktor N. Staroverov}
 \affiliation{%
@@ -179,25 +179,21 @@ In the asymptotic limit, the denominator of Eqs.~\eqref{eq: Exact EXX Energy Den
 \end{gather}
 Conversely, in the limit of infinitesimally small interelectronic distances ($\mathbf{r} \to \mathbf{r}'$), the spatial parts of both integrands approach equality:
 \begin{equation}
+    \lim_{\mathbf{r} \to \mathbf{r}'}
     |\gamma(\mathbf{r},\mathbf{r}')|^2
-    \to
+    =
+    \lim_{\mathbf{r} \to \mathbf{r}'}
     \rho(\mathbf{r})\rho(\mathbf{r}')
-    \quad
-    \text{as }
-    \mathbf{r}
-    \to \mathbf{r}'.
+    =
+    \rho(\mathbf{r})\rho(\mathbf{r}).
 \end{equation}
 Because the exact exchange prefactor is larger than the Fermi--Amaldi prefactor for $N>2$, the region of small interelectronic distances is dominated by the exact exchange energy density:
 \begin{equation}
     \frac
-    {e_{\text{x}}^{\text{FA}}(\mathbf{r})}
-    {e_{\text{x}}^{\text{exact}}(\mathbf{r})}
+    {e_{\text{x}}^{\text{FA}}(\mathbf{r}|\mathbf{r}\to\mathbf{r}')}
+    {e_{\text{x}}^{\text{exact}}(\mathbf{r}|\mathbf{r}\to\mathbf{r}')}
     \leq
-    1
-    \quad
-    \text{as }
-    \mathbf{r}
-    \to \mathbf{r}'.
+    1.
 \end{equation}
 
 \bibliography{../bibliography}
