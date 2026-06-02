@@ -4,14 +4,15 @@ Implementation of the KS DFT method using Psi4 open-source software.
 See KS-RSCF.ipynb for details.
 """
 
+import time
 import numpy as np
 import psi4
 
 def diag_lps(diag, A, nel):
     """
-    Diagonalizes the Fock matrix and builds the density matrix 
-    from N/2 lowest eigenvectors.
+    Diagonalizes the Fock matrix and builds the density matrix from N/2 lowest eigenvectors.
     """
+
     Fp = psi4.core.triplet(A, diag, A, True, False, True)
     nbf = A.shape[0]
     Cp = psi4.core.Matrix(nbf, nbf)
@@ -20,27 +21,35 @@ def diag_lps(diag, A, nel):
 
     C = psi4.core.doublet(A, Cp, False, False)
     Cocc = psi4.core.Matrix(nbf, 1)
-    ## For now let's keep an integer number orbitals
     Cocc.np[:] = C.np[:, :nel//2]
 
     D = psi4.core.doublet(Cocc, Cocc, False, True)  
+    
     return D, eigvals
 
 def Vpot_init(build_superfunctional, wfn, alias, vname, restricted=True):
-    """Initializes a Psi4 VBase potential object."""
+    """
+    Initializes a Psi4 VBase potential object
+    """
+
     sup = build_superfunctional(alias, restricted)[0]
     sup.set_deriv(1)
     sup.allocate()
     Vpot = psi4.core.VBase.build(wfn.basisset(), sup, vname)
+    
     return Vpot
 
 def Vpot_builder(Vpot, D, V, D_half):
-    """Computes the potential on the grid for a given density."""
+    """
+    Computes the potential on the grid for a given density
+    """
+
     D_half.copy(D)
     D_half.scale(0.5)
     Vpot.set_D([ D_half ])
     Vpot.compute_V([ V ])
     e = Vpot.quadrature_values()['FUNCTIONAL']
+    
     return e, V
 
 def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
@@ -116,7 +125,7 @@ def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True
     
     if verbose:
         print('\nStarting SCF iterations:')
-        print("\n    Iter               Energy         ChemPot       Delta E         dRMS\n")
+        print("\n    Iter               Energy         epsilon       Delta E         dRMS\n")
     t = time.time()
 
     if DIIS:
@@ -141,18 +150,10 @@ def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True
                 F.axpy(-FA[1]/nel, J)
 
         ## Build DFT potentials and calculate corresponding energies
-        pau_e, VP = Vpot_builder(VPpot, D, VP_null, D_half)
         xc_e, VXC = Vpot_builder(VXCpot, D, VXC_null, D_half)
-        vw_e, VvW = Vpot_builder(VvWpot, D, VvW_null, D_half)
-        
-        ## Caclulate G[n] = T_P[n] + E_xc[n] + (lam - 1)T_vW
-        g_e = pau_e + xc_e + ( lam - 1.0 ) * vw_e 
 
         ## Add DFT potentials to Fock matrix
-        VG.copy(VP)
-        VG.axpy(1.0, VXC)
-        VG.axpy((lam - 1.0), VvW)
-        F.axpy(1.0, VG)
+        F.axpy(1.0, VXC)
 
         if DIIS:
             diis_e = psi4.core.triplet(F, D, S, False, False, False)
@@ -167,7 +168,7 @@ def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True
         SCF_E += 0.5 * J.vector_dot(D)
         if FA[0]:
             SCF_E += 0.5 * J.vector_dot(D) * ( - FA[1] / nel )
-        SCF_E += g_e
+        SCF_E += xc_e
         SCF_E += Enuc
 
         ##  DIIS convergence check
