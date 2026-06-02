@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"name": "Psi4NumPy",
+			"path": "../../Psi4NumPy"
+		},
+		{
+			"name": "PhD-Thesis",
+			"path": "../PhD-Thesis"
+		},
+		{
+			"name": "DFT-Tutorials",
+			"path": "."
+		}
+	]
+}
