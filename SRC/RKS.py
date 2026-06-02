@@ -4,7 +4,6 @@ Implementation of the KS DFT method using Psi4 open-source software.
 See KS-RSCF.ipynb for details.
 """
 
-import time
 import numpy as np
 import psi4
 
