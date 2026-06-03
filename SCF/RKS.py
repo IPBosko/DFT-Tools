@@ -169,6 +169,6 @@ def ks_solver(mol, EXC, damp, verbose=False):
             return SCF_E, D, homo, SCF_ITER
         
     psi4.core.print_out('\nSCF converged in %d iterations and %.3f seconds \n' % (SCF_ITER, time.time() - t))
-    print('\nSCF converged in %d iterations and %.3f seconds \n' % (SCF_ITER, time.time() - t))
+    print('\nSCF converged in %d iterations and %.3f seconds' % (SCF_ITER, time.time() - t))
 
     return SCF_E, D, homo, SCF_ITER
