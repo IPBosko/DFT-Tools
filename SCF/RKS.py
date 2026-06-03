@@ -57,8 +57,8 @@ def ks_solver(mol, EXC, damp, verbose=False):
     """
     
     ## Convergence thresholds
-    E_conv = 1.0e-6
-    D_conv = 1.0e-6
+    E_conv = 1.0e-8
+    D_conv = 1.0e-8
     maxiter = 40
     
     ## Wavefunction & Basis Setup
