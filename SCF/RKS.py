@@ -51,7 +51,7 @@ def Vpot_builder(Vpot, D, V, D_half):
     
     return e, V
 
-def ks_solver(mol, EXC, damp):
+def ks_solver(mol, EXC, damp, verbose=False):
     """
     Main KS-RSCF Solver Loop
     """
@@ -67,7 +67,8 @@ def ks_solver(mol, EXC, damp):
     nbf = wfn.nso()
     nalpha = wfn.nalpha()
 
-    print(f'Number of basis functions:   {nbf}')
+    if verbose:
+        print(f'Number of basis functions:   {nbf}')
 
     ## Potential Initialization
     build_superfunctional = psi4.driver.dft.build_superfunctional
@@ -98,8 +99,11 @@ def ks_solver(mol, EXC, damp):
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
     
-    print('\nStarting SCF iterations:')
-    print("\n    Iter               Energy         HOMO       Delta E         dRMS\n")
+    header = "\n    Iter               Energy         HOMO       Delta E         dRMS\n"
+    psi4.core.print_out(header)
+    if verbose:
+        print('\nStarting SCF iterations:')
+        print(header)
     t = time.time()
 
     for SCF_ITER in range(1, maxiter + 1):
@@ -144,8 +148,11 @@ def ks_solver(mol, EXC, damp):
         D_diff.copy(D)
         D_diff.subtract(D_old)
         dRMS = D_diff.rms()
-        print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-            % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS))
+        
+        output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
+        psi4.core.print_out(output_str)
+        if verbose:
+            print(output_str.strip())
         
         if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
             break
@@ -157,9 +164,11 @@ def ks_solver(mol, EXC, damp):
         
         if SCF_ITER == maxiter:
             
+            psi4.core.print_out("\nWARNING ! SCF did not converge. The final values are printed\n")
             print("\nWARNING ! SCF did not converge. The final values are printed")
             return SCF_E, D, homo, SCF_ITER
-    
-    print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
+        
+    psi4.core.print_out('\nSCF converged in %d iterations and %.3f seconds \n' % (SCF_ITER, time.time() - t))
+    print('\nSCF converged in %d iterations and %.3f seconds \n' % (SCF_ITER, time.time() - t))
 
     return SCF_E, D, homo, SCF_ITER
