@@ -1,14 +1,12 @@
 """
-KS-RSCF: Kohn-Sham Restricted Self-Consistent Field Solver
-Implementation of the KS DFT method using Psi4 open-source software.
-See KS-RSCF.ipynb for details.
+KS-RSCF Solver for DFT calculations using Psi4
 """
 
 import time
 import numpy as np
 import psi4
 
-def diag_lps(diag, A, nel):
+def diag(diag, A, nel):
     """
     Diagonalizes the Fock matrix and builds the density matrix from N/2 lowest eigenvectors.
     """
@@ -25,7 +23,7 @@ def diag_lps(diag, A, nel):
 
     D = psi4.core.doublet(Cocc, Cocc, False, True)  
     
-    return D, eigvals
+    return D, eigvals.np[-1]
 
 def Vpot_init(build_superfunctional, wfn, alias, vname, restricted=True):
     """
@@ -52,27 +50,15 @@ def Vpot_builder(Vpot, D, V, D_half):
     
     return e, V
 
-def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True):
+def ks_solver(mol, EXC):
     """
-    Main KS-RSCF Solver Loop.
-    
-    Args:
-        maxiter (int):      Maximum SCF iterations.
-        EXC (list):         XC options [X_Name, X_Alpha, C_Name, C_Alpha].
-        mol (Molecule):     Psi4 Molecule object.
-        damp (list):        [damp_start, damp_end, cutoff].
-        FA (list):          [Apply_FA (bool), Scaling_Factor (float)].
-        D_guess (Matrix):   Optional density matrix for initial guess.
-        DIIS (bool):        Enable DIIS extrapolation.
-        verbose (bool):     Print iteration details.
-        
-    Returns:
-        tuple: (SCF_E, SCF_D, SCF_ITER)
+    Main KS-RSCF Solver Loop
     """
     
     ## Convergence thresholds
     E_conv = 1.0e-8
     D_conv = 1.0e-8
+    maxiter = 20
     
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
@@ -81,19 +67,13 @@ def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True
     nbf = wfn.nso()
     nel = wfn.nalpha() + wfn.nbeta()
 
-    if verbose:
-        print(f'Number of basis functions:   {nbf}')
+    print(f'Number of basis functions:   {nbf}')
 
     ## Potential Initialization
     build_superfunctional = psi4.driver.dft.build_superfunctional
     D_half = psi4.core.Matrix(nbf, nbf)
 
-    XC = {
-    "name": "XC",
-    "x_functionals": {EXC[0]: {"alpha": EXC[1]}},
-    "c_functionals": {EXC[2]: {"alpha": EXC[3]}}
-    }   
-    VXCpot = Vpot_init(build_superfunctional, wfn, XC, "RV", restricted=True)
+    VXCpot = Vpot_init(build_superfunctional, wfn, EXC, "RV", restricted=True)
     VXCpot.initialize()
     VXC_null = psi4.core.Matrix(nbf, nbf)
 
@@ -111,25 +91,15 @@ def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True
     J = psi4.core.Matrix(nbf, nbf)
     Vxc = psi4.core.Matrix(nbf, nbf)
     D_diff = psi4.core.Matrix(nbf, nbf)
-    
-    if D_guess is not None:
-        ## Use D_GUESS as an initial guess
-        D = D_guess.clone()
-        eigenvals = []
-    else:
-        ## Calculate an initial Core guess
-        D, eigenvals = diag_lps(H, A, nel)
+
+    D, eigvals = diag(H, A, nel)
     
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
     
-    if verbose:
-        print('\nStarting SCF iterations:')
-        print("\n    Iter               Energy         epsilon       Delta E         dRMS\n")
+    print('\nStarting SCF iterations:')
+    print("\n    Iter               Energy         epsilon       Delta E         dRMS\n")
     t = time.time()
-
-    if DIIS:
-        diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
 
     for SCF_ITER in range(1, maxiter + 1):
         D_old = D
@@ -142,78 +112,38 @@ def ks_solver(maxiter, EXC, mol, damp, FA, D_guess=None, DIIS=True, verbose=True
         F.copy(H)
         F.axpy(1.0, J)
 
-        ## Add Fermi–Amaldi potential if requested
-        if FA[0]:
-            if nel == 0:
-                F.axpy(0.0, J)
-            else: 
-                F.axpy(-FA[1]/nel, J)
-
         ## Build DFT potentials and calculate corresponding energies
-        xc_e, VXC = Vpot_builder(VXCpot, D, VXC_null, D_half)
+        exc, Vxc = Vpot_builder(VXCpot, D, VXC_null, D_half)
 
         ## Add DFT potentials to Fock matrix
-        F.axpy(1.0, VXC)
-
-        if DIIS:
-            diis_e = psi4.core.triplet(F, D, S, False, False, False)
-            diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
-            diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
-        
-            diis_obj.add(F, diis_e)
-            dRMS = diis_e.rms()
+        F.axpy(1.0, Vxc)
 
         ## Energy calculation
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
-        if FA[0]:
-            SCF_E += 0.5 * J.vector_dot(D) * ( - FA[1] / nel )
-        SCF_E += xc_e
+        SCF_E += exc
         SCF_E += Enuc
 
-        ##  DIIS convergence check
-        if DIIS:
-            if verbose:
-                print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-                    % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
-            
-            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
-                break
-            
-            Eold = SCF_E
-            F = diis_obj.extrapolate()
-
         ## Diagonalize Fock matrix.
-        D, mu = diag_lps(F, A, nel)
+        D, mu = diag(F, A, nel)
 
-        ## non-DIIS convergence check
-        if not DIIS:
-            D_diff.copy(D)
-            D_diff.subtract(D_old)
-            dRMS = D_diff.rms()
-            if verbose:
-                print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-                    % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
-            
-            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
-                break
-
-            Eold = SCF_E
+        ## Density convergence check
+        D_diff.copy(D)
+        D_diff.subtract(D_old)
+        dRMS = D_diff.rms()
+        print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
+            % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
         
-        ## Dynamic damping
-        if (dRMS > damp[2]):
-            current_damp = damp[0]
-        else:
-            current_damp = damp[1]
-        D.scale(1.0 - current_damp)
-        D.axpy(current_damp, D_old)
+        if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
+            break
+
+        Eold = SCF_E
         
         if SCF_ITER == maxiter:
             SCF_D = D
             print("\nWARNING ! SCF did not converge. The final values are printed")
             return SCF_E, SCF_D, mu, SCF_ITER
     
-    if verbose:
-        print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
+    print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
     return SCF_E, D, mu, SCF_ITER
