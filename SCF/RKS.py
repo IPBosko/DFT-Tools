@@ -6,7 +6,7 @@ import time
 import numpy as np
 import psi4
 
-def diag(diag, A, nel):
+def diag(diag, A, nalpha):
     """
     Diagonalizes the Fock matrix and builds the density matrix from N/2 lowest eigenvectors.
     """
@@ -18,12 +18,13 @@ def diag(diag, A, nel):
     Fp.diagonalize(Cp, eigvals, psi4.core.DiagonalizeOrder.Ascending)
 
     C = psi4.core.doublet(A, Cp, False, False)
-    Cocc = psi4.core.Matrix(nbf, 1)
-    Cocc.np[:] = C.np[:, :nel//2]
+    Cocc = psi4.core.Matrix(nbf, nalpha)
+    Cocc.np[:] = C.np[:, :nalpha]
 
-    D = psi4.core.doublet(Cocc, Cocc, False, True)  
+    D = psi4.core.doublet(Cocc, Cocc, False, True) 
+    D.scale(2.0) 
     
-    return D, eigvals.np[-1]
+    return D, eigvals.np[nalpha-1]
 
 def Vpot_init(build_superfunctional, wfn, alias, vname, restricted=True):
     """
@@ -50,22 +51,21 @@ def Vpot_builder(Vpot, D, V, D_half):
     
     return e, V
 
-def ks_solver(mol, EXC):
+def ks_solver(mol, EXC, damp):
     """
     Main KS-RSCF Solver Loop
     """
     
     ## Convergence thresholds
-    E_conv = 1.0e-8
-    D_conv = 1.0e-8
-    maxiter = 20
+    E_conv = 1.0e-6
+    D_conv = 1.0e-6
+    maxiter = 40
     
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
     mints = psi4.core.MintsHelper(wfn.basisset())
-    S = mints.ao_overlap()
     nbf = wfn.nso()
-    nel = wfn.nalpha() + wfn.nbeta()
+    nalpha = wfn.nalpha()
 
     print(f'Number of basis functions:   {nbf}')
 
@@ -89,61 +89,77 @@ def ks_solver(mol, EXC):
     ## Initialize necessary matrices
     F = psi4.core.Matrix(nbf, nbf)
     J = psi4.core.Matrix(nbf, nbf)
+    K = psi4.core.Matrix(nbf, nbf)
     Vxc = psi4.core.Matrix(nbf, nbf)
     D_diff = psi4.core.Matrix(nbf, nbf)
 
-    D, eigvals = diag(H, A, nel)
+    D, homo = diag(H, A, nalpha)
     
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
     
     print('\nStarting SCF iterations:')
-    print("\n    Iter               Energy         epsilon       Delta E         dRMS\n")
+    print("\n    Iter               Energy         HOMO       Delta E         dRMS\n")
     t = time.time()
 
     for SCF_ITER in range(1, maxiter + 1):
+        
         D_old = D
         
         ## Build J (Coulomb)
         J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
+        
         J.np[:] = J_np
+        if EXC["name"]=="EXX":
+            K_np = np.einsum('prqs,rs->pq', I, D.np, optimize=True)
+            K.np[:] = K_np
 
         ## Build F = H + J
         F.copy(H)
         F.axpy(1.0, J)
+        if EXC["name"]=="EXX":
+            F.axpy(-0.5, K)
 
         ## Build DFT potentials and calculate corresponding energies
-        exc, Vxc = Vpot_builder(VXCpot, D, VXC_null, D_half)
+        if EXC["name"]!="EXX":
+            
+            exc, Vxc = Vpot_builder(VXCpot, D, VXC_null, D_half)
 
-        ## Add DFT potentials to Fock matrix
-        F.axpy(1.0, Vxc)
+            ## Add DFT potentials to Fock matrix
+            F.axpy(1.0, Vxc)
 
         ## Energy calculation
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
-        SCF_E += exc
+        if EXC["name"]=="EXX":
+            SCF_E -= 0.25 * K.vector_dot(D)
+        else:
+            SCF_E += exc
         SCF_E += Enuc
 
         ## Diagonalize Fock matrix.
-        D, mu = diag(F, A, nel)
+        D, homo = diag(F, A, nalpha)
 
         ## Density convergence check
         D_diff.copy(D)
         D_diff.subtract(D_old)
         dRMS = D_diff.rms()
         print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-            % (SCF_ITER, SCF_E, mu, (SCF_E - Eold), dRMS))
+            % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS))
         
         if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
             break
 
         Eold = SCF_E
+
+        D.scale(1.0 - damp)
+        D.axpy(damp, D_old)
         
         if SCF_ITER == maxiter:
-            SCF_D = D
+            
             print("\nWARNING ! SCF did not converge. The final values are printed")
-            return SCF_E, SCF_D, mu, SCF_ITER
+            return SCF_E, D, homo, SCF_ITER
     
     print('\nTotal time for SCF iterations: %.3f seconds ' % (time.time() - t))
 
-    return SCF_E, D, mu, SCF_ITER
+    return SCF_E, D, homo, SCF_ITER
