@@ -18,7 +18,9 @@ def ks_solver(mol, EXC, damp, verbose=False):
     E_conv = 1.0e-8
     D_conv = 1.0e-8
     maxiter = 40
-    damping_switch_off = 1.0e6 * D_conv
+    if damp:
+        actual_damp = damp
+    damping_switch_off = 1.0e1 * D_conv
     
     ## Wavefunction & Basis Setup
     wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
@@ -73,8 +75,6 @@ def ks_solver(mol, EXC, damp, verbose=False):
         
         ## Saving the initial density matrix for SCF damping
         D_old = D
-        if damp:
-            actual_damp = damp
         
         ## Build J (Coulomb)
         J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
@@ -125,11 +125,10 @@ def ks_solver(mol, EXC, damp, verbose=False):
 
         Eold = SCF_E
 
-        if damp and dRMS < damping_switch_off:
+        if dRMS < damping_switch_off:
             actual_damp *= 0
-        elif damp:
-            D.scale(1.0 - actual_damp)
-            D.axpy(actual_damp, D_old)
+        D.scale(1.0 - actual_damp)
+        D.axpy(actual_damp, D_old)
         
         if SCF_ITER == maxiter:
             
