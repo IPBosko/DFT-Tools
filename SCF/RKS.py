@@ -18,8 +18,8 @@ def ks_solver(mol, EXC, damp, verbose=False):
     E_conv = 1.0e-8
     D_conv = 1.0e-8
     maxiter = 40
-    if damp:
-        actual_damp = damp
+    
+    current_damp = damp
     damping_switch_off = 1.0e1 * D_conv
     
     ## Wavefunction & Basis Setup
@@ -78,8 +78,9 @@ def ks_solver(mol, EXC, damp, verbose=False):
         
         ## Build J (Coulomb)
         J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
-        
         J.np[:] = J_np
+        
+        ## Build K (Fock exchange)
         if EXC["name"]=="EXX":
             K_np = np.einsum('prqs,rs->pq', I, D.np, optimize=True)
             K.np[:] = K_np
@@ -126,9 +127,11 @@ def ks_solver(mol, EXC, damp, verbose=False):
         Eold = SCF_E
 
         if dRMS < damping_switch_off:
-            actual_damp *= 0
-        D.scale(1.0 - actual_damp)
-        D.axpy(actual_damp, D_old)
+            current_damp *= 0
+        else:
+            current_damp = damp 
+        D.scale(1.0 - current_damp)
+        D.axpy(current_damp, D_old)
         
         if SCF_ITER == maxiter:
             
