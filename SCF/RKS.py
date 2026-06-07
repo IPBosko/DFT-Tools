@@ -9,7 +9,7 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def ks_solver(mol, EXC, damp, verbose=False):
+def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
     """
     Spin-restricted KS SCF solver loop with Hartree damping
     """
@@ -48,7 +48,8 @@ def ks_solver(mol, EXC, damp, verbose=False):
     H = T.clone()
     H.add(V)
     I = np.asarray(mints.ao_eri())
-    A = mints.ao_overlap()
+    S = mints.ao_overlap()
+    A = S.clone()
     A.power(-0.5, 1.e-14)
 
     ## Initialize necessary matrices
@@ -60,6 +61,10 @@ def ks_solver(mol, EXC, damp, verbose=False):
 
     ## Initial guess (core Hamiltonian) density matrix
     D, homo = scf_helper.diag(H, A, nalpha)
+
+    ## Initialize diis object
+    if DIIS:
+        diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
     
     Enuc = mol.nuclear_repulsion_energy()
     Eold = 0.0
@@ -99,6 +104,14 @@ def ks_solver(mol, EXC, damp, verbose=False):
             ## Add DFT potentials to Fock matrix
             F.axpy(1.0, Vxc)
 
+        if DIIS:
+            diis_e = psi4.core.triplet(F, D, S, False, False, False)
+            diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
+            diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
+        
+            diis_obj.add(F, diis_e)
+            dRMS = diis_e.rms()
+
         ## Energy calculation
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
@@ -108,24 +121,38 @@ def ks_solver(mol, EXC, damp, verbose=False):
             SCF_E += exc
         SCF_E += Enuc
 
+        ## DIIS convergence test and Fock extrapolation
+        if DIIS:
+            if verbose:
+                print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
+                    % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS))
+            
+            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
+                break
+            
+            Eold = SCF_E
+            F = diis_obj.extrapolate()
+        
         ## Diagonalize Fock matrix.
         D, homo = scf_helper.diag(F, A, nalpha)
 
         ## Density convergence check
-        D_diff.copy(D)
-        D_diff.subtract(D_old)
-        dRMS = D_diff.rms()
+        if not DIIS:
+            D_diff.copy(D)
+            D_diff.subtract(D_old)
+            dRMS = D_diff.rms()
         
-        output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
-        psi4.core.print_out(output_str)
-        if verbose:
-            print(output_str.strip())
-        
-        if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
-            break
+            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
+            psi4.core.print_out(output_str)
+            if verbose:
+                print(output_str.strip())
+            
+            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
+                break
 
-        Eold = SCF_E
+            Eold = SCF_E
 
+        ## Dynamic damping
         if dRMS < damping_switch_off:
             current_damp *= 0
         else:
