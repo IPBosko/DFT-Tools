@@ -1,2 +1,2 @@
 # DFT-Tools
-Here I store DFT codes I use for my work.
+Density-functional theory methods and analysis tools that I use in my work.
