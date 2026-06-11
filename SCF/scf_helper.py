@@ -47,3 +47,19 @@ def Vpot_builder(Vpot, D, V, D_half):
     
     return e, V
 
+def scf_building_blocks(mints):
+
+    # Kinetic energy
+    T = mints.ao_kinetic()
+    # External potential
+    V = mints.ao_potential()
+    # H = T + V
+    H = T.clone()
+    H.add(V)
+    # Electron-repulsion integrals (ERI) tensor
+    I = np.asarray(mints.ao_eri())
+    # Overlap matrix
+    S = mints.ao_overlap()
+    # Orthogonaliztion matrix A = S^{1/2}
+    A = S.clone()
+    A.power(-0.5, 1.e-14)
