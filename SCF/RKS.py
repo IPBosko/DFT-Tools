@@ -36,28 +36,20 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
 
     ## Potential Initialization
     build_superfunctional = psi4.driver.dft.build_superfunctional
-    D_half = psi4.core.Matrix(nbf, nbf)
-
     VXCpot = scf_helper.Vpot_init(build_superfunctional, wfn, EXC, "RV", restricted=True)
     VXCpot.initialize()
-    VXC_null = psi4.core.Matrix(nbf, nbf)
 
     ## Calculate and store V, T, H (core), ERI (I), and diagonalization matrix (A)
-    V = mints.ao_potential()
-    T = mints.ao_kinetic()
-    H = T.clone()
-    H.add(V)
-    I = np.asarray(mints.ao_eri())
-    S = mints.ao_overlap()
-    A = S.clone()
-    A.power(-0.5, 1.e-14)
+    H, I, S, A = scf_helper.scf_building_blocks(mints)
 
     ## Initialize necessary matrices
     F = psi4.core.Matrix(nbf, nbf)
     J = psi4.core.Matrix(nbf, nbf)
     K = psi4.core.Matrix(nbf, nbf)
     Vxc = psi4.core.Matrix(nbf, nbf)
+    VXC_null = psi4.core.Matrix(nbf, nbf)
     D_diff = psi4.core.Matrix(nbf, nbf)
+    D_half = psi4.core.Matrix(nbf, nbf)
 
     ## Initial guess (core Hamiltonian) density matrix
     D, homo = scf_helper.diag(H, A, nalpha)

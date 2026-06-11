@@ -63,3 +63,5 @@ def scf_building_blocks(mints):
     # Orthogonaliztion matrix A = S^{1/2}
     A = S.clone()
     A.power(-0.5, 1.e-14)
+
+    return T, V, H, I, S, A
