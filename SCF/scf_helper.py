@@ -65,3 +65,29 @@ def scf_building_blocks(mints):
     A.power(-0.5, 1.e-14)
 
     return T, V, H, I, S, A
+
+def diis_vector(F, D, S, A):
+
+    diis_e = psi4.core.triplet(F, D, S, False, False, False)
+    diis_e.subtract(psi4.core.triplet(S, D, F, False, False, False))
+    diis_e = psi4.core.triplet(A, diis_e, A, False, False, False)
+
+    return diis_e, diis_e.rms()
+
+def density_RMS(D_diff, D, D_old):
+
+    D_diff.copy(D)
+    D_diff.subtract(D_old)
+
+    return D_diff.rms()
+
+def dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp):
+
+    if dRMS < damping_switch_off:
+        current_damp *= 0
+    else:
+        current_damp = damp 
+    D.scale(1.0 - current_damp)
+    D.axpy(current_damp, D_old)
+    
+    return D
