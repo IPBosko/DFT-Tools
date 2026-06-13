@@ -100,9 +100,10 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
 
         ## DIIS convergence test and Fock extrapolation
         if DIIS:
+            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
+            psi4.core.print_out(output_str)
             if verbose:
-                print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
-                    % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS))
+                print(output_str.strip())
             if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
                 break
             
