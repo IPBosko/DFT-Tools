@@ -21,7 +21,7 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
     
     # Damping settings
     current_damp = damp
-    damping_switch_off = 1.0e1 * D_conv
+    damping_switch_off = 1.0e2 * D_conv
     
     ## Wavefunction & Basis Setup
     wfn,mints,nbf,nel,nalpha,nbeta = scf_helper.scf_main_objects(mol)
@@ -114,7 +114,6 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
         D, homo = scf_helper.diag(F, A, nalpha)
 
         ## Density convergence check
-
         if not DIIS:
             
             dRMS = scf_helper.density_RMS(D_diff, D, D_old)
@@ -129,7 +128,7 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
             Eold = SCF_E
 
         ## Dynamic damping
-        D,current_damp=scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
+        D, current_damp=scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
         
         if SCF_ITER == maxiter:
             
