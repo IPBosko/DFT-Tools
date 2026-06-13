@@ -122,14 +122,12 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
             psi4.core.print_out(output_str)
             if verbose:
                 print(output_str.strip())
-            
             if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
                 break
 
             Eold = SCF_E
 
         ## Dynamic damping
-
         D = scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
         
         if SCF_ITER == maxiter:
