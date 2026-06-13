@@ -15,60 +15,47 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
     """
     
     ## Convergence thresholds
-
     E_conv = 1.0e-8
     D_conv = 1.0e-8
     maxiter = 40
     
+    # Damping settings
     current_damp = damp
     damping_switch_off = 1.0e1 * D_conv
     
     ## Wavefunction & Basis Setup
-
-    wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
-    mints = psi4.core.MintsHelper(wfn.basisset())
-    nbf = wfn.nso()
-    nalpha = wfn.nalpha()
+    wfn,mints,nbf,nel,nalpha,nbeta = scf_helper.scf_main_objects(mol)
 
     ## Optional output
-
     basic_info_str = f'Number of basis functions: {nbf}\nNumber of electrons: {2*nalpha}\nNumber of occupied orbitals: {nalpha}\n'
     psi4.core.print_out(basic_info_str)
     if verbose:
         print(basic_info_str)
 
     ## Potential Initialization
-
     build_superfunctional = psi4.driver.dft.build_superfunctional
     VXCpot = scf_helper.Vpot_init(build_superfunctional, wfn, EXC, "RV", restricted=True)
     VXCpot.initialize()
 
     ## Calculate and store V, T, H (core), ERI (I), and diagonalization matrix (A)
-
     H, I, S, A = scf_helper.scf_building_blocks(mints)[2:]
 
     ## Initialize necessary matrices
-
-    F = psi4.core.Matrix(nbf, nbf)
-    J = psi4.core.Matrix(nbf, nbf)
-    K = psi4.core.Matrix(nbf, nbf)
-    Vxc = psi4.core.Matrix(nbf, nbf)
-    VXC_null = psi4.core.Matrix(nbf, nbf)
-    D_diff = psi4.core.Matrix(nbf, nbf)
-    D_half = psi4.core.Matrix(nbf, nbf)
+    F, J, K, Vxc, VXC_null, D_diff, D_half = scf_helper.makeMatrices(nbf, 7)
 
     ## Initial guess (core Hamiltonian) density matrix
-
     D, homo = scf_helper.diag(H, A, nalpha)
 
-    ## Initialize diis object
-    
     if DIIS:
+        ## Initialize diis object
         diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
     
+    ## Nuclear energy
     Enuc = mol.nuclear_repulsion_energy()
+    ## Initialize Eold for convegence check
     Eold = 0.0
     
+    ## Optional output
     header = "\n    Iter               Energy         HOMO       Delta E         dRMS\n"
     psi4.core.print_out(header)
     if verbose:
@@ -76,41 +63,33 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
         print(header)
     t = time.time()
 
+    ## SCF iterative procedure
     for SCF_ITER in range(1, maxiter + 1):
         
         ## Saving the initial density matrix for SCF damping
-
         D_old = D
         
         ## Build J (Coulomb) and K (Fock exchange)
-
-        J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
-        J.np[:] = J_np
+        J = scf_helper.Jbuild(I, D, J)
         if EXC["name"]=="EXX":
-            K_np = np.einsum('prqs,rs->pq', I, D.np, optimize=True)
-            K.np[:] = K_np
+            K = scf_helper.Kbuild(I, D, K)
 
-        ## Build F = H + J
-
+        ## Build Fock matrix
         F.copy(H)
         F.axpy(1.0, J)
         if EXC["name"]=="EXX":
             F.axpy(-0.5, K)
-
-        ## Build DFT potentials and calculate corresponding energies
-
         if EXC["name"]!="EXX":
-            
+            ## Build DFT potentials and calculate energies
             exc, Vxc = scf_helper.Vpot_builder(VXCpot, D, VXC_null, D_half)
             F.axpy(1.0, Vxc)
 
         if DIIS:
-            
+            ## Build DIIS vector
             diis_e, dRMS = scf_helper.diis_vector(F, D, S, A)
             diis_obj.add(F, diis_e)
 
         ## Energy calculation
-
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
         if EXC["name"]=="EXX":
@@ -120,12 +99,10 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
         SCF_E += Enuc
 
         ## DIIS convergence test and Fock extrapolation
-
         if DIIS:
             if verbose:
                 print('SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E'
                     % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS))
-            
             if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
                 break
             
@@ -133,7 +110,6 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
             F = diis_obj.extrapolate()
         
         ## Diagonalize Fock matrix
-
         D, homo = scf_helper.diag(F, A, nalpha)
 
         ## Density convergence check

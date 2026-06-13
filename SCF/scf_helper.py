@@ -47,6 +47,16 @@ def Vpot_builder(Vpot, D, V, D_half):
     
     return e, V
 
+def scf_main_objects(mol):
+
+    wfn = psi4.core.Wavefunction.build(mol, psi4.core.get_global_option("BASIS"))
+    mints = psi4.core.MintsHelper(wfn.basisset())
+    nbf = wfn.nso()
+    nalpha, nbeta = wfn.nalpha(), wfn.nbeta()
+    nel = nalpha + nbeta
+
+    return wfn, mints, nbf, nel, nalpha, nbeta
+
 def scf_building_blocks(mints):
 
     # Kinetic energy
@@ -65,6 +75,10 @@ def scf_building_blocks(mints):
     A.power(-0.5, 1.e-14)
 
     return T, V, H, I, S, A
+
+def makeMatrices(nbf, count):
+
+    return [psi4.core.Matrix(nbf, nbf) for _ in range(count)]
 
 def diis_vector(F, D, S, A):
 
@@ -91,3 +105,17 @@ def dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp):
     D.axpy(current_damp, D_old)
     
     return D
+
+def Jbuild(I, D, J):
+
+    J_np = np.einsum('pqrs,rs->pq', I, D.np, optimize=True)
+    J.np[:] = J_np
+
+    return J
+
+def Kbuild(I, D, K):
+
+    K_np = np.einsum('prqs,rs->pq', I, D.np, optimize=True)
+    K.np[:] = K_np
+
+    return K
