@@ -1,5 +1,5 @@
 """
-Spin-restricted KS SCF solver for DFT calculations using Psi4 objects
+Spin-unrestricted KS SCF solver for DFT calculations using Psi4 objects
 """
 
 import sys
@@ -11,7 +11,7 @@ import scf_helper
 
 def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
     """
-    Spin-restricted KS SCF solver loop
+    Spin-unrestricted KS SCF solver loop
     """
     
     ## Convergence thresholds
@@ -27,7 +27,7 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
     wfn,mints,nbf,nel,nalpha,nbeta = scf_helper.scf_main_objects(mol)
 
     ## Optional output
-    basic_info_str = f'Number of basis functions: {nbf}\nNumber of electrons: {2*nalpha}\nNumber of occupied orbitals: {nalpha}\n'
+    basic_info_str = f'Number of basis functions: {nbf}\nNumber of alpha electrons: {nalpha}\nNumber of beta electrons: {nbeta}\n'
     psi4.core.print_out(basic_info_str)
     if verbose:
         print(basic_info_str)
@@ -129,7 +129,7 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
             Eold = SCF_E
 
         ## Dynamic damping
-        D,current_damp=scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
+        D = scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
         
         if SCF_ITER == maxiter:
             

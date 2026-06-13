@@ -104,7 +104,7 @@ def dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp):
     D.scale(1.0 - current_damp)
     D.axpy(current_damp, D_old)
     
-    return D
+    return D, current_damp
 
 def Jbuild(I, D, J):
 
