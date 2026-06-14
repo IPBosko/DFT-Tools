@@ -131,8 +131,8 @@ def ks_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
             Eold = SCF_E
 
         ## Dynamic damping
-        D, current_damp=scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
-        psi4.core.print_out('\nCurrent damping %.1f\n' % current_damp)
+        D, current_damp = scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
+        # psi4.core.print_out('\nCurrent damping %.1f\n' % current_damp)
         
         if SCF_ITER == maxiter:
             

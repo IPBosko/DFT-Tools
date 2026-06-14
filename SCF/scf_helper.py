@@ -2,7 +2,7 @@
 import numpy as np
 import psi4
 
-def diag(diag, A, nalpha):
+def diag(diag, A, nel, restricted=True):
     """
     Diagonalizes the Fock matrix and builds the density matrix from N/2 lowest eigenvectors.
     """
@@ -14,13 +14,15 @@ def diag(diag, A, nalpha):
     Fp.diagonalize(Cp, eigvals, psi4.core.DiagonalizeOrder.Ascending)
 
     C = psi4.core.doublet(A, Cp, False, False)
-    Cocc = psi4.core.Matrix(nbf, nalpha)
-    Cocc.np[:] = C.np[:, :nalpha]
+    Cocc = psi4.core.Matrix(nbf, nel)
+    Cocc.np[:] = C.np[:, :nel]
 
     D = psi4.core.doublet(Cocc, Cocc, False, True) 
-    D.scale(2.0) 
+    if restricted:
+        D.scale(2.0) 
+        return D, eigvals.np[nel-1]
     
-    return D, eigvals.np[nalpha-1]
+    return D
 
 def Vpot_init(build_superfunctional, wfn, alias, vname, restricted=True):
     """
@@ -34,17 +36,21 @@ def Vpot_init(build_superfunctional, wfn, alias, vname, restricted=True):
     
     return Vpot
 
-def Vpot_builder(Vpot, D, V, D_half):
+def Vpot_builder(Vpot, D, V, D_half, restricted=True):
     """
     Computes the potential on the grid for a given density
     """
 
-    D_half.copy(D)
-    D_half.scale(0.5)
-    Vpot.set_D([ D_half ])
-    Vpot.compute_V([ V ])
-    e = Vpot.quadrature_values()['FUNCTIONAL']
-    
+    if restricted:
+        D_half.copy(D)
+        D_half.scale(0.5)
+        Vpot.set_D([ D_half ])
+        Vpot.compute_V([ V ])
+    else:
+        Vpot.set_D([ D, D_half ])
+        Vpot.compute_V([ V[0], V[1] ])
+        
+    e = Vpot.quadrature_values()['FUNCTIONAL']    
     return e, V
 
 def scf_main_objects(mol):
