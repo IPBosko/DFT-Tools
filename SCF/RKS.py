@@ -9,7 +9,7 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
+def ks_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     """
     Spin-restricted KS SCF solver loop
     """
@@ -21,7 +21,10 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
     
     # Damping settings
     current_damp = damp
-    damping_switch_off = 1.0e2 * D_conv
+    if DIIS:
+        damping_switch_off = 1.0e8 * D_conv
+    else:
+        damping_switch_off = 1.0e2 * D_conv
     
     ## Wavefunction & Basis Setup
     wfn,mints,nbf,nel,nalpha,nbeta = scf_helper.scf_main_objects(mol)
@@ -129,6 +132,7 @@ def ks_solver(mol, EXC, damp, DIIS=True, verbose=False):
 
         ## Dynamic damping
         D, current_damp=scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
+        psi4.core.print_out('\nCurrent damping %.1f\n' % current_damp)
         
         if SCF_ITER == maxiter:
             
