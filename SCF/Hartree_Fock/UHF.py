@@ -9,7 +9,7 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def ks_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
+def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     """
     Spin-unrestricted KS SCF solver loop
     """

@@ -1,0 +1,133 @@
+"""
+Spin-restricted HF SCF solver using Psi4 objects
+"""
+
+import sys
+import psi4
+import time
+import numpy as np
+sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
+import scf_helper 
+
+def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
+    """
+    Spin-restricted HF SCF solver loop
+    """
+    
+    ## Convergence thresholds
+    E_conv = 1.0e-8
+    D_conv = 1.0e-8
+    maxiter = 40
+    
+    # Damping settings
+    current_damp = damp
+    if DIIS:
+        damping_switch_off = 1.0e8 * D_conv
+    else:
+        damping_switch_off = 1.0e2 * D_conv
+    
+    ## Wavefunction & Basis Setup
+    wfn,mints,nbf,nel,nalpha,nbeta = scf_helper.scf_main_objects(mol)
+
+    ## Optional output
+    basic_info_str = f'Number of basis functions: {nbf}\nNumber of electrons: {2*nalpha}\nNumber of occupied orbitals: {nalpha}\n'
+    psi4.core.print_out(basic_info_str)
+    if verbose:
+        print(basic_info_str)
+
+    ## Calculate and store V, T, H (core), ERI (I), and diagonalization matrix (A)
+    H, I, S, A = scf_helper.scf_building_blocks(mints)[2:]
+
+    ## Initialize necessary matrices
+    F, J, K, D_diff = scf_helper.makeMatrices(nbf, 4)
+
+    ## Initial guess (core Hamiltonian) density matrix
+    D, homo = scf_helper.diag(H, A, nalpha)
+
+    if DIIS:
+        ## Initialize diis object
+        diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
+    
+    ## Nuclear energy
+    Enuc = mol.nuclear_repulsion_energy()
+    ## Initialize Eold for convegence check
+    Eold = 0.0
+    
+    ## Optional output
+    header = "\n    Iter               Energy         HOMO       Delta E         dRMS\n"
+    psi4.core.print_out(header)
+    if verbose:
+        print('\nStarting SCF iterations:')
+        print(header)
+    t = time.time()
+
+    ## SCF iterative procedure
+    for SCF_ITER in range(1, maxiter + 1):
+        
+        ## Saving the initial density matrix for SCF damping
+        D_old = D
+        
+        ## Build J (Coulomb) and K (Fock exchange)
+        J = scf_helper.Jbuild(I, D, J)
+        K = scf_helper.Kbuild(I, D, K)
+
+        ## Build Fock matrix
+        F.copy(H)
+        F.axpy(1.0, J)
+        F.axpy(-0.5, K)
+
+        if DIIS:
+            ## Build DIIS vector
+            diis_e, dRMS = scf_helper.diis_vector(F, D, S, A)
+            diis_obj.add(F, diis_e)
+
+        ## Energy calculation
+        SCF_E = H.vector_dot(D)
+        SCF_E += 0.5 * J.vector_dot(D)
+        SCF_E -= 0.25 * K.vector_dot(D)
+        SCF_E += Enuc
+
+        ## DIIS convergence test and Fock extrapolation
+        if DIIS:
+            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
+            psi4.core.print_out(output_str)
+            if verbose:
+                print(output_str.strip())
+            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
+                break
+            
+            Eold = SCF_E
+            F = diis_obj.extrapolate()
+        
+        ## Diagonalize Fock matrix
+        D, homo = scf_helper.diag(F, A, nalpha)
+
+        ## Density convergence check
+        if not DIIS:
+            
+            dRMS = scf_helper.density_RMS(D_diff, D, D_old)
+        
+            output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
+            psi4.core.print_out(output_str)
+            if verbose:
+                print(output_str.strip())
+            if (abs(SCF_E - Eold) < E_conv and dRMS < D_conv):
+                break
+
+            Eold = SCF_E
+
+        ## Dynamic damping
+        D, current_damp = scf_helper.dynamic_damping(D, D_old, dRMS, damp, damping_switch_off, current_damp)
+        # psi4.core.print_out('\nCurrent damping %.1f\n' % current_damp)
+        
+        if SCF_ITER == maxiter:
+            
+            psi4.core.print_out("\nWARNING ! SCF did not converge. The final values are printed\n")
+            print("\nWARNING ! SCF did not converge. The final values are printed")
+            return SCF_E, D, homo, SCF_ITER
+        
+    psi4.core.print_out('\nSCF converged in %d iterations and %.3f seconds \n' % (SCF_ITER, time.time() - t))
+    if verbose:
+        print('\nSCF converged in %d iterations and %.3f seconds' % (SCF_ITER, time.time() - t))
+
+    return SCF_E, D, homo, SCF_ITER
