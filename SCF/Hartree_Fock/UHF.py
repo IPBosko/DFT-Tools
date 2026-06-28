@@ -1,5 +1,5 @@
 """
-Spin-unrestricted KS SCF solver for DFT calculations using Psi4 objects
+Spin-unrestricted HF SCF solver using Psi4 objects
 """
 
 import sys
@@ -9,9 +9,9 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
+def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
     """
-    Spin-unrestricted KS SCF solver loop
+    Spin-unrestricted HF SCF solver loop
     """
     
     ## Convergence thresholds
@@ -35,16 +35,11 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     if verbose:
         print(basic_info_str)
 
-    ## Potential Initialization
-    build_superfunctional = psi4.driver.dft.build_superfunctional
-    VXCpot = scf_helper.Vpot_init(build_superfunctional, wfn, EXC, "UV", restricted=False)
-    VXCpot.initialize()
-
     ## Calculate and store V, T, H (core), ERI (I), and diagonalization matrix (A)
     H, I, S, A = scf_helper.scf_building_blocks(mints)[2:]
 
     ## Initialize necessary matrices
-    D,Da,Db,Fa,Fb,J,Ja,Jb,Ka,Kb,Vxca,Vxcb,VXCa_null,VXCb_null,D_diff = scf_helper.makeMatrices(nbf, 15)
+    D,Da,Db,Fa,Fb,J,Ja,Jb,Ka,Kb,D_diff = scf_helper.makeMatrices(nbf, 11)
 
     ## Initial guess (core Hamiltonian) density matrix
     Da = scf_helper.diag(H, A, nalpha, restricted=False)
@@ -80,9 +75,8 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
         Jb = scf_helper.Jbuild(I, Db, Jb)
         J.copy(Ja)
         J.axpy(1.0, Jb)
-        if EXC["name"]=="EXX":
-            Ka = scf_helper.Kbuild(I, Da, Ka)
-            Kb = scf_helper.Kbuild(I, Db, Kb)
+        Ka = scf_helper.Kbuild(I, Da, Ka)
+        Kb = scf_helper.Kbuild(I, Db, Kb)
 
         ## Build Fock matrix
         Fa.copy(H)
@@ -91,15 +85,8 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
         Fa.axpy(1.0, Jb)
         Fb.axpy(1.0, Ja)
         Fb.axpy(1.0, Jb)
-        if EXC["name"]=="EXX":
-            Fa.axpy(-1.0, Ka)
-            Fb.axpy(-1.0, Kb)
-        if EXC["name"]!="EXX":
-            ## Build DFT potentials and calculate energies
-            exc,Vxc = scf_helper.Vpot_builder(VXCpot, Da, [VXCa_null,VXCb_null], Db, restricted=False)
-            Vxca, Vxcb = Vxc[0], Vxc[1]
-            Fa.axpy(1.0, Vxca)
-            Fb.axpy(1.0, Vxcb)
+        Fa.axpy(-1.0, Ka)
+        Fb.axpy(-1.0, Kb)
 
         if DIIS:
             ## Build DIIS vector
@@ -116,11 +103,8 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
         D.copy(Da)
         D.axpy(1.0,Db)
         SCF_E += 0.5 * J.vector_dot(D)
-        if EXC["name"]=="EXX":
-            SCF_E -= 0.5 * Ka.vector_dot(Da)
-            SCF_E -= 0.5 * Ka.vector_dot(Db)
-        else:
-            SCF_E += exc
+        SCF_E -= 0.5 * Ka.vector_dot(Da)
+        SCF_E -= 0.5 * Ka.vector_dot(Db)
         SCF_E += Enuc
 
         ## DIIS convergence test and Fock extrapolation
