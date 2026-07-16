@@ -17,7 +17,7 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     ## Convergence thresholds
     E_conv = 1.0e-8
     D_conv = 1.0e-8
-    maxiter = 40
+    maxiter = 120
     
     # Damping settings
     current_damp = damp

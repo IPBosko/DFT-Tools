@@ -17,7 +17,7 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
     ## Convergence thresholds
     E_conv = 1.0e-8
     D_conv = 1.0e-8
-    maxiter = 40
+    maxiter = 120
     
     # Damping settings
     current_damp = damp
@@ -60,6 +60,9 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
         print('\nStarting SCF iterations:')
         print(header)
     t = time.time()
+    e_list = []
+    e_conv_list = []
+    d_conv_list = []
 
     ## SCF iterative procedure
     for SCF_ITER in range(1, maxiter + 1):
@@ -81,11 +84,19 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
             diis_e, dRMS = scf_helper.diis_vector(F, D, S, A)
             diis_obj.add(F, diis_e)
 
+            dRMS_val = dRMS if dRMS > 0 else 1e-16
+            d_conv_list.append(np.log10(dRMS_val))
+
         ## Energy calculation
         SCF_E = H.vector_dot(D)
         SCF_E += 0.5 * J.vector_dot(D)
         SCF_E -= 0.25 * K.vector_dot(D)
         SCF_E += Enuc
+
+        e_diff = abs(SCF_E - Eold)
+        e_diff_val = e_diff if e_diff > 0 else 1e-16
+        e_conv_list.append(np.log10(e_diff_val))
+        e_list.append(SCF_E)
 
         ## DIIS convergence test and Fock extrapolation
         if DIIS:
@@ -106,7 +117,10 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
         if not DIIS:
             
             dRMS = scf_helper.density_RMS(D_diff, D, D_old)
-        
+
+            dRMS_val = dRMS if dRMS > 0 else 1e-16
+            d_conv_list.append(np.log10(dRMS_val))
+
             output_str = 'SCF Iter%3d: % 18.8f   % 1.5E   % 1.5E   % 1.5E\n' % (SCF_ITER, SCF_E, homo, (SCF_E - Eold), dRMS)
             psi4.core.print_out(output_str)
             if verbose:
@@ -124,10 +138,10 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
             
             psi4.core.print_out("\nWARNING ! SCF did not converge. The final values are printed\n")
             print("\nWARNING ! SCF did not converge. The final values are printed")
-            return SCF_E, D, homo, SCF_ITER
+            return SCF_E, D, homo, SCF_ITER, e_list, e_conv_list, d_conv_list
         
     psi4.core.print_out('\nSCF converged in %d iterations and %.3f seconds \n' % (SCF_ITER, time.time() - t))
     if verbose:
         print('\nSCF converged in %d iterations and %.3f seconds' % (SCF_ITER, time.time() - t))
 
-    return SCF_E, D, homo, SCF_ITER
+    return SCF_E, D, homo, SCF_ITER, e_list, e_conv_list, d_conv_list
