@@ -83,7 +83,6 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
             ## Build DIIS vector
             diis_e, dRMS = scf_helper.diis_vector(F, D, S, A)
             diis_obj.add(F, diis_e)
-
             dRMS_val = dRMS if dRMS > 0 else 1e-16
             d_conv_list.append(np.log10(dRMS_val))
 
@@ -117,7 +116,6 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
         if not DIIS:
             
             dRMS = scf_helper.density_RMS(D_diff, D, D_old)
-
             dRMS_val = dRMS if dRMS > 0 else 1e-16
             d_conv_list.append(np.log10(dRMS_val))
 
