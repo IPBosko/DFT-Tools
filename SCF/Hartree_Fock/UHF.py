@@ -9,7 +9,7 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
+def scf_solver(mol, damp=0.0, DIIS=True, verbose=False, frac=None):
     """
     Spin-unrestricted HF SCF solver loop
     """
@@ -17,12 +17,12 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
     ## Convergence thresholds
     E_conv = 1.0e-8
     D_conv = 1.0e-8
-    maxiter = 40
+    maxiter = 220
     
     # Damping settings
     current_damp = damp
     if DIIS:
-        damping_switch_off = 1.0e8 * D_conv
+        damping_switch_off = 1.0e6 * D_conv
     else:
         damping_switch_off = 1.0e2 * D_conv
     
@@ -42,8 +42,8 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
     D,Da,Db,Fa,Fb,J,Ja,Jb,Ka,Kb,D_diff = scf_helper.makeMatrices(nbf, 11)
 
     ## Initial guess (core Hamiltonian) density matrix
-    Da = scf_helper.diag(H, A, nalpha, restricted=False)
-    Db = scf_helper.diag(H, A, nbeta, restricted=False)
+    Da = scf_helper.diag(H, A, nalpha, restricted=False, frac=frac)
+    Db = scf_helper.diag(H, A, nbeta, restricted=False, frac=None)
 
     if DIIS:
         ## Initialize diis object
@@ -104,7 +104,7 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
         D.axpy(1.0,Db)
         SCF_E += 0.5 * J.vector_dot(D)
         SCF_E -= 0.5 * Ka.vector_dot(Da)
-        SCF_E -= 0.5 * Ka.vector_dot(Db)
+        SCF_E -= 0.5 * Kb.vector_dot(Db)
         SCF_E += Enuc
 
         ## DIIS convergence test and Fock extrapolation
@@ -121,8 +121,8 @@ def scf_solver(mol, damp=0.0, DIIS=True, verbose=False):
             Fb = diis_obj_b.extrapolate()
         
         ## Diagonalize Fock matrix
-        Da = scf_helper.diag(Fa, A, nalpha, restricted=False)
-        Db = scf_helper.diag(Fb, A, nbeta, restricted=False)
+        Da = scf_helper.diag(Fa, A, nalpha, restricted=False, frac=frac)
+        Db = scf_helper.diag(Fb, A, nbeta, restricted=False, frac=None)
 
         ## Density convergence check
 

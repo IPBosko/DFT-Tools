@@ -17,7 +17,7 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     ## Convergence thresholds
     E_conv = 1.0e-8
     D_conv = 1.0e-8
-    maxiter = 40
+    maxiter = 120
     
     # Damping settings
     current_damp = damp
@@ -51,7 +51,7 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
 
     if DIIS:
         ## Initialize diis object
-        diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="oldest")
+        diis_obj = psi4.p4util.solvers.DIIS(max_vec=6, removal_policy="largest")
     
     ## Nuclear energy
     Enuc = mol.nuclear_repulsion_energy()

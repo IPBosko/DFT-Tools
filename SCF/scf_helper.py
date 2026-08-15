@@ -2,9 +2,10 @@
 import numpy as np
 import psi4
 
-def diag(diag, A, nel, restricted=True):
+def diag(diag, A, nel, restricted=True, frac=None):
     """
-    Diagonalizes the Fock matrix and builds the density matrix from N/2 lowest eigenvectors.
+    Diagonalizes the Fock matrix and builds the density matrix from N lowest eigenvectors.
+    If frac is non-zero, the HOMO is scaled directly in the molecular orbital matrix.
     """
 
     Fp = psi4.core.triplet(A, diag, A, True, False, True)
@@ -17,7 +18,13 @@ def diag(diag, A, nel, restricted=True):
     Cocc = psi4.core.Matrix(nbf, nel)
     Cocc.np[:] = C.np[:, :nel]
 
+    if frac is not None:
+        if restricted:
+            raise ValueError('Fractional occupations are for unrestricted calculations only.')
+        Cocc.np[:, -1] *= np.sqrt(frac)
+
     D = psi4.core.doublet(Cocc, Cocc, False, True) 
+    
     if restricted:
         D.scale(2.0) 
         return D, eigvals.np[nel-1]
