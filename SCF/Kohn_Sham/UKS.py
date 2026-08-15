@@ -9,7 +9,7 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
+def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False, frac=None, Da_guess=None, Db_guess=None):
     """
     Spin-unrestricted KS SCF solver loop
     """
@@ -17,12 +17,12 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     ## Convergence thresholds
     E_conv = 1.0e-8
     D_conv = 1.0e-8
-    maxiter = 40
+    maxiter = 300
     
     # Damping settings
     current_damp = damp
     if DIIS:
-        damping_switch_off = 1.0e8 * D_conv
+        damping_switch_off = 1.0e6 * D_conv
     else:
         damping_switch_off = 1.0e2 * D_conv
     
@@ -46,9 +46,13 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
     ## Initialize necessary matrices
     D,Da,Db,Fa,Fb,J,Ja,Jb,Ka,Kb,Vxca,Vxcb,VXCa_null,VXCb_null,D_diff = scf_helper.makeMatrices(nbf, 15)
 
-    ## Initial guess (core Hamiltonian) density matrix
-    Da = scf_helper.diag(H, A, nalpha, restricted=False)
-    Db = scf_helper.diag(H, A, nbeta, restricted=False)
+    ## Initial guess density matrix
+    if Da_guess is not None and Db_guess is not None:
+        Da.copy(Da_guess)
+        Db.copy(Db_guess)
+    else:
+        Da = scf_helper.diag(H, A, nalpha, restricted=False, frac=frac)
+        Db = scf_helper.diag(H, A, nbeta, restricted=False, frac=None)
 
     if DIIS:
         ## Initialize diis object
@@ -118,7 +122,7 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
         SCF_E += 0.5 * J.vector_dot(D)
         if EXC["name"]=="EXX":
             SCF_E -= 0.5 * Ka.vector_dot(Da)
-            SCF_E -= 0.5 * Ka.vector_dot(Db)
+            SCF_E -= 0.5 * Kb.vector_dot(Db)
         else:
             SCF_E += exc
         SCF_E += Enuc
@@ -137,8 +141,8 @@ def scf_solver(mol, EXC, damp=0.0, DIIS=True, verbose=False):
             Fb = diis_obj_b.extrapolate()
         
         ## Diagonalize Fock matrix
-        Da = scf_helper.diag(Fa, A, nalpha, restricted=False)
-        Db = scf_helper.diag(Fb, A, nbeta, restricted=False)
+        Da = scf_helper.diag(Fa, A, nalpha, restricted=False, frac=frac)
+        Db = scf_helper.diag(Fb, A, nbeta, restricted=False, frac=None)
 
         ## Density convergence check
 
