@@ -9,7 +9,7 @@ import numpy as np
 sys.path.append('/Users/ivanbosko/Documents/CODES/GIT/DFT-Tools/SCF')
 import scf_helper 
 
-def scf_solver(mol, spin=0.5, damp=0.0, DIIS=True, verbose=False, frac=None):
+def scf_solver(mol, spin=0.5, damp=0.0, DIIS=True, verbose=False, frac=None, sym_break=False):
     """
     Spin-unrestricted HF SCF solver loop
     """
@@ -61,6 +61,32 @@ def scf_solver(mol, spin=0.5, damp=0.0, DIIS=True, verbose=False, frac=None):
     ## Initial guess (core Hamiltonian) density matrices
     for i in range(M):
         D_spins[i] = scf_helper.diag(H, A, n_occ[i], restricted=False, frac=frac if i == 0 else None)
+
+    ## Apply symmetry breaking if requested
+    if sym_break and n_occ[0] > 0 and n_occ[0] < nbf:
+        # Re-diagonalize Core Hamiltonian to get MO coefficients
+        H_np = np.asarray(H)
+        A_np = np.asarray(A)
+        Fp = A_np.T @ H_np @ A_np
+        eps, C_p = np.linalg.eigh(Fp)
+        C = A_np @ C_p
+        
+        # Break symmetry for the first M // 2 channels 
+        # (e.g., alpha for spin-1/2, alpha and beta for spin-3/2)
+        for i in range(M // 2):
+            if n_occ[i] > 0 and n_occ[i] < nbf:
+                homo_idx = n_occ[i] - 1
+                lumo_idx = n_occ[i]
+                
+                C_broken = C.copy()
+                C_broken[:, homo_idx] = np.sqrt(0.75) * C[:, homo_idx] + np.sqrt(0.25) * C[:, lumo_idx]
+                
+                # Rebuild density matrix for channel i
+                C_occ = C_broken[:, :n_occ[i]]
+                D_broken_np = C_occ @ C_occ.T
+                
+                # Set the modified density matrix back to the Psi4 object
+                D_spins[i].np[:] = D_broken_np
 
     if DIIS:
         ## Initialize diis object
